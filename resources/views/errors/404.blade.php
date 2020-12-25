@@ -5,7 +5,6 @@
 header("Location: ".route('home')); 
 exit();
 @endphp
-
 <div class="myinner-banner">
     <div class="opacity">
         <h2>{{trans('app.Page')}} 404</h2>
