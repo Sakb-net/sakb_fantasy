@@ -1,0 +1,8 @@
+@include('site.layouts.script.game_js')
+@include('site.layouts.script.match_js')
+@include('site.layouts.script.game_transfer_js')
+@include('site.layouts.script.transfer_js')
+@include('site.layouts.script.transfer_change_js')
+@include('site.layouts.script.team_change_js')
+@include('site.layouts.script.point_js')
+@include('site.layouts.script.group_eldwry_js')

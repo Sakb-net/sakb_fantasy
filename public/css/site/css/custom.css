@@ -1,0 +1,64 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 27, 2019, 10:03:29 PM
+    Author     : Eman
+*/
+.pagination span,a {
+    cursor: pointer;
+}
+#mega-menu-wrapper .nav>.user-prof>a{
+    color: #c7f5dd;
+}
+.img-us-prof{
+    border-radius: 50%;
+    width: 130px;
+    /*margin-top: 20px;*/
+}
+.mg-bot-20{
+   margin-bottom: 20px;
+}
+.all-notif-msg,.notif-msg{
+    margin: 10px 40px;
+}
+.player_team_name{
+    display: inline-block;
+    width: 190px;
+}
+.btn-like{
+    display: inline-block;
+    width:23px;
+}
+.remove_comments{
+    margin: 0px 8px;
+}
+.drawMsg_plz_addplayer{
+    padding: 0px 10px;
+}
+.dir_left{
+    direction: ltr;
+}
+.btnMod_info_player{
+    z-index: 9999;
+}
+.hidden,.hide{
+    display: none;;
+}
+.high_show{
+    z-index: 999999;
+}
+.low_show{
+    z-index: 9;
+}
+.game-stage .player div.allow-active{
+    background: rgba(255, 98, 3, 0.5);
+}
+.game-stage .val_point{
+    direction: ltr !important;
+}
+.switch_points{
+    direction: ltr !important;
+}

@@ -1,0 +1,16 @@
+<li><a href="http://alraedclub.sa" target="_blank"><img src="{{ asset('/uploads/pics/1.png')}}" alt="club-logo"></a></li>
+<li><a href="https://ettifaq.com" target="_blank"><img src="{{ asset('/uploads/pics/2.png')}}" alt="club-logo"></a></li>
+<li><a href="https://twitter.com/alwehdaclub1" target="_blank"><img src="{{ asset('/uploads/pics/3.png')}}" alt="club-logo"></a></li>
+<li><a href="https://alahlifc.sa" target="_blank"><img src="{{ asset('/uploads/pics/4.png')}}" alt="club-logo"></a></li>
+<li><a href="https://www.shababfc.com" target="_blank"><img src="{{ asset('/uploads/pics/5.png')}}" alt="club-logo"></a></li>
+<li><a href="http://alnassrfc.com" target="_blank"><img src="{{ asset('/uploads/pics/6.png')}}" alt="club-logo"></a></li>
+<li><a href="https://www.ittihadfc.com" target="_blank"><img src="{{ asset('/uploads/pics/7.png')}}" alt="club-logo"></a></li>
+<li><a href="https://alhilal.com" target="_blank"><img src="{{ asset('/uploads/pics/8.png')}}" alt="club-logo"></a></li>
+<li><a href="https://www.aladalahclub.com" target="_blank"><img src="{{ asset('/uploads/pics/9.png')}}" alt="club-logo"></a></li>
+<li><a href="http://www.alfiha.com" target="_blank"><img src="{{ asset('/uploads/pics/10.png')}}" alt="club-logo"></a></li>
+<li><a href="https://damac.sa" target="_blank"><img src="{{ asset('/uploads/pics/11.png')}}" alt="club-logo"></a></li>
+<li><a href="http://altawen.sa" target="_blank"><img src="{{ asset('/uploads/pics/12.png')}}" alt="club-logo"></a></li>
+<li><a href="https://alfaisalyfc.net" target="_blank"><img src="{{ asset('/uploads/pics/13.png')}}" alt="club-logo"></a></li>
+<li><a href="https://abha-club.net" target="_blank"><img src="{{ asset('/uploads/pics/14.png')}}" alt="club-logo"></a></li>
+<li><a href="https://fatehclub.com" target="_blank"><img src="{{ asset('/uploads/pics/15.png')}}" alt="club-logo"></a></li>
+<li><a href="https://twitter.com/AL7AZEMFC" target="_blank"><img src="{{ asset('/uploads/pics/16.png')}}" alt="club-logo"></a></li>
