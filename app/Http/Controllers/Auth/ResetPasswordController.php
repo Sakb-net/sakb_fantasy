@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\SiteController;
-use Illuminate\Foundation\Auth\ResetsPasswords;
+// use Illuminate\Foundation\Auth\ResetsPasswords;
 use App\Models\User;
 use App\Models\PasswordReset;
 
@@ -21,7 +21,7 @@ class ResetPasswordController extends SiteController
     |
     */
 
-    use ResetsPasswords;
+    // use ResetsPasswords;
 
     /**
      * Where to redirect users after resetting their password.

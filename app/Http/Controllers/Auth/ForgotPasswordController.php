@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\SiteController;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+// use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends SiteController
 {
@@ -18,7 +18,7 @@ class ForgotPasswordController extends SiteController
     |
     */
 
-    use SendsPasswordResetEmails;
+    // use SendsPasswordResetEmails;
 
     /**
      * Create a new controller instance.
