@@ -4,7 +4,7 @@
 Route::group([
     'prefix' => $admin_panel,
     'as' => 'admin.',
-    'namespace' => 'Admin',
+    'namespace' => 'App\Http\Controllers\Admin',
     'middleware' => ['admin']
         ], function () {
 

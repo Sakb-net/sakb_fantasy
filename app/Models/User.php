@@ -9,11 +9,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-// use Zizaco\Entrust\Traits\EntrustUserTrait;
-
-// use Illuminate\Support\Facades\Auth;
-// use App\Http\Requests\UserRequest;
-// use \Illuminate\Support\Facades\View;
 
 use App\Models\Role;
 use App\Models\UserMeta;
@@ -24,8 +19,7 @@ use App\Models\Subeldwry;
 use App\Models\Options;
 use DB;
 use Mail;
-
-
+use Hash;
 
 class User extends Authenticatable
 {
@@ -77,7 +71,7 @@ class User extends Authenticatable
     ];
 
 
- public function socialproviders() {
+    public function socialproviders() {
         return $this->hasMany(\App\Models\SocialProvider::class);
     }
 
@@ -117,14 +111,18 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\UserNotif::class);
     }
 
+    public function attachRole($user_id,$role_id) {
+        return \App\Models\RoleUser::insertRoleUser($user_id, $role_id);
+    }
+
     public static function addCreate($request, $user_role = '', $display_name, $email, $password, $phone, $fcm_token = NULL, $device_id = NULL, $reg_site = 'site', $address = null, $city = null, $state = null,$best_team=null,$image=null) {
         if (empty($user_role)) {
             $user_role = Options::where('option_key', 'default_role')->value('option_value');
         }
 //        $this->validator($request->all())->validate();
         $user = User::insertUser($display_name, $email, $password, $phone, $fcm_token, $device_id, $reg_site, $address, $city, $state,$best_team,$image);
-        $user->attachRole($user_role);
-//        $this->guard()->login($user);
+        $user->attachRole($user['id'],$user_role);
+//        $this->login($user);
         return $user;
     }
 
@@ -145,7 +143,7 @@ class User extends Authenticatable
         $user_reg = User::create([
                     'display_name' => $display_name,
                     'email' => $email,
-                    'password' => bcrypt($password),
+                    'password' => Hash::make($password),
                     'name' => (str_replace(' ', '_', $user_name[0] . time())), //str_random(8)
                     'phone' => $phone,
                     'image' =>$image,
@@ -181,10 +179,6 @@ class User extends Authenticatable
         $data->$colum2 = $columValue2;
         $data->$colum3 = $columValue3;
         return $data->save();
-    }
-
-    public function isActive() {
-        return Auth::user()->is_active == 1;
     }
 
     public static function userData($id, $column = '') {

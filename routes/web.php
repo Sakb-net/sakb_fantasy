@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 
 Route::get('/clear', function() {
@@ -174,20 +174,29 @@ Route::group([
    Route::get('callback', ['as' => 'callback', 'uses' => 'PaymentCardController@callback']);
 });
 
-Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider');
-Route::get('auth/{provider}/callback', 'Auth\RegisterController@handleProviderCallback');
 //ajax
 if (Request::ajax()) {
     require __DIR__ . '/ajax_site.php';
 }
-// Auth::routes();
+// Auth
+Route::namespace('App\Http\Controllers\Auth')->group(function () {
+    //custome website
+    Route::post('login', ['as' => 'login', 'uses' => 'LoginController@login']);
+    Route::post('logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
+    Route::get('logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
+    
+    Route::post('register', ['as' => 'register', 'uses' => 'RegisterController@register']);
+    //social
+    Route::get('auth/{provider}', 'RegisterController@redirectToProvider');
+    Route::get('auth/{provider}/callback', 'RegisterController@handleProviderCallback');
 
-// Auth Admin
-Route::get($admin_panel . '/login', ['as' => 'admin.login', 'uses' => 'Auth\LoginAdminController@showLoginForm']);
-Route::post($admin_panel . '/login', ['uses' => 'Auth\LoginAdminController@login']);
-Route::post($admin_panel . 'logout', ['as' => 'admin.logout', 'uses' => 'Auth\LoginAdminController@logout']);
+    // Admin
+    Route::get('admin/login', ['as' => 'admin.login', 'uses' => 'LoginAdminController@showLoginForm']);
+    Route::post('admin/login', ['uses' => 'LoginAdminController@login']);
+    Route::post('admin/logout', ['as' => 'admin.logout', 'uses' => 'LoginAdminController@logout']);
 
-Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
+
+});
 
 //Admin
 require __DIR__ . '/admin.php';

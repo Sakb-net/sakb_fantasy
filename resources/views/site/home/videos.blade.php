@@ -108,56 +108,55 @@
                                     <div class="tab-pane fade active in" id="gameweek-fix" role="tabpanel">
                                         <div class="mytab-content">
                                             <div class="fixtures home-fix">
-                                            @php 
-                                            $dateNow = date("Y-m-d");
-                                            $utcTime = gmdate("H:i:s");
-                                            @endphp
+                                            @if(isset($match_public[0]))    
+                                                @php 
+                                                $dateNow = date("Y-m-d");
+                                                $utcTime = gmdate("H:i:s");
+                                                @endphp
+                                                <h4 class="FixtureDay"> {{$match_public[0]['start_date_day']}} {{$match_public[0]['start_date']}}</h4>
 
+                                                @foreach($match_public[0]['match_group'] as $value)
+                                                    <!--fixture-box -->
+                                                    <div class="fixture-box">
+                                                        <div class="club-fixture">
+                                                            <div class="club-img">
+                                                                <img class="sm-img" src="{{$value['image_first']}}" alt="club logo">
+                                                                <span>{{$value['short_first']}}</span>
+                                                            </div>
+                                                            <div class="club-schedule text-center">
+                                                            @if ($dateNow < $value['date']) 
+                                                            <h5>{{$value['userDate'][0]}}
+                                                            @if($value['userDate'][1] == 'pm')
+                                                            {{trans('app.pm')}}
+                                                            @else
+                                                            {{trans('app.am')}}
+                                                            @endif
+                                                            </h5>
+                                                            @else
 
-                                            <h4 class="FixtureDay"> {{$match_public[0]['start_date_day']}} {{$match_public[0]['start_date']}}</h4>
+                                                            @php 
+                                                            $endTime = strtotime("+110 minutes", strtotime($value['time']));
+                                                            @endphp
 
-                                            @foreach($match_public[0]['match_group'] as $value)
-
-                                                <!--fixture-box -->
-                                                <div class="fixture-box">
-                                                    <div class="club-fixture">
-                                                        <div class="club-img">
-                                                            <img class="sm-img" src="{{$value['image_first']}}" alt="club logo">
-                                                            <span>{{$value['short_first']}}</span>
-                                                        </div>
-                                                        <div class="club-schedule text-center">
-                                                        @if ($dateNow < $value['date']) 
-                                                        <h5>{{$value['userDate'][0]}}
-                                                        @if($value['userDate'][1] == 'pm')
-                                                        {{trans('app.pm')}}
-                                                        @else
-                                                        {{trans('app.am')}}
-                                                        @endif
-                                                        </h5>
-                                                        @else
-
-                                                        @php 
-                                                        $endTime = strtotime("+110 minutes", strtotime($value['time']));
-                                                        @endphp
-
-                                                        <div class="FixtureScore 
-                                                        @if ($dateNow == $value['date'] && $utcTime > date("H:i:s",$endTime)) 
-                                                        live 
-                                                        @endif
-                                                        "
-                                                        >
-                                                            <span>{{$value['first_goon']}}</span>
-                                                            <span>{{$value['second_goon']}}</span>
-                                                        </div>
-                                                        @endif
-                                                        </div>
-                                                        <div class="club-img">
-                                                            <span>{{$value['short_second']}}</span>
-                                                            <img class="sm-img" src="{{$value['image_second']}}" alt="club logo">
+                                                            <div class="FixtureScore 
+                                                            @if ($dateNow == $value['date'] && $utcTime > date("H:i:s",$endTime)) 
+                                                            live 
+                                                            @endif
+                                                            "
+                                                            >
+                                                                <span>{{$value['first_goon']}}</span>
+                                                                <span>{{$value['second_goon']}}</span>
+                                                            </div>
+                                                            @endif
+                                                            </div>
+                                                            <div class="club-img">
+                                                                <span>{{$value['short_second']}}</span>
+                                                                <img class="sm-img" src="{{$value['image_second']}}" alt="club logo">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                                 @endforeach
+                                            @endif
                                             </div>
                                         </div>
                                     </div>

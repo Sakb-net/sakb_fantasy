@@ -1,42 +1,32 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
-use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Auth\Access\Authorizes\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
-use DB;
-use Socialite;
+use App\Http\Controllers\SiteController;
+use App\Models\Options;
+use App\Models\User;
 use App\Models\SocialProvider;
 use App\Models\Role;
 use App\Models\Team;
 use App\Models\TeamUser;
-
-
+use Hash;
+use Socialite;
 
 //use Auth;
-class RegisterController extends SiteController { /*
-  |--------------------------------------------------------------------------
-  | Register Controller
-  |--------------------------------------------------------------------------
-  |
-  | This controller handles the registration of new users as well as their
-  | validation and creation. By default this controller uses a trait to
-  | provide this functionality without requiring any additional code.
-  |
- */
-
-    use RegistersUsers;
+class RegisterController extends SiteController { 
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';//home
 
     /**
      * Create a new controller instance.
@@ -47,7 +37,6 @@ class RegisterController extends SiteController { /*
         parent::__construct();
         $this->middleware('guest');
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -137,7 +126,6 @@ class RegisterController extends SiteController { /*
     }
 
     protected function create(array $data) {
-        // $user_active = DB::table('options')->where('option_key', 'user_active')->value('option_value');
         $is_active = 1; // is_numeric($user_active) ? $user_active : 0;
         $display_name = $data['name'];
         $email = $data['email'];
@@ -157,8 +145,8 @@ class RegisterController extends SiteController { /*
         return User::create([
                     'display_name' => $display_name,
                     'email' => $email,
-                    'password' => bcrypt($data['password']),
-                    'name' => (str_replace(' ', '_', $user_name[0] . time())), //str_random(8)
+                    'password' =>Hash::make($data['password']),
+                    'name' => (str_replace(' ', '_', $user_name[0] . time())),
                     'phone' => $data['phone'],
                     'image' => generateDefaultImage($display_name),
                     'access_token' => generateRandomToken(),
@@ -175,12 +163,12 @@ class RegisterController extends SiteController { /*
 
     protected function addCreate($request, array $input, $user_role = '') {
         if (empty($user_role)) {
-            $user_role = DB::table('options')->where('option_key', 'default_role')->value('option_value');
+            $user_role = Options::where('option_key', 'default_role')->value('option_value');
         }
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($input)));
-        $user->attachRole($user_role);
-        $this->guard()->login($user);
+        $user->attachRole($user['id'],$user_role);
+        Auth::login($user);
         return $user;
     }
 
@@ -191,54 +179,42 @@ class RegisterController extends SiteController { /*
         foreach ($input as $key => $value) {
             $input[$key] = stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
         }
-        // $wrong_form = $correct_form = NULL;
-        // $wrong_form = $this->MakeConfirmValidat($input);
-        // if (empty($wrong_form)) {
             $user = $this->addCreate($request, $input);
             User::sessionLang($user['id']);
             User::registerNewdwry($user['id'],1,1);
 
-            if($request->has('followed')){
-                foreach($request->followed as $value){
-                    $myArray = explode('-', $value);
-                    $teamId = Team::where('link',$myArray[1])->select('id')->first();
-                    $checkEmail = 0;
-                    $checknoti = 0;
-                    if($request->has('emailMessages')){
-                        if (in_array($myArray[1], $request->emailMessages)) {
-                            $checkEmail = 1;
-                        }
+        if($request->has('followed')){
+            foreach($request->followed as $value){
+                $myArray = explode('-', $value);
+                $teamId = Team::where('link',$myArray[1])->select('id')->first();
+                $checkEmail = 0;
+                $checknoti = 0;
+                if($request->has('emailMessages')){
+                    if (in_array($myArray[1], $request->emailMessages)) {
+                        $checkEmail = 1;
                     }
-
-                    if($request->has('sms')){
-                        if (in_array($myArray[1], $request->sms)) {
-                            $checknoti = 1;
-                        }
-                    }
-                     
-                    $teamUser = new TeamUser;
-                    $teamUser->user_id = $user->id;
-                    $teamUser->team_id = $teamId->id;
-                    $teamUser->is_notif = $checknoti;
-                    $teamUser->is_email = $checkEmail;
-                    $teamUser->save();
                 }
 
+                if($request->has('sms')){
+                    if (in_array($myArray[1], $request->sms)) {
+                        $checknoti = 1;
+                    }
+                }
+                 
+                $teamUser = new TeamUser;
+                $teamUser->user_id = $user->id;
+                $teamUser->team_id = $teamId->id;
+                $teamUser->is_notif = $checknoti;
+                $teamUser->is_email = $checkEmail;
+                $teamUser->save();
             }
-            //send email
-            // $sen_email = User::SendEmailTOUser($user['id'], 'register');
-            return redirect(route('wellcome'));
-//            return $this->registered($request, $user) ?: redirect($this->redirectPath());
-        // } else {
-//            session()->put('wrong_form_login', $wrong_form);
-//            return $this->authenticated($request, $this->guard()->user()) ?: redirect()->route('register');
-            // return view('auth.register', compact('wrong_form', 'correct_form'));
-        // }
+
+        }
+        return redirect(route('wellcome'));
+        //return redirect(RouteServiceProvider::HOME);
     }
-
-
-    //*************************** Login By social (facebook ,twitter , google )***************************************************
-    //https://laravel.com/docs/5.6/socialite 
+    //************** Login By social (facebook ,twitter , google )**********
+    //https://laravel.com/docs/socialite 
     //https://console.developers.google.com
     /**
      * Redirect the user to the GitHub authentication page.
@@ -258,7 +234,6 @@ class RegisterController extends SiteController { /*
         $wrong_form = $correct_form = null;
         try {
             $socialuser = Socialite::driver($provider)->user();
-            // $socialuser =Socialite::driver($provider)->stateless()->user();
         } catch (Exception $e) {
             return redirect('/');
         }
@@ -294,7 +269,7 @@ class RegisterController extends SiteController { /*
                 $user = User::create([
                             'display_name' => $display_name,
                             'email' => $email,
-                            'password' => bcrypt('game123'),
+                            'password' => Hash::make('sakb'),
                             'name' => $name_user,
                             'phone' => time(),
                             'mobile' => null,
@@ -308,15 +283,12 @@ class RegisterController extends SiteController { /*
                 $user->socialproviders()->create(
                         ['provider_id' => $socialuser->getId(), 'provider' => $provider]
                 );
-                //add role
-                $user_role = DB::table('options')->where('option_key', 'default_role')->value('option_value');
-                $user->attachRole($user_role);
-//                $type_user = 'member';
-//                $get_rols = Role::where('name', $type_user)->first();
-//                $user->assignRoles(array($get_rols->id));
-                //send email
                 $user_id = $user['id'];
-                $sen_email = User::SendEmailTOUser($user['id'], 'register');
+                //add role
+                $user_role = Options::where('option_key', 'default_role')->value('option_value');
+                $user->attachRole($user_id,$user_role);
+                //send email
+                $sen_email = User::SendEmailTOUser($user_id, 'register');
             }
         } else {
             //get user
@@ -324,9 +296,7 @@ class RegisterController extends SiteController { /*
             $user_id = $user->id;
         }
         if (empty($wrong_form)) {
-            // guard()->login($user);
-            $this->guard()->login($user);
-            //auth()->login($user);
+            Auth::login($user);
             $session_user = generateRandomValue();
             $access_token = null; //generateRandomToken();
             session()->put('session_user', $session_user);
@@ -340,14 +310,17 @@ class RegisterController extends SiteController { /*
             //register in current dwary
             User::registerNewdwry($user_id,1,0);
             return redirect($get_session); //return redirect('/');
-//            return $this->registered($request, $user) ?: redirect($this->redirectPath());
         } else {
-            return view('auth.register');
-            // return view('auth.register', compact('wrong_form', 'correct_form'));
-            
+            return view('auth.register');            
         }
 //        return $user->getEmail();
     }
 
-//**************************** End Login By Social Media**************************************************
+//**************************** End Login By Social Media****************************
+
+
+
+
+
+
 }

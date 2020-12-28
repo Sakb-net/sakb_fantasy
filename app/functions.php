@@ -603,6 +603,9 @@ function generateRandomToken() {
     }
     return $token;
 }
+function get_randNum($num = 6) {
+    return substr(number_format(time() * rand(), 0, '', ''), 0, $num);
+}
 
 //function to arrange
 function conditionPrice($price) {

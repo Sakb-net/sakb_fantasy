@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\GroupEldwry;
@@ -11,9 +11,8 @@ use App\Models\Eldwry;
 use App\Models\Subeldwry;
 use App\Models\Game;
 use App\Http\Controllers\ClassSiteApi\Class_GroupEldwryController;
-
-
 use Session;
+
 class GroupEldwryController extends AdminController
 {
     /**

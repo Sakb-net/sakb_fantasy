@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\RoleUser;
 use App\Models\UserMeta;
 use App\Models\Post;
 use App\Models\Role;
@@ -198,7 +199,7 @@ class UserController extends AdminController {
         $input['password'] = Hash::make($input['password']);
 
         if (!isset($input['is_active'])) {
-            $user_active = DB::table('options')->where('option_key', 'user_active')->value('option_value');
+            $user_active = Options::where('option_key', 'user_active')->value('option_value');
             $input['is_active'] = is_numeric($user_active) ? $user_active : 0;
         }
 
@@ -210,7 +211,7 @@ class UserController extends AdminController {
         if ($this->user->can(['access-all', 'user-all'])) {
             if (!empty($request->input('roles'))) {
                 foreach ($request->input('roles') as $key => $value) {
-                    $user->attachRole(stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING))));
+                    $user->attachRole($user['id'],stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING))));
                 }
             }
         }
@@ -367,11 +368,10 @@ class UserController extends AdminController {
 
             if ($this->user->can(['access-all', 'user-all'])) {
                 if ($id != 1) {
-                    DB::table('role_user')->where('user_id', $id)->delete();
-
+                    RoleUser::deleteUser($id);
                     if (!empty($request->input('roles'))) {
                         foreach ($request->input('roles') as $key => $value) {
-                            $user->attachRole(stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING))));
+                            $user->attachRole($id,stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING))));
                         }
                     }
                 }

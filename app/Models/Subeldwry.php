@@ -146,11 +146,11 @@ class Subeldwry extends Model {
     }
 
     public static function get_startFirstSubDwry($type_id = 3, $is_active = 1,$date = '',$ret_array=0) {
-        $data = static::get_StartSubDwry($type_id,$is_active,$date);
+        $data = static::get_StartSubDwry(4,$is_active,$date);
         $inside_dwry = 0;
         if (!isset($data->id)) {
             $inside_dwry = 1;
-            $data = static::get_StartSubDwry(4);
+            $data = static::get_StartSubDwry(3);
         }
         if($ret_array==1){
             return array('data'=>$data,'inside_dwry'=>$inside_dwry);
@@ -232,7 +232,6 @@ class Subeldwry extends Model {
     }
     
     public static function get_DataSubeldwry($colum = 'id', $val = '', $is_active = 1,$order='DESC',$limit = 0,$offset=-1,$date='',$page=0,$team) {
-
         if (empty($date)) {
             $date =date('Y-m-d', time()); //Y-m-d h:i:s a
         }

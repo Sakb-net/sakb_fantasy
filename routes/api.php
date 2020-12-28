@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('Api\V1')->prefix('v1')->group(function () {
+Route::namespace('App\Http\Controllers\Api\V1')->prefix('v1')->group(function () {
 // Page
     Route::name('version')->post('/version', 'PageController@version');
     Route::name('home')->post('/home', 'PageController@home');
@@ -28,7 +28,7 @@ Route::namespace('Api\V1')->prefix('v1')->group(function () {
     Route::name('get_country')->get('/get_country', 'AuthController@get_country');
     Route::name('get_city')->get('/get_city', 'AuthController@get_city');
     Route::name('get_teams')->get('/get_teams', 'AuthController@get_teams');
-    Route::name('register')->post('/register', 'AuthController@register');
+    Route::name('app_register')->post('/register', 'AuthController@register');
     Route::name('login.email')->post('/login/email', 'AuthController@loginEmail');
     Route::name('logout')->post('/logout', 'AuthController@logout');
    //Social login with google

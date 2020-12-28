@@ -55,6 +55,9 @@ class AjaxGameController extends SiteController {
             }
             if (isset($start_dwry->id)) {
                 $all_subdwry = Subeldwry::get_DataSubeldwry('eldwry_id', $start_dwry->id, 1, 'ASC', $subdwry_limit,$gwla_final_offset,'',$num_week,$teamId);
+                if(count($all_subdwry)==0){
+                    $all_subdwry = Subeldwry::get_DataSubeldwry('eldwry_id', $start_dwry->id, 1, 'ASC', $subdwry_limit,$gwla_final_offset,'','34',$teamId);
+                }
                 $count_subdwry = Subeldwry::count_DataSubeldwry('eldwry_id', $start_dwry->id, 1,1);
 
                 $count_pag=round($count_subdwry/$subdwry_limit,0);

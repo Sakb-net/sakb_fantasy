@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Requests\OrderFormRequest;
 use Illuminate\Http\Request;
-use \Illuminate\Support\Facades\View;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Page;
 use App\Models\User;
 use App\Models\Video;
 use App\Models\CommentVideo;
 use App\Models\Options;
+use App\Models\PageContent;
 use App\Http\Controllers\ClassSiteApi\Class_CommentController;
-use App\Http\Controllers\SiteController;
+use App\Http\Controllers\API_Controller;
 
-class InstractionController extends SiteController {
+class InstractionController extends API_Controller
+{
 
     public function __construct() {
         $this_data = Options::Site_Option();

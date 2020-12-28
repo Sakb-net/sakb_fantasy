@@ -12,12 +12,6 @@ class CategoryPost extends Model {
         'category_id', 'post_id'
     ];
 
-//public function posts() {
-//         return $this->hasMany(\App\Models\Post::class);
-//    }
-//    public function categories() {
-//         return $this->hasMany(\App\Models\Category::class);
-//    }
     public function insertCategoryPost($category_id, $post_id) {
         $this->category_id = $category_id;
         $this->post_id = $post_id;

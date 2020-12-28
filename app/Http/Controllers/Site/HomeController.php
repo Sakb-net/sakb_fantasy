@@ -45,37 +45,34 @@ class HomeController extends SiteController {
                 $current_id=Auth::user()->id;
                 session()->put('teamFav', Auth::user()->best_team);
 
-        $favTeamMatches = Match::where('first_team_id',Auth::user()->best_team)->orWhere('second_team_id',Auth::user()->best_team)->limit(10)->orderBy('id','desc')->get();
-        
-        foreach($favTeamMatches as $key => $value){
-            $time=strtotime($value->date);
-            $date=date("d/m/Y",$time);
-            $value->date = date("d/m/Y",$time);
-        }
+                $favTeamMatches = Match::where('first_team_id',Auth::user()->best_team)->orWhere('second_team_id',Auth::user()->best_team)->limit(10)->orderBy('id','desc')->get();
+                
+                foreach($favTeamMatches as $key => $value){
+                    $time=strtotime($value->date);
+                    $date=date("d/m/Y",$time);
+                    $value->date = date("d/m/Y",$time);
+                }
 
-        $followTeams = TeamUser :: select('team_id')->where('user_id',Auth::user()->id)->pluck('team_id')->toArray();
-        
+                $followTeams = TeamUser :: select('team_id')->where('user_id',Auth::user()->id)->pluck('team_id')->toArray();
+            
+                if(count($followTeams) > 0){
+                    $followTeamMatches = Match::whereIn('first_team_id',$followTeams)->orWhereIn('second_team_id',$followTeams)->limit(10)->orderBy('id','desc')->get();
 
+                    if(count($followTeamMatches) > 0){
+                        session()->put('followTeams', $followTeams);
+                        foreach ($followTeamMatches as $key => $value) {
 
-        if(count($followTeams) > 0){
-            $followTeamMatches = Match::whereIn('first_team_id',$followTeams)->orWhereIn('second_team_id',$followTeams)->limit(10)->orderBy('id','desc')->get();
+                            $time=strtotime($value->date);
+                            $date=date("d/m/Y",$time);
 
-            if(count($followTeamMatches) > 0){
-            session()->put('followTeams', $followTeams);
-            foreach ($followTeamMatches as $key => $value) {
-
-                $time=strtotime($value->date);
-                $date=date("d/m/Y",$time);
-
-                $attrs[$date][] = $value;
-            }
-            }
+                            $attrs[$date][] = $value;
+                        }
+                    }
                 }else{
                     $followTeamMatches = [];
                 }
 
             }
-
 
             $start_dwry = Eldwry::get_currentDwry();
             $lang = $this->lang;
@@ -85,12 +82,14 @@ class HomeController extends SiteController {
             $final_offset=0;
             $gwla_final_offset=0;
     
-           
             $all_subdwry = Subeldwry::get_DataSubeldwry('eldwry_id', $start_dwry->id, 1, 'ASC', $subdwry_limit,$gwla_final_offset,'',null,'');
 
             $match_public = Match::get_DataGroup($all_subdwry, $lang, 0,$limit,$final_offset);
-            
-
+            if(isset($match_public[0])){
+                foreach($match_public[0]['match_group'] as $key=>$value){
+                    $match_public[0]['match_group'][$key]['userDate'] = ConvertUTC_ToDateCurrentUser12_hour($value['date'].' '.$value['time']);
+                }
+            }
             $get_data=new Class_PageController();
             $return_data=$get_data->Page_Home($lang ,6,0,2,-1,0,$current_id);
            // $page = Page::get_typeColum('home',$lang);
@@ -99,11 +98,6 @@ class HomeController extends SiteController {
             $return_data['user_key'] = $this->user_key;
             View::share('title', $return_data['title']);
             View::share('activ_menu', 1);
-
-            foreach($match_public[0]['match_group'] as $key=>$value){
-
-                $match_public[0]['match_group'][$key]['userDate'] = ConvertUTC_ToDateCurrentUser12_hour($value['date'].' '.$value['time']);
-            }
             return view('site.home',$return_data)->with(compact('attrs','favTeamMatches','match_public'));
 
         } else {

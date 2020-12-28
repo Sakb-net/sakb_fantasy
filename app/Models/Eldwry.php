@@ -90,7 +90,7 @@ class Eldwry extends Model {
     }
     public static function get_currentDwry($start_date='',$end_date='',$is_active = 1,$order='ASC',$competition_id=1) {
         if(empty($start_date)){
-            $start_date=date('Y').'-01-01';
+            $start_date=date("Y",strtotime("-1 year")).'-01-01';
         }
         if(empty($end_date)){
             $end_date=date('Y').'-12-31';

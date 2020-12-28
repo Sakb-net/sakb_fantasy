@@ -1,41 +1,24 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Auth\Access\Authorizes\Resources;
+use Illuminate\Html\Html\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
-use \Illuminate\Support\Facades\View;
-use Illuminate\Http\Request;
 use App\Http\Controllers\SiteController;
-use Session;
+use Illuminate\Http\Request;
+
 use App\Models\User;
+use Session;
+use Redirect;
+// use Auth;
 
-class LoginController extends SiteController {
-    /*
-      |--------------------------------------------------------------------------
-      | Login Controller
-      |--------------------------------------------------------------------------
-      |
-      | This controller handles authenticating users for the application and
-      | redirecting them to your home screen. The controller uses a trait
-      | to conveniently provide its functionality to your applications.
-      |
-     */
+class LoginController extends SiteController
+{
 
-use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct() {
         parent::__construct();
         $this->middleware('guest')->except('logout');
@@ -66,26 +49,21 @@ use AuthenticatesUsers;
     }
 
     private function sendLoginResponseNotActive(Request $request, $is_active = 0) {
-        $request->session()->regenerate();
-        $this->clearLoginAttempts($request);
-        if ($is_active == -1) {
-            $wrong_form = trans('app.name_or_password_not_correct');
-        } else {
-//        $wrong_form = '<a href="' . route('contact') . '"> trans('app.account_disabled_site')</a>';
-            $wrong_form = trans('app.account_disabled_site');
-        }
-       session()->put('wrong_form_login', $wrong_form);
-        return $this->authenticated($request, $this->guard()->user()) ?: redirect()->route('login');
+      if ($is_active == -1) {
+          $wrong_form = trans('app.name_or_password_not_correct');
+      } else {
+          $wrong_form = trans('app.account_disabled_site');
+      }
+     session()->put('wrong_form_login', $wrong_form);
+     return Redirect::to('login');
     }
 
-    protected function sendLoginResponseActive(Request $request) {
-        $request->session()->regenerate();
-        $this->clearLoginAttempts($request);
+    private function sendLoginResponseActive(Request $request) {
         $get_session = session()->get('session_url');
-        if (empty($get_session) || $get_session == '/') {
-            $get_session = route('home');
+        if (empty($get_session) || $get_session == '/' || $get_session == 'home') {
+            $get_session = '/';//route('home');
         }
-        return $this->authenticated($request, $this->guard()->user()) ?: redirect($get_session);
+        return Redirect::to($get_session);
     }
 
     /**
@@ -95,82 +73,49 @@ use AuthenticatesUsers;
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response
      */
     public function login(Request $request) {
-        $this->validateLogin($request);
-
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
-        if ($this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-            return $this->sendLockoutResponse($request);
-        }
-        $ok_login=0;
-        if ($this->attemptLogin($request)) {
-            $ok_login=1;
+      // Creating Rules for Email and Password
+      $rules = array(
+        'email' => 'required', //|email
+        'password' => 'required|alphaNum|min:8'
+    	);
+        // checking all field
+        $validator = Validator::make($request->all() , $rules);
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()){
+            return Redirect::to('login')->withErrors($validator) // send back all errors to the login form
+            ->withInput($request->except('password')); // send back the input (not the password) so that we can repopulate the form
         }else{
-            if (Auth::attempt(['phone' => $request->email, 'password' => $request->password, 'is_active' => 1])) {
-                $ok_login=1;
-            }
-        } 
-        //159357123
-        if ($ok_login==1) {
-            $is_active = $this->checkActive();
-            if ($is_active == 1) {
-                return $this->sendLoginResponseActive($request);
-//                return $this->sendLoginResponse($request);
-            } else {
-                return $this->sendLoginResponseNotActive($request, $is_active);
-            }
-        } else {
-            return $this->sendLoginResponseNotActive($request, -1);
+          // create our user data for the authentication
+          $ok_login=0;
+          if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_active' => 1])) {
+              $ok_login=1;
+          }else{
+              if (Auth::attempt(['phone' => $request->email, 'password' => $request->password, 'is_active' => 1])) {
+                  $ok_login=1;
+              }
+          } 
+          if ($ok_login==1) {
+              $is_active = $this->checkActive();
+              if ($is_active == 1) {
+                  return $this->sendLoginResponseActive($request);
+              } else {
+                  return $this->sendLoginResponseNotActive($request, $is_active);
+              }
+          } else {
+              return $this->sendLoginResponseNotActive($request, -1);
+          }
         }
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form, when this
-        // user surpasses their maximum number of attempts they will get locked out.
-        $this->incrementLoginAttempts($request);
-        return $this->sendFailedLoginResponse($request);
     }
 
-//****************************
-    public function logout(Request $request) {
+  public function logout(Request $request) {
         if (isset(Auth::user()->id)) {
             Auth::user()->updateColumTwo(Auth::user()->id, 'access_token', null, 'session', null);
             Auth::logout();
             session()->flush();
         }
-        return redirect(route('home'));
+        return Redirect::to('login'); // redirection to login screen
     }
 
-    //****************************
-
-    public function cvlogin(Request $request) {
-        $this->validateLogin($request);
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
-        if ($this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
-            return $this->sendLockoutResponse($request);
-        }
-        if ($this->attemptLogin($request)) {
-            $is_active = $this->checkActive();
-            if ($is_active == 1) {
-                return $this->sendLoginResponseActive($request);
-//                return $this->sendLoginResponse($request);
-            } else {
-                return $this->sendLoginResponseNotActive($request, $is_active);
-            }
-        } else {
-            return $this->sendLoginResponseNotActive($request, -1);
-        }
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form, when this
-        // user surpasses their maximum number of attempts they will get locked out.
-        $this->incrementLoginAttempts($request);
-        return $this->sendFailedLoginResponse($request);
-    }
-
-//public function authenticated($request, $user) {
-//    
-//}
+    
 }
+
