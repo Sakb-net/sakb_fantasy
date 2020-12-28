@@ -28,7 +28,7 @@ class ResetPasswordController extends SiteController
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/'; //home
 
     /**
      * Create a new controller instance.
@@ -77,9 +77,8 @@ class ResetPasswordController extends SiteController
         }
         if (empty($wrong_form)) {
             return  redirect(route('home'));
-//            return $this->registered($request, $user) ?: redirect($this->redirectPath());
         } else {
-            return view('auth.passwords.reset', compact('wrong_form', 'correct_form'));
+            return view('auth.reset-password', compact('wrong_form', 'correct_form'));
         }
     }
 
