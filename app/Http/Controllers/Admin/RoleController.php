@@ -208,7 +208,7 @@ class RoleController extends AdminController {
                 DB::table("permission_role")->where("permission_role.role_id", $id)->delete();
                 if (!empty($request->input('permission'))) {
                     foreach ($request->input('permission') as $key => $value) {
-                        $role->attachPermission(stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING))));
+                        $role->attachPermission(stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)))); //syncPermissions
                     }
                 }
             }

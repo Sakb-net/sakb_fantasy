@@ -1,120 +1,153 @@
 <?php
+
 /**
- * This file is part of Entrust,
- * a role & permission management solution for Laravel.
- *
- * @license MIT
- * @package Zizaco\Entrust
+ * This file is part of Laravel Entrust,
+ * Handle Role-based Permissions for Laravel.
+ * 
  */
+// https://github.com/shanmuga3/laravel-entrust
 return [
+
     /*
     |--------------------------------------------------------------------------
-    | Entrust Role Model
+    | Migration Suffix
     |--------------------------------------------------------------------------
     |
-    | This is the Role model used by Entrust to create correct relations.  Update
-    | the role if it is in a different namespace.
+    | This is the array that contains the information of the user models.
+    | This information is used in the add-trait command, and for the roles and
+    | permissions relationships with the possible user models.
+    |
+    | The key in the array is the name of the relationship inside the roles and permissions.
     |
     */
-    'role' => 'App\Model\Role',
+    'migrationSuffix' => 'laravel_entrust_setup_tables',
+
     /*
     |--------------------------------------------------------------------------
-    | Entrust Roles Table
+    | Laravel Entrust User Model
     |--------------------------------------------------------------------------
     |
-    | This is the roles table used by Entrust to save roles to the database.
+    | This is the users Model used by the application to handle ACL.
+    | If you want the Laravel Entrust User Model to be in a different namespace or
+    | to have a different name, you can do it here.
     |
     */
-    'roles_table' => 'roles',
+    'user_model' => 'App\Models\User',
+
     /*
     |--------------------------------------------------------------------------
-    | Entrust role foreign key
+    | Laravel Entrust User Table
     |--------------------------------------------------------------------------
     |
-    | This is the role foreign key used by Entrust to make a proper
-    | relation between permissions and roles & roles and users
+    | This is the users table used by the application to save users to the database.
+    | If you want the Laravel Entrust User Table to be in a different namespace or
+    | to have a different name, you can do it here.
     |
     */
-    'role_foreign_key' => 'role_id',
+    'user_table' => 'users',
+
     /*
     |--------------------------------------------------------------------------
-    | Application User Model
+    | Laravel Entrust Models
     |--------------------------------------------------------------------------
     |
-    | This is the User model used by Entrust to create correct relations.
-    | Update the User if it is in a different namespace.
+    | These are the models used by Laravel Entrust to define the roles and permissions.
+    | If you want the Laravel Entrust models to be in a different namespace or
+    | to have a different name, you can do it here.
     |
     */
-    'user' => 'App\User',
+    'models' => [
+        'role'          => 'App\Models\Role',
+        'permission'    => 'App\Models\Permission',
+    ],
+
     /*
     |--------------------------------------------------------------------------
-    | Application Users Table
+    | Laravel Entrust Default Configurations
     |--------------------------------------------------------------------------
     |
-    | This is the users table used by the application to save users to the
-    | database.
+    | These Configurations are used by Laravel Entrust to define the defaults
+    | If you want the Laravel Entrust to be in a different guards you can do it here.
     |
     */
-    'users_table' => 'users',
+    'defaults' => [
+        'guard'          => 'web',
+    ],
+
     /*
     |--------------------------------------------------------------------------
-    | Entrust role_user Table
+    | Laravel Entrust Tables
     |--------------------------------------------------------------------------
     |
-    | This is the role_user table used by Entrust to save assigned roles to the
-    | database.
+    | These are the tables used by Laravel Entrust to store all the authorization data.
     |
     */
-    'role_user_table' => 'role_user',
+    'tables' => [
+        'roles'             => 'roles',
+        'permissions'       => 'permissions',
+        'role_user'         => 'role_user',
+        'permission_role'   => 'permission_role',
+    ],
+
     /*
     |--------------------------------------------------------------------------
-    | Entrust user foreign key
+    | Laratrust Foreign Keys
     |--------------------------------------------------------------------------
     |
-    | This is the user foreign key used by Entrust to make a proper
-    | relation between roles and users
+    | These are the foreign keys used by laratrust in the intermediate tables.
     |
     */
-    'user_foreign_key' => 'user_id',
+    'foreign_keys' => [
+        'user' => 'user_id',
+        'role' => 'role_id',
+        'permission' => 'permission_id',
+    ],
+
     /*
     |--------------------------------------------------------------------------
-    | Entrust Permission Model
+    | Laravel Entrust Middleware
     |--------------------------------------------------------------------------
     |
-    | This is the Permission model used by Entrust to create correct relations.
-    | Update the permission if it is in a different namespace.
+    | This configuration helps to customize the Laravel Entrust middleware behavior.
     |
     */
-    'permission' => 'App\Model\Permission',
-    /*
-    |--------------------------------------------------------------------------
-    | Entrust Permissions Table
-    |--------------------------------------------------------------------------
-    |
-    | This is the permissions table used by Entrust to save permissions to the
-    | database.
-    |
-    */
-    'permissions_table' => 'permissions',
-    /*
-    |--------------------------------------------------------------------------
-    | Entrust permission_role Table
-    |--------------------------------------------------------------------------
-    |
-    | This is the permission_role table used by Entrust to save relationship
-    | between permissions and roles to the database.
-    |
-    */
-    'permission_role_table' => 'permission_role',
-    /*
-    |--------------------------------------------------------------------------
-    | Entrust permission foreign key
-    |--------------------------------------------------------------------------
-    |
-    | This is the permission foreign key used by Entrust to make a proper
-    | relation between permissions and roles
-    |
-    */
-    'permission_foreign_key' => 'permission_id',
+    'middleware' => [
+        /**
+         * Define if the laratrust middleware are registered automatically in the service provider
+         */
+        'register' => true,
+
+        /**
+         * Method to be called in the middleware return case.
+         * Available: abort|redirect
+         */
+        'handling' => 'abort',
+
+        /**
+         * Handlers for the unauthorized method in the middlewares.
+         * The name of the handler must be the same as the handling.
+         */
+        'handlers' => [
+            /**
+             * Aborts the execution with a 403 code and allows you to provide the response text
+             */
+            'abort' => [
+                'code' => 403,
+                'message' => 'You don\'t Have a permission to Access this page.'
+            ],
+            /**
+             * Redirects the user to the given url.
+             * If you want to flash a key to the session,
+             * you can do it by setting the key and the content of the message
+             * If the message content is empty it won't be added to the redirection.
+             */
+            'redirect' => [
+                'url' => '/',
+                'message' => [
+                    'key' => 'error',
+                    'content' => 'You don\'t Have a permission to Access this page'
+                ]
+            ],
+        ],
+    ],
 ];
-?>

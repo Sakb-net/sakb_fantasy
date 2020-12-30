@@ -167,7 +167,7 @@ class RegisterController extends SiteController {
         }
         $this->validator($request->all())->validate();
         event(new Registered($user = $this->create($input)));
-        $user->attachRole($user['id'],$user_role);
+        $user->attachRole($user_role);
         Auth::login($user);
         return $user;
     }
@@ -286,7 +286,7 @@ class RegisterController extends SiteController {
                 $user_id = $user['id'];
                 //add role
                 $user_role = Options::where('option_key', 'default_role')->value('option_value');
-                $user->attachRole($user_id,$user_role);
+                $user->attachRole($user_role);
                 //send email
                 $sen_email = User::SendEmailTOUser($user_id, 'register');
             }

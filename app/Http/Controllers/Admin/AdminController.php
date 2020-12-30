@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use DB;
+use App\Models\Options;
+
 
 class AdminController extends Controller
 {
@@ -16,7 +17,7 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $limit_view = DB::table('options')->where('option_key', 'table_limit')->value('option_value');
+        $limit_view = Options::where('option_key', 'table_limit')->value('option_value');
         $limit = is_numeric($limit_view) ? $limit_view : 50;
         $this->limit= $limit;
         $this->middleware('admin');

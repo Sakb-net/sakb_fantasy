@@ -1,9 +1,12 @@
 <?php
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 
-class EntrustSetupTables extends Migration
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreatePermissionTables extends Migration
 {
+//https://www.itsolutionstuff.com/post/laravel-8-user-roles-and-permissions-tutorialexample.html
     /**
      * Run the migrations.
      *

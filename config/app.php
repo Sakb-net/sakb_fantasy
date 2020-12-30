@@ -181,7 +181,6 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        // Zizaco\Entrust\EntrustServiceProvider::class,
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         \L5Swagger\L5SwaggerServiceProvider::class,

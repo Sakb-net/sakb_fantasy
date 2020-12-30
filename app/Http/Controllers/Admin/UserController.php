@@ -211,7 +211,7 @@ class UserController extends AdminController {
         if ($this->user->can(['access-all', 'user-all'])) {
             if (!empty($request->input('roles'))) {
                 foreach ($request->input('roles') as $key => $value) {
-                    $user->attachRole($user['id'],stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING))));
+                    $user->attachRole(stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING))));
                 }
             }
         }
@@ -371,7 +371,7 @@ class UserController extends AdminController {
                     RoleUser::deleteUser($id);
                     if (!empty($request->input('roles'))) {
                         foreach ($request->input('roles') as $key => $value) {
-                            $user->attachRole($id,stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING))));
+                            $user->attachRole(stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING))));
                         }
                     }
                 }

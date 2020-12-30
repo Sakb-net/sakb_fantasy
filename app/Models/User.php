@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-
+use Shanmuga\LaravelEntrust\Traits\LaravelEntrustUserTrait;
 use App\Models\Role;
 use App\Models\UserMeta;
 use App\Models\Team;
@@ -28,7 +28,7 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    // use EntrustUserTrait;
+    use LaravelEntrustUserTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -79,6 +79,10 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\UserMeta::class);
     }
 
+    // public function roles() {
+    //     return $this->belongsToMany(\App\Models\Role::class);
+    // }
+
     public function categories() {
         return $this->hasMany(\App\Models\Category::class);
     }
@@ -111,17 +115,13 @@ class User extends Authenticatable
         return $this->hasMany(\App\Models\UserNotif::class);
     }
 
-    public function attachRole($user_id,$role_id) {
-        return \App\Models\RoleUser::insertRoleUser($user_id, $role_id);
-    }
-
     public static function addCreate($request, $user_role = '', $display_name, $email, $password, $phone, $fcm_token = NULL, $device_id = NULL, $reg_site = 'site', $address = null, $city = null, $state = null,$best_team=null,$image=null) {
         if (empty($user_role)) {
             $user_role = Options::where('option_key', 'default_role')->value('option_value');
         }
 //        $this->validator($request->all())->validate();
         $user = User::insertUser($display_name, $email, $password, $phone, $fcm_token, $device_id, $reg_site, $address, $city, $state,$best_team,$image);
-        $user->attachRole($user['id'],$user_role);
+        $user->attachRole($user_role);
 //        $this->login($user);
         return $user;
     }

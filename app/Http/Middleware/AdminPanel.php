@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Middleware\Authenticate;
+use App\Models\User;
 
 class AdminPanel extends Authenticate {
 
@@ -27,7 +28,6 @@ class AdminPanel extends Authenticate {
             if (!$user->can(['access-all', 'category*', 'user*', 'message*', 'post-type-all', 'post-all', 'comment-all', 'admin-panel'])) {
                 return redirect()->route('home');
             }
-
             return $next($request);
         } else {
             return redirect()->route('admin.login');

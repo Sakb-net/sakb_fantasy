@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Models;
-// use Illuminate\Database\Eloquent\Model;
+use Shanmuga\LaravelEntrust\Models\EntrustRole;
 use DB;
 
-class Role extends Model
+
+class Role extends EntrustRole
+
 {
 
     public function permissions()

@@ -1,13 +1,9 @@
 <?php
 
 namespace App\Models;
-// use Illuminate\Database\Eloquent\Model;
-// use Zizaco\Entrust\EntrustPermission;
-//use Carbon\Carbon;
-//use DB;
+use Shanmuga\LaravelEntrust\Models\EntrustPermission;
 
-// class Permission extends EntrustPermission 
-class Permission extends Model 
+class Permission extends EntrustPermission 
 {
 	
      protected $fillable = ['parent_id','name','display_name','description'];
