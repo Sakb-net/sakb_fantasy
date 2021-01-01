@@ -917,5 +917,6 @@ return array (
   'blockUserQuestion'=>'هل متاكد من حظر هذا المستخدم ؟',
   'removeBlockUser'=>'رفع الحظر',
   'removeBlockUserQuestion'=>'هل متاكد من رفع حظر هذا المستخدم ؟',
-  'allMatches'=>'جميع المباريات'
+  'allMatches'=>'جميع المباريات',
+  'ranking_eldwry'=>'ترتيب الدورى',
 );

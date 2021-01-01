@@ -55,11 +55,14 @@
                         <li><a href="{{ route('admin.opta.creat','result_matche') }}">
                             <i class="fa fa-plus-square"></i> <span>{{trans('app.add')}} {{trans('app.result_matche')}} </span> 
                         </a></li>
+                        <li><a href="{{ route('admin.opta.creat','all') }}">
+                            <i class="fa fa-plus-square"></i> <span>{{trans('app.add')}} {{trans('app.all')}} OPTA DATA</span> 
+                        </a></li>
                         <li><a href="{{ route('admin.opta.creat','transfer_player') }}">
                             <i class="fa fa-plus-square"></i> <span>{{trans('app.transfer_player_improvepoints')}} </span> 
                         </a></li>
-                        <li><a href="{{ route('admin.opta.creat','all') }}">
-                            <i class="fa fa-plus-square"></i> <span>{{trans('app.add')}} {{trans('app.all')}} OPTA DATA</span> 
+                        <li><a href="{{ route('admin.ranking_eldwry.create') }}">
+                            <i class="fa fa-plus-square"></i> <span>{{trans('app.add')}} {{trans('app.ranking_eldwry')}}</span> 
                         </a></li>
                     <!-- <li><a href="{{ route('admin.fantasy.create') }}">
                             <i class="fa fa-plus-square"></i> <span>{{trans('app.add')}} FANTASY DATA</span> 

@@ -917,6 +917,7 @@ return array (
   'blockUserQuestion'=>'Are you sure block that user ?',
   'removeBlockUser'=>'remove block',
   'removeBlockUserQuestion'=>'Are you sure remove block?',
-  'allMatches'=>'All Matches'
+  'allMatches'=>'All Matches',
+  'ranking_eldwry'=>'League ranking',
 );
 

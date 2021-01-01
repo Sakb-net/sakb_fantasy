@@ -186,23 +186,11 @@ Route::group([
 //apimessages
     Route::get('apimessages/search', ['as' => 'apimessages.search', 'uses' => 'ApimessagesController@search']);
 //team , Subteam and Userteam 
-
     Route::get('clubteams/list', ['as' => 'clubteams.list', 'uses' => 'TeamController@clubteamsList']);
-    
     Route::get('clubteams/editAll', ['as' => 'clubteams.editAll', 'uses' => 'TeamController@clubteamsEditAll']);
-
     Route::post('clubteams/updateAll', ['as' => 'clubteams.updateAll', 'uses' => 'TeamController@clubteamsUpdateAll']);
-
-    
     Route::get('clubteams/editAllPlayers/{id}', ['as' => 'clubteams.editAllPlayers', 'uses' => 'TeamController@editAllPlayers']);
-    
-
     Route::post('clubteams/updateAllPlayers', ['as' => 'clubteams.updateAllPlayers', 'uses' => 'TeamController@updateAllPlayers']);
-
-
-
-
-
     Route::get('clubteams/search', ['as' => 'clubteams.search', 'uses' => 'TeamController@search']);
     Route::get('subclubteams/creat/{id}', ['as' => 'subclubteams.creat', 'uses' => 'SubteamController@create']);
     Route::get('subclubteams/search', ['as' => 'subclubteams.search', 'uses' => 'SubteamController@search']);
@@ -276,54 +264,34 @@ Route::group([
     //group eldwry
     Route::get('groupEldwry/list', ['as' => 'groupEldwry.list', 'uses' => 'GroupEldwryController@groupEldwryList']);
     Route::get('groupEldwry/create', ['as' => 'groupEldwry.creat', 'uses' => 'GroupEldwryController@create']);
-
     Route::get('groupEldwry/users/{id}', ['as' => 'groupEldwry.users', 'uses' => 'GroupEldwryController@groupEldwryUsers']);
-    
     Route::get('groupEldwry/listUsers', ['as' => 'groupEldwry.listUsers', 'uses' => 'GroupEldwryController@groupEldwryUsersList']);
-
     Route::post('groupEldwry', ['as' => 'groupEldwry.store', 'uses' => 'GroupEldwryController@store']);
-
     Route::post('groupEldwry/activeUser', ['as' => 'groupEldwry.activeUser', 'uses' => 'GroupEldwryController@activeUser']);
-
     Route::post('groupEldwry/disActiveUser', ['as' => 'groupEldwry.disActiveUser', 'uses' => 'GroupEldwryController@disActiveUser']);
-
     Route::post('groupEldwry/block', ['as' => 'groupEldwry.block', 'uses' => 'GroupEldwryController@block']);
-
     Route::post('groupEldwry/removeBlock', ['as' => 'groupEldwry.removeBlock', 'uses' => 'GroupEldwryController@removeBlock']);
-
     Route::post('groupEldwry/setAdmin', ['as' => 'groupEldwry.setAdmin', 'uses' => 'GroupEldwryController@setAdmin']);
-
     Route::post('get_data_group_eldwry', ['as' => 'get_data_group_eldwry', 'uses' => 'AjaxGroupEldwryController@get_data_group_eldwry']);
-
     Route::get('groupEldwry/standing/{id}', ['as' => 'groupEldwry.standing', 'uses' => 'GroupEldwryController@groupEldwryStanding']);
-    
-    
+    //head eldwry
     Route::get('headGroupEldwry/list', ['as' => 'headGroupEldwry.list', 'uses' => 'HeadGroupEldwryController@headGroupEldwryList']);
-    
     Route::get('headGroupEldwry/users/{id}', ['as' => 'headGroupEldwry.users', 'uses' => 'HeadGroupEldwryController@headGroupEldwryUsers']);
-    
     Route::get('headGroupEldwry/listUsers', ['as' => 'headGroupEldwry.listUsers', 'uses' => 'HeadGroupEldwryController@headGroupEldwryUsersList']);
-    
     Route::get('headGroupEldwry/standing/{id}', ['as' => 'headGroupEldwry.standing', 'uses' => 'HeadGroupEldwryController@headGroupEldwryStanding']);
-
     Route::get('headGroupEldwry/create', ['as' => 'headGroupEldwry.creat', 'uses' => 'HeadGroupEldwryController@create']);
-
     Route::post('headGroupEldwry', ['as' => 'headGroupEldwry.store', 'uses' => 'HeadGroupEldwryController@store']);
-
     Route::post('headGroupEldwry/activeUser', ['as' => 'headGroupEldwry.activeUser', 'uses' => 'HeadGroupEldwryController@activeUser']);
-
     Route::post('headGroupEldwry/disActiveUser', ['as' => 'headGroupEldwry.disActiveUser', 'uses' => 'HeadGroupEldwryController@disActiveUser']);
-
     Route::post('headGroupEldwry/block', ['as' => 'headGroupEldwry.block', 'uses' => 'HeadGroupEldwryController@block']);
-
     Route::post('headGroupEldwry/removeBlock', ['as' => 'headGroupEldwry.removeBlock', 'uses' => 'HeadGroupEldwryController@removeBlock']);
-
     Route::post('headGroupEldwry/setAdmin', ['as' => 'headGroupEldwry.setAdmin', 'uses' => 'HeadGroupEldwryController@setAdmin']);
-    
-
+//ranking_eldwry
+    Route::get('ranking_eldwry/search', ['as' => 'ranking_eldwry.search', 'uses' => 'RankingEldwryController@search']);
     
     //Resource
     Route::resource('opta', 'OptaController');
+    Route::resource('ranking_eldwry', 'RankingEldwryController');
     Route::resource('headGroupEldwry', 'HeadGroupEldwryController');
     Route::resource('groupEldwry', 'GroupEldwryController');
     Route::resource('fantasy', 'FantasyController');

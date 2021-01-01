@@ -7,6 +7,7 @@
 @section('content')
 
 @include('admin.errors.errors')
+@include('admin.errors.alerts')
 
 {!! Form::open(array('route' => 'admin.opta.store','method'=>'POST','data-parsley-validate'=>"")) !!}
 
