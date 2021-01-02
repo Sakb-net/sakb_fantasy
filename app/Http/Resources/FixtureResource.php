@@ -46,7 +46,7 @@ class FixtureResource extends JsonResource
         return [
 	        'description'=> (string) finalValueByLang($this->description,'',$lang),
 	        'date'=> (string) $date,
-	        'date_day'=> day_lang_game($this->date, $request->header('lang')),
+	        'date_day'=> day_lang_game($this->date, $lang),
 	        'time'=> (string) $this->time,
 	        'first_goon'=> (string) $this->first_goon,
 	        'second_goon'=> (string) $this->second_goon,

@@ -287,6 +287,8 @@ Route::group([
     Route::post('headGroupEldwry/removeBlock', ['as' => 'headGroupEldwry.removeBlock', 'uses' => 'HeadGroupEldwryController@removeBlock']);
     Route::post('headGroupEldwry/setAdmin', ['as' => 'headGroupEldwry.setAdmin', 'uses' => 'HeadGroupEldwryController@setAdmin']);
 //ranking_eldwry
+    Route::get('ranking_eldwry/match', ['as' => 'ranking_eldwry.create_match', 'uses' => 'RankingEldwryController@create_match']);
+    Route::post('ranking_eldwry/match', ['as' => 'ranking_eldwry.store_match', 'uses' => 'RankingEldwryController@store_match']);
     Route::get('ranking_eldwry/search', ['as' => 'ranking_eldwry.search', 'uses' => 'RankingEldwryController@search']);
     
     //Resource

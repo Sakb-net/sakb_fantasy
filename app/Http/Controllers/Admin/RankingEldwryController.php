@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-// use App\Models\User;
 use App\Models\RankingEldwry;
-// use App\Models\Language;
-// use App\Models\Team;
+use App\Models\Eldwry;
+use App\Models\Match;
 
 use App\Repositories\RankingEldwryRepository;
 
@@ -63,7 +62,22 @@ class RankingEldwryController extends AdminController {
 
      */
     public function create() {
+        if (!$this->user->can(['access-all', 'ranking_eldwry-all', 'ranking_eldwry-create', 'ranking_eldwry_edit'])) {
+            // return $this->pageUnauthorized();
+        }
+        if ($this->user->can(['access-all', 'ranking_eldwry-all', 'ranking_eldwry_edit'])) {
+            $ranking_eldwry_active = 1;
+        } else {
+            $ranking_eldwry_active = 0;
+        }
+        $create='create';
+        $type_action='';
+        $link_return = route('admin.ranking_eldwry.index');
+        $new =1;
+        return view('admin.ranking_eldwry.create', compact('link_return', 'new', 'ranking_eldwry_active','type_action','create'));
+    }
 
+    public function create_match() {
         if (!$this->user->can(['access-all', 'ranking_eldwry-all', 'ranking_eldwry-create', 'ranking_eldwry_edit'])) {
             return $this->pageUnauthorized();
         }
@@ -72,10 +86,16 @@ class RankingEldwryController extends AdminController {
         } else {
             $ranking_eldwry_active = 0;
         }
+        $create='create_match';
         $type_action='';
+        $eldwry=Eldwry::get_currentDwry();
+        $matches=[];
+        if(isset($eldwry->id)){
+        	$matches=RankingEldwry::getAll_data('eldwry_id',$eldwry->id,1,1);
+        }
         $link_return = route('admin.ranking_eldwry.index');
         $new =1;
-        return view('admin.ranking_eldwry.create', compact('link_return', 'new', 'ranking_eldwry_active','type_action'));
+        return view('admin.ranking_eldwry.create', compact('link_return', 'new', 'ranking_eldwry_active','type_action','create','matches'));
     }
     /**
 
@@ -88,6 +108,7 @@ class RankingEldwryController extends AdminController {
      * @return \Illuminate\Http\Response
 
      */
+
     public function store(Request $request) {
         
         if (!$this->user->can(['access-all', 'ranking_eldwry-all', 'ranking_eldwry-create', 'ranking_eldwry_edit'])) {
@@ -100,12 +121,31 @@ class RankingEldwryController extends AdminController {
         }
         $get_data=new RankingEldwryRepository();
         $data=$get_data->add_RankingEldwry();
-
         session()->put('success', trans('app.save_success'));
         return redirect()->route('admin.ranking_eldwry.create');
     }
 
+    public function store_match(Request $request) {
+        
+        if (!$this->user->can(['access-all', 'ranking_eldwry-all', 'ranking_eldwry-create', 'ranking_eldwry_edit'])) {
+            if ($this->user->can('ranking_eldwry-list')) {
+                session()->put('error', trans('app.no_access'));
+                return redirect()->route('admin.ranking_eldwry.index');
+            } else {
+                return $this->pageUnauthorized();
+            }
+        }
+        $input = $request->all();
+        foreach ($input as $key => $value) {
+            $input[$key] = stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
+        }
+        $match_data=Match::where('id',$input['match_id'])->get();
+        $get_data=new RankingEldwryRepository();
+        $data=$get_data->add_RankingEldwry($match_data);
 
+        session()->put('success', trans('app.save_success'));
+        return redirect()->route('admin.ranking_eldwry.create');
+    }
 
     /**
 

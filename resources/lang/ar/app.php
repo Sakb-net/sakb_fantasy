@@ -919,4 +919,7 @@ return array (
   'removeBlockUserQuestion'=>'هل متاكد من رفع حظر هذا المستخدم ؟',
   'allMatches'=>'جميع المباريات',
   'ranking_eldwry'=>'ترتيب الدورى',
+  'form_w'=>'ف',
+  'form_d'=>'ت',
+  'form_l'=>'خ',
 );

@@ -66,7 +66,7 @@ function UpdateconvertImageArrayToJson($current_image,$array_image,$array_lang='
   return json_encode($result,true);
 }
 
-function finalValueByLang($lang_name,$name,$lang){
+function finalValueByLang($lang_name,$name,$lang='ar'){
   $final_name=$name;
   $array_lang_name = $lang_name;
   if(!is_array($lang_name)){
@@ -410,7 +410,7 @@ function get_CurrentLink($link = '') {
 }
 function get_RandLink($link = '', $new = 0) {
     if ($new == 0) {
-        $link = $link . str_random(8) . time(); //rand(100, 9999)//generateRandomValue()
+        $link = $link . \Illuminate\Support\Str::random(8) . time(); //str_random //rand(100, 9999)//generateRandomValue()
     }
     $link = str_replace(' ', '_', $link);
     //$link = preg_replace('/[^A-Za-z0-9\-]/', '', $link); // Removes special chars.

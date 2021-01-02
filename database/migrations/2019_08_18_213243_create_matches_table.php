@@ -37,7 +37,7 @@ class CreateMatchesTable extends Migration {
             $table->string('stage')->nullable();
             $table->text('description')->nullable();
             $table->unsignedInteger('video_id')->nullable();
-            $table->tinyInteger('is_active')->default(0);
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
             $table->foreign('update_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('sub_eldwry_id')->references('id')->on('sub_eldwry')->onUpdate('cascade')->onDelete('cascade');

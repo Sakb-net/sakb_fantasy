@@ -307,7 +307,14 @@ class Match extends Model {
         $data = Match::Where([['sub_eldwry_id',$sub_eldwry_id], ['first_team_id', $team_id], ['is_active', $is_active]])->orWhere([['sub_eldwry_id',$sub_eldwry_id], ['second_team_id', $team_id], ['is_active', $is_active]])->first();
         return $data;
     }
-
+    public static function get_MatchLargeFromId($match_id,$is_active=1,$current_date='') {
+        $current_date = date('Y-m-d H:i:s');
+        return static::where('id', '>', $match_id)->where('date', '<=', $current_date)->where('is_active', $is_active)->get();
+    }
+    public static function get_MatchNextId($match_id,$team_id,$is_active=1, $col_order = 'id', $val_order = 'ASC') {
+        return static::where('id', '>', $match_id)->Where('first_team_id', $team_id)->orWhere('second_team_id', $team_id)->where('is_active', $is_active)->orderBy($col_order, $val_order)->first();
+    }
+    
     public static function get_MatchActiveFirst($is_active, $second_goon_time = 'next', $col_order = 'id', $val_order = 'ASC', $second_goon = 'match', $lang = 'ar') {
         $data = Match::where('second_goon', $second_goon)
                 ->where('is_active', $is_active);

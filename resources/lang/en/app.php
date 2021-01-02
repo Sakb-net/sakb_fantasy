@@ -919,5 +919,8 @@ return array (
   'removeBlockUserQuestion'=>'Are you sure remove block?',
   'allMatches'=>'All Matches',
   'ranking_eldwry'=>'League ranking',
+  'form_w'=>'F',
+  'form_d'=>'D',
+  'form_l'=>'L',
 );
 

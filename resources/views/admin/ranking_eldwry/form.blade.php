@@ -4,7 +4,7 @@
             <div class="box-body ">
                 <div class="form-group" style="text-align: center;font-weight: bold; font-size:20px;">
                     <label>
-                        {{trans('app.ranking_eldwry')}}
+                        {{trans('app.add')}} {{trans('app.ranking_eldwry')}}
                     </label>
                 </div>
             </div>

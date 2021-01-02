@@ -27,7 +27,7 @@ class CreateSubEldwryTable extends Migration {
             $table->timestamp('end_date')->nullable();
             $table->timestamp('start_change_date')->nullable();
             $table->timestamp('end_change_date')->nullable();
-            $table->tinyInteger('is_active')->default(0);
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
             $table->foreign('update_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('eldwry_id')->references('id')->on('eldwry')->onUpdate('cascade')->onDelete('cascade');

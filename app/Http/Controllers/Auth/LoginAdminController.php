@@ -1,16 +1,18 @@
 <?php
 namespace App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Validator;
-// use Illuminate\Foundation\Bus\DispatchesJobs;
-// use Illuminate\Foundation\Validation\ValidatesRequests;
-// use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-// use Illuminate\Foundation\Auth\Access\Authorizes\Resources;
-// use Illuminate\Html\Html\ServiceProvider;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Auth\Access\Authorizes\Resources;
+use Illuminate\Html\Html\ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
 use App\Models\Options;
 use Redirect;
+
+
 
 class LoginAdminController extends BaseController {
 
@@ -88,7 +90,7 @@ class LoginAdminController extends BaseController {
     }
 
     public function logout(Request $request) {
-        $this->guard()->logout();
+        Auth::logout();
         $request->session()->flush();
         $request->session()->regenerate();
         return redirect($this->redirectTo);

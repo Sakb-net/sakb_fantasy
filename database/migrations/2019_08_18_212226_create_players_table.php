@@ -41,7 +41,7 @@ class CreatePlayersTable extends Migration
             $table->mediumText('image_match')->nullable();
             $table->integer('num_t_shirt')->nullable();
             $table->double('cost')->default(0);
-            $table->tinyInteger('is_active')->default(0);
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
             $table->foreign('update_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('team_id')->references('id')->on('teams')->onUpdate('cascade')->onDelete('cascade');

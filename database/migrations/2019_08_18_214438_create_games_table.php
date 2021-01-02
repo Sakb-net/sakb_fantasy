@@ -21,7 +21,7 @@ class CreateGamesTable extends Migration
             $table->unsignedInteger('user_id')->nullable();
             $table->string('team_name')->nullable();
             $table->unsignedInteger('lineup_id')->nullable();
-            $table->tinyInteger('is_active')->default(0);
+            $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
             $table->foreign('update_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

@@ -22,7 +22,6 @@ class AdminPanel extends Authenticate {
 //    }
 
     public function handle($request, Closure $next, ...$guards) {
-
         if (Auth::guard($guards)->check()) {
             $user = auth()->user();
             if (!$user->can(['access-all', 'category*', 'user*', 'message*', 'post-type-all', 'post-all', 'comment-all', 'admin-panel'])) {
