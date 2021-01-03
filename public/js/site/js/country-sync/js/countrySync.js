@@ -5,7 +5,7 @@ var countryData = window.intlTelInputGlobals.getCountryData(),
 
 // init plugin
 var iti = window.intlTelInput(input, {
- 
+  utilsScript: "build/js/utils.js" // just for formatting/placeholders etc
 });
 
 // populate the country dropdown

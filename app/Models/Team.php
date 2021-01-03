@@ -8,7 +8,7 @@ class Team extends Model {
 
     protected $table = 'teams';
     protected $fillable = [
-        'update_by','name','lang_name', 'link','opta_link', 'image','image_fav', 'eldwry_id','is_active','shortName','officialName','code','addressZip','countryId','country','city','founded','type','teamType'
+        'update_by','name','lang_name', 'link','opta_link', 'image','image_fav','site_team', 'eldwry_id','is_active','shortName','officialName','code','addressZip','countryId','country','city','founded','type','teamType'
     ];
 
 

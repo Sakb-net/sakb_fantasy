@@ -32,6 +32,7 @@ class CreateTeamsTable extends Migration
             $table->string('city')->nullable();
             $table->string('founded')->nullable();
             $table->mediumText('image')->nullable();
+            $table->string('site_team')->nullable();
             $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
             $table->foreign('update_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

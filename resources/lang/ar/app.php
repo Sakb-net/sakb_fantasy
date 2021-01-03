@@ -922,4 +922,6 @@ return array (
   'form_w'=>'ف',
   'form_d'=>'ت',
   'form_l'=>'خ',
+  'site_team'=>'رابط موقع الفريق',
+
 );

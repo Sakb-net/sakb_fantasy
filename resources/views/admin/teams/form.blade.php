@@ -22,6 +22,10 @@
                     {!! Form::text('link', null, array('class' => 'form-control','required'=>'')) !!}
                     @endif
                 </div>
+                <div class="form-group ">
+                    <label>{{trans('app.site_team')}} </label>
+                    {!! Form::url('site_team', null, array('class' => 'form-control')) !!}
+                </div>
                 <div class="form-group">
                     <label>{{trans('app.tags')}} </label>
                     {!! Form::select('tags[]', $tags,$teamTags, array('class' => 'select2-tags','multiple')) !!}

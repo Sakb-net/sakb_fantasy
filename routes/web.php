@@ -30,8 +30,7 @@ Route::get('/optimize', function() {
     $exitCode = Artisan::call('optimize');
     return '<h1>Reoptimized class loader</h1>';
 });
-$public_url = ''; //public/
-$admin_panel = $public_url . 'admin';
+$admin_panel ='admin';
 $namespace= 'App\Http\Controllers\Site';
 
 //https://www.alahlifc.sa
@@ -39,7 +38,7 @@ $namespace= 'App\Http\Controllers\Site';
 // Close
 Route::get('close', ['as' => 'close', 'uses' => 'SiteController@close']);
 Route::group([
-    'prefix' => $public_url,
+    'prefix' => '',
     'namespace' => $namespace,
         ], function () {
 // Pages
@@ -59,7 +58,7 @@ Route::group([
 
 // game
 Route::group([
-    'prefix' => 'game' . $public_url,
+    'prefix' => 'game',
     'namespace' => $namespace,
     'as' => 'game.',
         ], function () {
@@ -69,10 +68,17 @@ Route::group([
     Route::get('/transfer', ['as' => 'game_transfer', 'uses' => 'GameController@game_transfer']);
 //    Route::get('/{link}', ['as' => 'single', 'uses' => 'GameController@single']);
 });
-
+//
+Route::group([
+    'prefix' => 'league/ranking',
+    'namespace' => $namespace,
+    'as' => 'league.',
+        ], function () {
+    Route::get('', ['as' => 'index', 'uses' => 'RankingEldwryController@index']);
+});
 // group_eldwry
 Route::group([
-    'prefix' => 'game' . $public_url,
+    'prefix' => 'game',
     'namespace' => $namespace,
     'as' => 'game.',
         ], function () {  
@@ -99,7 +105,7 @@ Route::group([
 
 // videos
 Route::group([
-    'prefix' => 'videos' . $public_url,
+    'prefix' => 'videos',
     'namespace' => $namespace,
     'as' => 'videos.',
         ], function () {
@@ -108,7 +114,7 @@ Route::group([
 });
 // news
 Route::group([
-    'prefix' => 'news' . $public_url,
+    'prefix' => 'news',
     'namespace' => $namespace,
     'as' => 'news.',
         ], function () {
@@ -118,7 +124,7 @@ Route::group([
 });
 // awards
 Route::group([
-    'prefix' => 'awards' . $public_url,
+    'prefix' => 'awards',
     'namespace' => $namespace,
     'as' => 'awards.',
         ], function () {
@@ -127,7 +133,7 @@ Route::group([
 });
 //instractions
 Route::group([
-    'prefix' => 'instractions' . $public_url,
+    'prefix' => 'instractions',
     'namespace' => $namespace,
     'as' => 'instractions.',
         ], function () {
@@ -136,7 +142,7 @@ Route::group([
 });
 //statics
 Route::group([
-    'prefix' => 'statics' . $public_url,
+    'prefix' => 'statics',
     'namespace' => $namespace,
     'as' => 'statics.',
         ], function () {
@@ -145,7 +151,7 @@ Route::group([
 });
 //fixtures
 Route::group([
-    'prefix' => 'fixtures' . $public_url,
+    'prefix' => 'fixtures',
     'namespace' => $namespace,
     'as' => 'fixtures.',
         ], function () {
@@ -154,7 +160,7 @@ Route::group([
 });
 // Profile
 Route::group([
-    'prefix' => 'profile' . $public_url,
+    'prefix' => 'profile',
     'namespace' => $namespace,
     'as' => 'profile.',
     'middleware' => ['auth']
@@ -165,7 +171,7 @@ Route::group([
 
 // payment
 Route::group([
-   'prefix' => 'payment/card' . $public_url,
+   'prefix' => 'payment/card',
    'namespace' => $namespace,
    'as' => 'payment_card.',
    'middleware' => ['auth']
