@@ -1,9 +1,9 @@
 <?php
 
-Route::post($public_url . 'add_register_buy', ['as' => 'add_register_buy', 'uses' => 'Auth\RegisterController@ajax_add_register_buy']);
+Route::post('add_register_buy', ['as' => 'add_register_buy', 'uses' => 'App\Http\Controllers\Auth\RegisterController@ajax_add_register_buy']);
 
 Route::group([
-    'prefix' => $public_url,
+    'prefix' => '',
     'namespace' => $namespace,
         ], function () {
 //page---->validation register
