@@ -144,4 +144,4 @@ please_enter_email ='من فضلك ادخل البريد الالكترونى';
 please_enter_password ='من فضلك ادخل كلمة المرور';
 please_enter_phone ='من فضلك ادخل رقم الجوال';
 password_8_100 = 'كلمة المرور  لا تقل عن  8 حروف ولا تزيد عن 100 حرف';
-password_not_match = 'كلمة المرور غير متطابقة'
+password_not_match = 'كلمة المرور غير متطابقة';

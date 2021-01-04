@@ -1,6 +1,5 @@
 $(document).ready(function () {
-//**********************************fav & like ***************************************************************
-// add or delete fav news and videos
+    
     $('body').on('click', '.filter_ranking_eldwry', function () {
         var obj = $(this);
         var user_key = obj.attr('data-user');

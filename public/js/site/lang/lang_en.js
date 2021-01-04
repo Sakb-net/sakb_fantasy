@@ -143,4 +143,4 @@ previous_seasons='Previous seasons';
 please_enter_email = 'Please enter email';
 please_enter_password ='Please enter password';
 password_8_100 = 'Password not less than 8 characters and not more than 100 characters';
-password_not_match = 'Password not matches'
+password_not_match = 'Password not matches';
