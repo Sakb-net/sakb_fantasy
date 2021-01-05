@@ -17,11 +17,6 @@ class FixtureResource extends JsonResource
     public function toArray($request)
     {
         $lang=$request->header('lang');
-    	$array_date = explode(' ', $this->date);
-        $date='';
-        if (isset($array_date[0])) {
-            $date = $array_date[0];
-        }
         $name_first=$link_first=$image_first=$name_second=$link_second=$image_second='';
         if(isset($this->teams_first->id)){
             $name_first=finalValueByLang($this->teams_first->lang_name,$this->teams_first->name,$lang);
@@ -45,9 +40,9 @@ class FixtureResource extends JsonResource
         //$request->header('lang')
         return [
 	        'description'=> (string) finalValueByLang($this->description,'',$lang),
-	        'date'=> (string) $date,
+	        'date'=> (string) date("d-m-Y", strtotime($this->date)),
 	        'date_day'=> day_lang_game($this->date, $lang),
-	        'time'=> (string) $this->time,
+	        'time'=> (string) ConvertUTC_ToDateCurrentUser12_hour($this->date.' '.$this->time),
 	        'first_goon'=> (string) $this->first_goon,
 	        'second_goon'=> (string) $this->second_goon,
 	        'name_first' =>(string)$name_first,

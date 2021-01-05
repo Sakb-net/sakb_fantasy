@@ -9,24 +9,25 @@ use App\Models\User;
 
 class RankingEldwryController extends API_Controller {
 
+    
     public function __construct() {
         $this->RankingEldwryRepository =new RankingEldwryRepository();
     }
 
     /**
-     * get data league_ranking , if found sent access_token
+     * get data ranking_eldwry , if found sent access_token
      * post method
-     * url : http://localhost:8000/api/v1/league_ranking
+     * url : http://localhost:8000/api/v1/ranking_eldwry
      *
      * @return response Json
      */
 
     /**
      * @OA\get(
-     *  path="/league_ranking",
-     *   tags={"league_ranking"},
-     *   operationId="league_ranking",
-     *   summary="get league_ranking",
+     *  path="/ranking_eldwry",
+     *   tags={"ranking_eldwry"},
+     *   operationId="ranking_eldwry",
+     *   summary="get ranking_eldwry",
      *   description="",
      *  @OA\Parameter(
      *     name="type-dev",
@@ -70,7 +71,7 @@ class RankingEldwryController extends API_Controller {
      *      @OA\Schema(
      *           type="number",
      *      ),
-     *    description=" limit is number league_ranking will send in each time default ( 12 )",
+     *    description=" limit is number ranking_eldwry will send in each time default ( 12 )",
      *  ),
      *   @OA\Response(
      *    response=200,
@@ -82,7 +83,7 @@ class RankingEldwryController extends API_Controller {
      *  )
      * )
      */
-    public function league_ranking(Request $request) {
+    public function ranking_eldwry(Request $request) {
 
         $data_header = API_Controller::get_DataHeader(getallheaders());
         $access_token = $data_header['access_token'];

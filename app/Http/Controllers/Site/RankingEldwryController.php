@@ -16,7 +16,6 @@ class RankingEldwryController extends SiteController {
 
     public function __construct() {
         parent::__construct();
-
         // $this->RankingEldwryRepository =new RankingEldwryRepository();
     }
 

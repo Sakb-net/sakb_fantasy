@@ -99,7 +99,7 @@ Route::namespace('App\Http\Controllers\Api\V1')->prefix('v1')->group(function ()
     Route::name('points_subeldwry')->post('/points_subeldwry', 'PointsController@points_subeldwry');
     Route::name('pointplayersubeldwry')->post('/pointplayersubeldwry', 'PointsController@pointplayersubeldwry');
     //Ranking Eldwry
-    Route::name('league_ranking')->get('/league_ranking', 'RankingEldwryController@league_ranking');
+    Route::name('ranking_eldwry')->get('/ranking_eldwry', 'RankingEldwryController@ranking_eldwry');
 
     //statistics
     Route::name('statistics')->post('/statistics', 'StatisticController@statistics');

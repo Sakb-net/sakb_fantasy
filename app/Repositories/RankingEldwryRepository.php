@@ -90,7 +90,7 @@ class RankingEldwryRepository
         return json_encode($array_form);
     }
 
-    public function get_RankingEldwry($sub_eldwry_id=0,$limit=12,$offset=0){
+    public function get_RankingEldwry($sub_eldwry_id=0,$limit=18,$offset=0){
         $eldwry=Eldwry::get_currentDwry();
         $return_data=[];
         if(isset($eldwry->id)){
