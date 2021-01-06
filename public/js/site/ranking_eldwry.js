@@ -35,6 +35,14 @@ function filter_result_location_match(){
     $('body').find('.away').removeClass('hidden');
     $('body').find('.home').removeClass('hidden');
 
+    if(location_match=="home" || location_match=='home' ){
+        $('body').find('.away').addClass('hidden');
+        $('body').find('.home').removeClass('hidden');
+    }else if(location_match=="away" || location_match=='away'){
+        $('body').find('.home').addClass('hidden');
+        $('body').find('.away').removeClass('hidden');
+    }
+
     if(result_match=="win" || result_match=='win' ||result_match=="won" || result_match=='won'){
         $('body').find('.lose').addClass('hidden');
         $('body').find('.drawn').addClass('hidden');
@@ -49,13 +57,6 @@ function filter_result_location_match(){
         $('body').find('.lose').removeClass('hidden');
     }
  
-    if(result_match=="home" || result_match=='home' ){
-        $('body').find('.away').addClass('hidden');
-        $('body').find('.home').removeClass('hidden');
-    }else if(result_match=="away" || result_match=='away'){
-        $('body').find('.home').addClass('hidden');
-        $('body').find('.away').removeClass('hidden');
-    }
     return false;
 }
 function Load_ranking_eldwry(){
