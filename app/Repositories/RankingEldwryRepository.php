@@ -8,6 +8,7 @@ use App\Models\Eldwry;
 use App\Models\Subeldwry;
 use App\Models\Match;
 use Auth;
+use Session;
 
 class RankingEldwryRepository
 {
@@ -80,7 +81,9 @@ class RankingEldwryRepository
                 $subeldwry=Subeldwry::get_SubeldwryRow($val_subeldwry, $colum_subeldwry);
             }
             if(isset($subeldwry->id)){
-                $data=RankingEldwry::sum_SubldwryID($eldwry->id,$subeldwry->id,$limit,$offset);
+                Session::put('subeldwry_anking',$subeldwry->id);
+                Session::put('eldwry_anking',$eldwry->id);
+                $data=RankingEldwry::sum_all_before_and_SubldwryTeam($eldwry->id,$subeldwry->id,-1,$limit,$offset);
                 $ranking_eldwry= RankingEldwryResource::collection($data);
             }
         }

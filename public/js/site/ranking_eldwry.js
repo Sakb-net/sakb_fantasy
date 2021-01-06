@@ -77,7 +77,7 @@ function get_subeldwry_ranking_eldwry(class_content){
         success: function (data) {
             if (data !== "") {
                 if(data.data!=''){
-                    div_section ='';// '<option value="">عرض حسب</option>';
+                    div_section ='<option value="">'+overAll+'</option>';
                     $.each(data.data, function (index, value) {
                         div_section += '<option value="'+ value.link+'">' + value.lang_num_week + '</option>';
                     });

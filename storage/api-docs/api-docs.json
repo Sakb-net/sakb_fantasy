@@ -5192,7 +5192,7 @@
                     },
                     {
                         "name": "subeldwry_link",
-                        "in": "path",
+                        "in": "query",
                         "description": "link of subeldwry if it is empty will return current ",
                         "schema": {
                             "type": "string"
