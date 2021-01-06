@@ -175,7 +175,7 @@ class HeadGroupEldwryController extends AdminController
         $eldawryHead = HeadGroupEldwry::where('id',$id)->first();
         $eldwryLink = $eldawryHead->link;
         $eldwyData = new Class_GroupEldwryController;
-        $return_data = $eldwyData->get_current_sub_eldwry('',$eldawryHead->link,'head');
+        $return_data = $eldwyData->get_current_subeldwry_group('',$eldawryHead->link,'head');
         $userData = User::where('id',$eldawryHead->user_id)->first();
         $tableData= $eldwyData->get_data_group_eldwry($userData,$eldawryHead->link,'','ar',0,'head');
         // dd($tableData);
@@ -287,7 +287,7 @@ class HeadGroupEldwryController extends AdminController
         $eldawryHead = HeadGroupEldwry::where('id',$id)->first();
         $eldwryLink = $eldawryHead->link;
         $eldwyData = new Class_GroupEldwryController;
-        $return_data = $eldwyData->get_current_sub_eldwry('',$eldawryHead->link,'head');
+        $return_data = $eldwyData->get_current_subeldwry_group('',$eldawryHead->link,'head');
 
         return view('admin.headGroupEldwry.standing',compact('return_data','eldwryLink'));
 

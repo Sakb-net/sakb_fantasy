@@ -23,7 +23,7 @@ class PlayerController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/player",
+     *  path="/api/v1/player",
      *   tags={"game"},
      *   operationId="player",
      *   summary="get data of player",
@@ -133,7 +133,7 @@ class PlayerController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/add_player",
+     *  path="/api/v1/add_player",
      *   tags={"game"},
      *   operationId="add_player",
      *   summary="add player to game",
@@ -259,7 +259,7 @@ class PlayerController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/delete_player",
+     *  path="/api/v1/delete_player",
      *   tags={"game"},
      *   operationId="delete_player",
      *   summary="delete player from game and also change player with another",
@@ -383,7 +383,7 @@ class PlayerController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/change_player",
+     *  path="/api/v1/change_player",
      *   tags={"game"},
      *   operationId="change_player",
      *   summary="delete player from game and also change player with another",
@@ -525,7 +525,7 @@ class PlayerController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/checknum_myteam",
+     *  path="/api/v1/checknum_myteam",
      *   tags={"game"},
      *   operationId="checknum_myteam",
      *   summary="check players number of your team",
@@ -623,7 +623,7 @@ class PlayerController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/add_myteam",
+     *  path="/api/v1/add_myteam",
      *   tags={"game"},
      *   operationId="add_myteam",
      *   summary="add name to your team",

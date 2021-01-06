@@ -8,7 +8,7 @@ class RankingEldwry extends Model {
 
     protected $table = 'ranking_eldwry';
     protected $fillable = [
-        'update_by','eldwry_id','sub_eldwry_id','team_id', 'link','match_id', 'next_match_id','type','won','draw','loss','goals_own','goals_aganist','goals_diff','points','form','is_active'
+        'update_by','eldwry_id','sub_eldwry_id','team_id', 'link','match_id', 'next_match_id','type','won','draw','loss','goals_own','goals_aganist','goals_diff','points','is_active'
     ];
 
 
@@ -87,7 +87,8 @@ class RankingEldwry extends Model {
     }
 
     public static function sum_SubldwryID($eldwry_id='',$sub_eldwry_id='',$limit=12,$offset=0,$val_order='DESC') {
-        return static::select(DB::raw('eldwry_id,sub_eldwry_id,team_id,sum(won) as sum_won,sum(draw) as sum_draw,sum(loss) as sum_loss,sum(goals_diff) as sum_goals_diff,sum(points) as sum_points'))->where('eldwry_id',$eldwry_id)->where('sub_eldwry_id',$sub_eldwry_id)->groupBy('team_id','eldwry_id','sub_eldwry_id')->orderBy('sum_points',$val_order)->limit($limit)->offset($offset)->orderBy('sum_goals_diff',$val_order)->get();
+        return static::select(DB::raw('eldwry_id,sub_eldwry_id,team_id,sum(won) as sum_won,sum(draw) as sum_draw,sum(loss) as sum_loss,sum(goals_diff) as sum_goals_diff,sum(points) as sum_points'))->where('eldwry_id',$eldwry_id)->where('sub_eldwry_id',$sub_eldwry_id)->groupBy('team_id','eldwry_id','sub_eldwry_id')->limit($limit)->offset($offset)->orderBy('sum_points',$val_order)->get();
+        //->orderBy('sum_goals_diff',$val_order)
     }
 
     public static function sum_all_before_and_SubldwryTeam($eldwry_id='',$sub_eldwry_id='',$team_id=-1,$val_order='DESC') {

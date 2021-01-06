@@ -20,7 +20,7 @@ class GroupEldwrySettingController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/group_eldwry/create/{type_group}",
+     *  path="/api/v1/group_eldwry/create/{type_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/create",
      *   summary="create group eldwry of user",
@@ -155,7 +155,7 @@ class GroupEldwrySettingController extends API_Controller {
 
     /**
      * @OA\Put(
-     *  path="/group_eldwry/update/{type_group}/{link_group}",
+     *  path="/api/v1/group_eldwry/update/{type_group}/{link_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/update",
      *   summary="update group eldwry of user",
@@ -303,7 +303,7 @@ class GroupEldwrySettingController extends API_Controller {
 
     /**
      * @OA\Put(
-     *  path="/group_eldwry/stop/{type_group}/{link_group}",
+     *  path="/api/v1/group_eldwry/stop/{type_group}/{link_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/stop",
      *   summary="stop group eldwry of user",

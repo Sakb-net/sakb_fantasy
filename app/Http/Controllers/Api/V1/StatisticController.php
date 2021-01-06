@@ -22,7 +22,7 @@ class StatisticController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/statistics",
+     *  path="/api/v1/statistics",
      *   tags={"statistics"},
      *   operationId="statistics",
      *   summary="get all details of statistics players in mathes",

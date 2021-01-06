@@ -22,7 +22,7 @@ class MyTeamController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/player_myteam",
+     *  path="/api/v1/player_myteam",
      *   tags={"myteam"},
      *   operationId="player_myteam",
      *   summary="get all players in my team",
@@ -118,7 +118,7 @@ class MyTeamController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/add_captain_assist",
+     *  path="/api/v1/add_captain_assist",
      *   tags={"myteam"},
      *   operationId="add_captain_assist",
      *   summary="add captain or assist captain",
@@ -241,7 +241,7 @@ class MyTeamController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/get_lineup",
+     *  path="/api/v1/get_lineup",
      *   tags={"myteam"},
      *   operationId="get_lineup",
      *   summary="get all lineup",
@@ -337,7 +337,7 @@ class MyTeamController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/add_lineup",
+     *  path="/api/v1/add_lineup",
      *   tags={"myteam"},
      *   operationId="add_lineup",
      *   summary="add lineup",
@@ -447,7 +447,7 @@ class MyTeamController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/check_insideChange",
+     *  path="/api/v1/check_insideChange",
      *   tags={"myteam"},
      *   operationId="check_insideChange",
      *   summary="check Change 11 main player with 4 sub player",
@@ -617,7 +617,7 @@ class MyTeamController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/add_insideChange",
+     *  path="/api/v1/add_insideChange",
      *   tags={"myteam"},
      *   operationId="add_insideChange",
      *   summary="Change one main player with another sub player",
@@ -783,7 +783,7 @@ class MyTeamController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/add_direct_insideChange",
+     *  path="/api/v1/add_direct_insideChange",
      *   tags={"myteam"},
      *   operationId="add_direct_insideChange",
      *   summary="Change one main player with another sub player",

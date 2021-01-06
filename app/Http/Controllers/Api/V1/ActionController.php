@@ -21,7 +21,7 @@ class ActionController extends API_Controller {
 
     /**
      * @OA\Post(
-     **   path="/add_watch",
+     **   path="/api/v1/add_watch",
      *   tags={"watch"},
      *   operationId="v1/add_watch",
      *   summary="add video watch",
@@ -140,7 +140,7 @@ class ActionController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/add_del_like",
+     *   path="/api/v1/add_del_like",
      *   tags={"like,dislike"},
      *   operationId="v1/add_del_like",
      *   summary="add or delete like for video or news or comment or comment_news or comment_video ",

@@ -328,7 +328,7 @@ function tab_menu_groupEldwry(type_page,active_class,link_group='',type_group=''
 function get_current_sub_eldwry(class_content='',type_group='',link_group='',overAll=''){ 
     $.ajax({
         type: "post",
-        url: url + '/get_current_sub_eldwry',
+        url: url + '/get_current_subeldwry_group',
         data: {
             _token: $('meta[name="_token"]').attr('content'),
             link_group:link_group,

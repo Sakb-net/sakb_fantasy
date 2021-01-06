@@ -22,7 +22,7 @@ class GameController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/eldwry_locations",
+     *  path="/api/v1/eldwry_locations",
      *   tags={"game"},
      *   operationId="eldwry_locations",
      *   summary="get current eldwry and locations",
@@ -118,7 +118,7 @@ class GameController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/players_by_type",
+     *  path="/api/v1/players_by_type",
      *   tags={"game"},
      *   operationId="players_by_type",
      *   summary="get all players by type",
@@ -229,7 +229,7 @@ class GameController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/filterPlayer",
+     *  path="/api/v1/filterPlayer",
      *   tags={"game"},
      *   operationId="filterPlayer",
      *   summary="get all Players after filter",
@@ -389,7 +389,7 @@ class GameController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/player_master",
+     *  path="/api/v1/player_master",
      *   tags={"game"},
      *   operationId="player_master",
      *   summary="get all players of your game",
@@ -485,7 +485,7 @@ class GameController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/auto_selection_player",
+     *  path="/api/v1/auto_selection_player",
      *   tags={"game"},
      *   operationId="auto_selection_player",
      *   summary="add auto selection player",
@@ -589,7 +589,7 @@ class GameController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/reset_all_player",
+     *  path="/api/v1/reset_all_player",
      *   tags={"game"},
      *   operationId="reset_all_player",
      *   summary="delete all player",

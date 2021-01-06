@@ -304,15 +304,24 @@ class Match extends Model {
     }
 
     public static function get_MatchTeamSubeldwry($sub_eldwry_id, $team_id, $is_active = 1) {
-        $data = Match::Where([['sub_eldwry_id',$sub_eldwry_id], ['first_team_id', $team_id], ['is_active', $is_active]])->orWhere([['sub_eldwry_id',$sub_eldwry_id], ['second_team_id', $team_id], ['is_active', $is_active]])->first();
-        return $data;
+        return static::where('sub_eldwry_id', $sub_eldwry_id)
+            ->where('is_active', $is_active)
+            ->Where(function ($query) use($team_id) {
+                $query->Where('first_team_id', $team_id)
+                ->orWhere('second_team_id', $team_id);
+            })->first();
     }
+
     public static function get_MatchLargeFromId($match_id,$is_active=1,$current_date='') {
         $current_date = date('Y-m-d H:i:s');
         return static::where('id', '>', $match_id)->where('date', '<=', $current_date)->where('is_active', $is_active)->get();
     }
     public static function get_MatchNextId($match_id,$team_id,$is_active=1, $col_order = 'id', $val_order = 'ASC') {
-        return static::where('id', '>', $match_id)->Where('first_team_id', $team_id)->orWhere('second_team_id', $team_id)->where('is_active', $is_active)->orderBy($col_order, $val_order)->first();
+        return static::where('id', '>', $match_id)->where('is_active', $is_active)->
+        Where(function ($query) use($team_id) {
+            $query->Where('first_team_id', $team_id)
+            ->orWhere('second_team_id', $team_id);
+        })->orderBy($col_order, $val_order)->first();
     }
     
     public static function get_MatchActiveFirst($is_active, $second_goon_time = 'next', $col_order = 'id', $val_order = 'ASC', $second_goon = 'match', $lang = 'ar') {
@@ -384,8 +393,11 @@ class Match extends Model {
         $weekStartDate = $nowForStart->startOfWeek()->addDays(6)->format('Y-m-d H:i');
         $weekEndDate = $nowForEnd->endOfWeek()->addDays(6)->format('Y-m-d H:i');
         
-        $data = static::whereBetween(DB::raw('date'), [$weekStartDate, $weekEndDate]);
-        $result = $data->where('first_team_id', $team_id)->orWhere('second_team_id', $team_id);
+        $data = static::whereBetween(DB::raw('date'), [$weekStartDate, $weekEndDate])
+                ->Where(function ($query) use($team_id) {
+                    $query->Where('first_team_id', $team_id)
+                    ->orWhere('second_team_id', $team_id);
+                });
         if ($is_active == 1 || $is_active == 0) {
             $result = $data->where('is_active', $is_active);
         }
@@ -398,12 +410,8 @@ class Match extends Model {
         }
         return $result;
     }
-    public static function get_NextSubEldwryMatchForPlayer($sub_eldwry_id,$team_id,$is_active,$lang = 'ar') {
-        $result = static::Where('sub_eldwry_id', $sub_eldwry_id)->Where('is_active', $is_active)->Where('first_team_id', $team_id)->orWhere('second_team_id', $team_id)->first();
-        return $result;
-    }
     public static function SearchMatch($search, $second_goon = 'match', $is_active = '', $limit = 0) {
-        $data = static::with('user')->Where('second_team_id', 'like', '%' . $search . '%')
+        $data = static::Where('second_team_id', 'like', '%' . $search . '%')
                 ->orWhere('first_goon', 'like', '%' . $search . '%')
                 ->orWhere('description', 'like', '%' . $search . '%')
                 ->orWhere('content', 'like', '%' . $search . '%')

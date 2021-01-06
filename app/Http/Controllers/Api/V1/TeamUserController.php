@@ -25,7 +25,7 @@ class TeamUserController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/addFollowingTeam",
+     *  path="/api/v1/addFollowingTeam",
      *   tags={"followingTeams"},
      *   operationId="addFollowingTeam",
      *   summary="add following Team",
@@ -143,7 +143,7 @@ class TeamUserController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/followingMatches",
+     *  path="/api/v1/followingMatches",
      *   tags={"followingTeams"},
      *   operationId="followingMatches",
      *   summary="get followning teams matches",

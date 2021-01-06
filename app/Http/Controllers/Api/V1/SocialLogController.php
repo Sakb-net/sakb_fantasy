@@ -25,7 +25,7 @@ class SocialLogController extends API_Controller
      */
      /**
      * @OA\Post(
-     *   path="/social/login",
+     *   path="/api/v1/social/login",
      *   tags={"auth"},
      *   operationId="/social/login",
      *   summary="social login by (google,twitter)",

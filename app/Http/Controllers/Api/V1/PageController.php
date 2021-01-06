@@ -20,7 +20,7 @@ class PageController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/version",
+     *   path="/api/v1/version",
      *   tags={"page"},
      *   operationId="version",
      *   summary="get version",
@@ -90,7 +90,7 @@ class PageController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/home",
+     *   path="/api/v1/home",
      *   tags={"page"},
      *   operationId="home",
      *   summary="get data of home",
@@ -195,7 +195,7 @@ class PageController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/instraction",
+     *   path="/api/v1/instraction",
      *   tags={"page"},
      *   operationId="instraction",
      *   summary="instraction",
@@ -266,7 +266,7 @@ class PageController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/award",
+     *   path="/api/v1/award",
      *   tags={"page"},
      *   operationId="award",
      *   summary="award",
@@ -339,7 +339,7 @@ class PageController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/about",
+     *   path="/api/v1/about",
      *   tags={"page"},
      *   operationId="about",
      *   summary="about",
@@ -410,7 +410,7 @@ class PageController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/terms",
+     *   path="/api/v1/terms",
      *   tags={"page"},
      *   operationId="terms",
      *   summary="terms",
@@ -481,7 +481,7 @@ class PageController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/contact_us",
+     *   path="/api/v1/contact_us",
      *   tags={"page"},
      *   operationId="contact_us",
      *   summary="contact_us",
@@ -552,7 +552,7 @@ class PageController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/add_contact_us",
+     *   path="/api/v1/add_contact_us",
      *   tags={"page"},
      *   operationId="add_contact_us",
      *   summary="add message of contact_us",

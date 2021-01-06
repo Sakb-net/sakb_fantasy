@@ -83,7 +83,7 @@ class Class_GroupEldwryController extends SiteController {
        return array('group_eldwry'=>$group_eldwry,'owner'=>$owner,'users_group'=>$users_group,'matches_group'=>$matches_group);
     }
 
-    public function get_current_sub_eldwry($user_data,$link_group='',$type_group='classic'){
+    public function get_current_subeldwry_group($user_data,$link_group='',$type_group='classic'){
     	$return_data=[];
         $eldwry = Eldwry::get_currentDwry();
         if(isset($eldwry->id)){

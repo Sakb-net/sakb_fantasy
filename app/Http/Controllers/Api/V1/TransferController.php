@@ -15,7 +15,7 @@ class TransferController extends API_Controller {
 
     /**
      * @OA\Get(
-     *   path="/count_team_players",
+     *   path="/api/v1/count_team_players",
      *   tags={"substitute"},
      *   operationId="count_team_players",
      *   summary="get count user players in each team with team",
@@ -98,7 +98,7 @@ class TransferController extends API_Controller {
     }
     /**
      * @OA\Get(
-     *   path="/status_card/{type}",
+     *   path="/api/v1/status_card/{type}",
      *   tags={"substitute"},
      *   operationId="status_card",
      *   summary="status_card",
@@ -209,7 +209,7 @@ class TransferController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/confirm_substitutePlayer",
+     *  path="/api/v1/confirm_substitutePlayer",
      *   tags={"substitute"},
      *   operationId="confirm_substitutePlayer",
      *   summary="confirm substitute all Players",

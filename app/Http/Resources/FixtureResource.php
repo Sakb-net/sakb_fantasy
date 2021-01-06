@@ -42,7 +42,7 @@ class FixtureResource extends JsonResource
 	        'description'=> (string) finalValueByLang($this->description,'',$lang),
 	        'date'=> (string) date("d-m-Y", strtotime($this->date)),
 	        'date_day'=> day_lang_game($this->date, $lang),
-	        'time'=> (string) ConvertUTC_ToDateCurrentUser12_hour($this->date.' '.$this->time),
+	        'time'=> (string) time_in_12_hour_format($this->time),
 	        'first_goon'=> (string) $this->first_goon,
 	        'second_goon'=> (string) $this->second_goon,
 	        'name_first' =>(string)$name_first,

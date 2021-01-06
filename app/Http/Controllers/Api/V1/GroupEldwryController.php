@@ -20,7 +20,7 @@ class GroupEldwryController extends API_Controller {
 
     /**
      * @OA\GET(
-     *  path="/group_eldwry/{type_group}",
+     *  path="/api/v1/group_eldwry/{type_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry",
      *   summary="get group eldwry of user",
@@ -117,7 +117,7 @@ class GroupEldwryController extends API_Controller {
 
     /**
      * @OA\Get(
-     *  path="/group_eldwry/subeldwrys/{type_group}/{link_group}",
+     *  path="/api/v1/group_eldwry/subeldwrys/{type_group}/{link_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/subeldwrys",
      *   summary="filter and subeldwrys for teams in group by subeldwry link",
@@ -217,7 +217,7 @@ class GroupEldwryController extends API_Controller {
         if (isset($user->id)) {
             $response = API_Controller::MessageData('SUCCESS_MESSAGE', $lang,0);
             $get_data = new Class_GroupEldwryController();
-            $response['data']= $get_data->get_current_sub_eldwry($user,$link_group,$type_group);
+            $response['data']= $get_data->get_current_subeldwry_group($user,$link_group,$type_group);
             return response()->json($response, 200);
         } else {
             $response = API_Controller::MessageData('USER_NOT_Found', $lang,11);
@@ -235,7 +235,7 @@ class GroupEldwryController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/group_eldwry/standings/{type_group}/{link_group}",
+     *  path="/api/v1/group_eldwry/standings/{type_group}/{link_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/standings",
      *   summary="filter and standings for teams in group by subeldwry link",
@@ -345,7 +345,7 @@ class GroupEldwryController extends API_Controller {
             $response = API_Controller::MessageData('SUCCESS_MESSAGE', $lang,0);
             $get_data = new Class_GroupEldwryController();
             $response['data']= $get_data->get_data_group_eldwry($user,$link_group,$link_subeldwry,$lang,1,$type_group);
-            // $response['subeldwrys']= $get_data->get_current_sub_eldwry($user,$link_group);
+            // $response['subeldwrys']= $get_data->get_current_subeldwry_group($user,$link_group);
             return response()->json($response, 200);
         } else {
             $response = API_Controller::MessageData('USER_NOT_Found', $lang,11);
@@ -363,7 +363,7 @@ class GroupEldwryController extends API_Controller {
 
     /**
      * @OA\Put(
-     *  path="/group_eldwry/leave/{type_group}/{link_group}",
+     *  path="/api/v1/group_eldwry/leave/{type_group}/{link_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/leave",
      *   summary="leave group eldwry of user",

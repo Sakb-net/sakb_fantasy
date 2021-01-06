@@ -232,7 +232,7 @@ public function groupEldwryStanding($id){
     $eldawry = GroupEldwry::where('id',$id)->first();
     $eldwryLink = $eldawry->link;
     $eldwyData = new Class_GroupEldwryController;
-    $return_data = $eldwyData->get_current_sub_eldwry('',$eldawry->link,'classic');
+    $return_data = $eldwyData->get_current_subeldwry_group('',$eldawry->link,'classic');
 
     return view('admin.groupEldwry.standing',compact('return_data','eldwryLink'));
 

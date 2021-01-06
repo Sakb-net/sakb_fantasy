@@ -23,7 +23,7 @@ class TripleBenchCardController extends API_Controller {
 
     /**
      * @OA\GET(
-     *  path="/check_btns_status",
+     *  path="/api/v1/check_btns_status",
      *   tags={"myteam"},
      *   operationId="check_btns_status",
      *   summary="check triple captain and bench players cards status",
@@ -117,7 +117,7 @@ class TripleBenchCardController extends API_Controller {
 
     /**
      * @OA\GET(
-     *  path="/triple_captain_card",
+     *  path="/api/v1/triple_captain_card",
      *   tags={"myteam"},
      *   operationId="triple_captain_card",
      *   summary="calculating user points in subeldwry with taking in consideration multiply captain points by 3",
@@ -212,7 +212,7 @@ class TripleBenchCardController extends API_Controller {
 
     /**
      * @OA\GET(
-     *  path="/bench_players_card",
+     *  path="/api/v1/bench_players_card",
      *   tags={"myteam"},
      *   operationId="bench_players_card",
      *   summary="calculating user points in subeldwry with taking in consideration bench players points",
@@ -308,7 +308,7 @@ class TripleBenchCardController extends API_Controller {
 
     /**
      * @OA\POST(
-     *  path="/cancel_players_card",
+     *  path="/api/v1/cancel_players_card",
      *   tags={"myteam"},
      *   operationId="cancel_players_card",
      *   summary="cancel card acorrding type bench or triple",

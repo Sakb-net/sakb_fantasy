@@ -26,7 +26,7 @@ class PasswordResetController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/forgetpassword",
+     *   path="/api/v1/forgetpassword",
      *   tags={"auth"},
      *   operationId="forgetpassword",
      *   summary="forgetpassword by email",
@@ -153,7 +153,7 @@ class PasswordResetController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/password/confirm_reset",
+     *   path="/api/v1/password/confirm_reset",
      *   tags={"auth"},
      *   operationId="confirm_passwor_token",
      *   summary="check validation code of token ",
@@ -272,7 +272,7 @@ class PasswordResetController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/restpassword",
+     *   path="/api/v1/restpassword",
      *   tags={"auth"},
      *   operationId="restpassword",
      *   summary="restpassword by email",

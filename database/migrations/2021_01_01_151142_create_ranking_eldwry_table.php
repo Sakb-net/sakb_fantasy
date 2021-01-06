@@ -30,7 +30,6 @@ class CreateRankingEldwryTable extends Migration
             $table->integer('goals_aganist')->default(0);
             $table->integer('goals_diff')->default(0);
             $table->integer('points')->default(0);
-            $table->mediumText('form')->nullable();
             $table->tinyInteger('is_active')->default(1);
             $table->timestamps();
             $table->foreign('update_by')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

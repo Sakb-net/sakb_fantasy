@@ -703,7 +703,7 @@ class Player extends Model {
         if(isset($current_subeldwry->id)){
             $array_data['eldwry_name'] =finalValueByLang($current_subeldwry->eldwry->lang_name,$current_subeldwry->eldwry->name,$lang);
             $array_data['eldwry_link'] =$current_subeldwry->eldwry->link;
-            $player_match_next_week = Match::get_NextSubEldwryMatchForPlayer($current_subeldwry->id,$val_cat->team_id,1);
+            $player_match_next_week = Match::get_MatchTeamSubeldwry($current_subeldwry->id,$val_cat->team_id,1);
             if(isset($player_match_next_week->id)){
                 if($player_match_next_week->first_team_id == $val_cat->team_id)
                 $player_againest_team = $player_match_next_week->teams_second;
@@ -770,7 +770,7 @@ class Player extends Model {
         if(isset($current_subeldwry->id)){
             $array_data['eldwry_name'] =$current_subeldwry->eldwry->name;
             $array_data['eldwry_link'] =$current_subeldwry->eldwry->link;
-            $player_match_next_week = Match::get_NextSubEldwryMatchForPlayer($current_subeldwry->id,$val_cat->team_id,1);
+            $player_match_next_week = Match::get_MatchTeamSubeldwry($current_subeldwry->id,$val_cat->team_id,1);
             if(isset($player_match_next_week->id)){
                 if($player_match_next_week->first_team_id == $val_cat->team_id)
                 $player_againest_team = $player_match_next_week->teams_second;

@@ -122,17 +122,16 @@ class Subeldwry extends Model {
         return $Subeldwry;
     }
 
-    public static function get_SubeldwryForCurrentWeek($colum1 = 'start_date', $colum2 = 'end_date') {
-        $date = Carbon::now();
-        
-        $Subeldwry = static::where([
-            [$colum1, '<=', $date],
-            [$colum2, '>=', $date]])->first();
+    public static function get_SubeldwryRow($value, $colum = 'id', $is_active = 1) {
+        $Subeldwry = static::where($colum, $value)->where('is_active', $is_active)->first();
         return $Subeldwry;
     }
 
-    public static function get_SubeldwryRow($id, $colum = 'id', $is_active = 1) {
-        $Subeldwry = static::where($colum, $id)->where('is_active', $is_active)->first();
+    public static function get_SubeldwryForCurrentWeek($colum1 = 'start_date', $colum2 = 'end_date') {
+        $date = Carbon::now();
+        $Subeldwry = static::where([
+            [$colum1, '<=', $date],
+            [$colum2, '>=', $date]])->first();
         return $Subeldwry;
     }
 
@@ -166,13 +165,15 @@ class Subeldwry extends Model {
         return static::where('end_date', '>=', $date)->where('is_active', $is_active)->orderBy('id', 'DESC')->first();
     }
 
-    public static function get_BeforCurrentSubDwry($is_active = 1,$date = '',$limit = 1) {
+    public static function get_BeforCurrentSubDwry($is_active = 1,$date = '',$limit = -1) {
         if (empty($date)) {
             $date = date('Y-m-d h:i:s a', time()); //2019-09-30 00:00:18
         }
         $data = static::where('end_date', '<', $date)->where('is_active', $is_active)->orderBy('id', 'DESC');
-        if($limit<=1){
+        if($limit < 0){
             $result=$data->first();
+        }elseif($limit == 0){
+            $result=$data->get();
         }else{
             $result=$data->limit($limit)->get();
         }

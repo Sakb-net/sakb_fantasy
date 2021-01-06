@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Http\Resources\RankingEldwryResource;
+use App\Http\Resources\SubeldwryResource;
 use App\Models\RankingEldwry;
 use App\Models\Eldwry;
 use App\Models\Subeldwry;
@@ -64,47 +65,34 @@ class RankingEldwryRepository
             'goals_aganist'=>$value->$col_goals_aganist,
             'goals_diff'=>abs($value->$col_goals_own - $value->$col_goals_aganist),
             'points'=>$won+$draw,
-            'form'=>$this->get_form($sub_eldwry,$value->$col_team_id,$value->id,$won,$draw,$loss),
             'is_active'=>1,
         ];
     }
-    public function get_form($sub_eldwry,$team_id,$match_id,$won,$draw,$loss){
-        $data_form=RankingEldwry::get_Last_RankingEldwry($sub_eldwry->eldwry_id,$team_id,-1,4);
-        $array_form=[];
-        foreach ($data_form as $key => $value) {
-            if($value->won > 0){
-                $array_form[$match_id]='form_w';
-            }elseif($value->draw > 0){
-                $array_form[$match_id]='form_d';
-            }elseif($value->loss > 0){
-                $array_form[$match_id]='form_l';
-            }       
-        }
-        if($won > 0){
-            $array_form[$match_id]='form_w';
-        }elseif($draw > 0){
-            $array_form[$match_id]='form_d';
-        }elseif($loss > 0){
-            $array_form[$match_id]='form_l';
-        }
-        return json_encode($array_form);
-    }
 
-    public function get_RankingEldwry($sub_eldwry_id=0,$limit=18,$offset=0){
+    public function get_RankingEldwry($colum_subeldwry='link',$val_subeldwry='',$limit=18,$offset=0){
         $eldwry=Eldwry::get_currentDwry();
-        $return_data=[];
+        $ranking_eldwry=[];
+        $subeldwry='';
         if(isset($eldwry->id)){
-            if($sub_eldwry_id <= 0){
-                $current_subeldwry=Subeldwry::get_BeforCurrentSubDwry();
-                if(isset($current_subeldwry->id)){
-                    $sub_eldwry_id=$current_subeldwry->id;
-                }
+            if(empty($val_subeldwry)){
+                $subeldwry=Subeldwry::get_BeforCurrentSubDwry();
+            }else{
+                $subeldwry=Subeldwry::get_SubeldwryRow($val_subeldwry, $colum_subeldwry);
             }
-            if($sub_eldwry_id >0){
-                $data=RankingEldwry::sum_SubldwryID($eldwry->id,$sub_eldwry_id,$limit,$offset);
-                $return_data= RankingEldwryResource::collection($data);
+            if(isset($subeldwry->id)){
+                $data=RankingEldwry::sum_SubldwryID($eldwry->id,$subeldwry->id,$limit,$offset);
+                $ranking_eldwry= RankingEldwryResource::collection($data);
             }
         }
-        return $return_data;
+        return array('ranking_eldwry'=>$ranking_eldwry,'active_subeldwry'=>$subeldwry);
     } 
+
+    function get_subeldwry_ranking_eldwry(){
+        $eldwry =Eldwry::get_currentDwry();
+        $subeldwry=[];
+        if(isset($eldwry->id)){
+            $subeldwry=Subeldwry::get_BeforCurrentSubDwry(1,'',0);
+        }
+        return SubeldwryResource::collection($subeldwry);
+    }
 }

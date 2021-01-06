@@ -13,7 +13,7 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/add_watch": {
+        "/api/v1/add_watch": {
             "post": {
                 "tags": [
                     "watch"
@@ -76,7 +76,7 @@
                 }
             }
         },
-        "/add_del_like": {
+        "/api/v1/add_del_like": {
             "post": {
                 "tags": [
                     "like,dislike"
@@ -149,7 +149,7 @@
                 }
             }
         },
-        "/uploadImage": {
+        "/api/v1/uploadImage": {
             "post": {
                 "tags": [
                     "upload"
@@ -213,7 +213,7 @@
                 }
             }
         },
-        "/uploadImageFile": {
+        "/api/v1/uploadImageFile": {
             "post": {
                 "tags": [
                     "upload"
@@ -277,7 +277,7 @@
                 }
             }
         },
-        "/uploadVideo": {
+        "/api/v1/uploadVideo": {
             "post": {
                 "tags": [
                     "upload"
@@ -341,7 +341,7 @@
                 }
             }
         },
-        "/uploadAudio": {
+        "/api/v1/uploadAudio": {
             "post": {
                 "tags": [
                     "upload"
@@ -405,7 +405,7 @@
                 }
             }
         },
-        "/uploadAudioFile": {
+        "/api/v1/uploadAudioFile": {
             "post": {
                 "tags": [
                     "upload"
@@ -469,7 +469,7 @@
                 }
             }
         },
-        "/get_country": {
+        "/api/v1/get_country": {
             "get": {
                 "tags": [
                     "auth"
@@ -519,7 +519,7 @@
                 }
             }
         },
-        "/get_city": {
+        "/api/v1/get_city": {
             "get": {
                 "tags": [
                     "auth"
@@ -569,7 +569,7 @@
                 }
             }
         },
-        "/get_teams": {
+        "/api/v1/get_teams": {
             "get": {
                 "tags": [
                     "auth"
@@ -619,7 +619,7 @@
                 }
             }
         },
-        "/register": {
+        "/api/v1/register": {
             "post": {
                 "tags": [
                     "auth"
@@ -755,7 +755,7 @@
                 }
             }
         },
-        "/login/email": {
+        "/api/v1/login/email": {
             "post": {
                 "tags": [
                     "auth"
@@ -835,7 +835,7 @@
                 }
             }
         },
-        "/logout": {
+        "/api/v1/logout": {
             "post": {
                 "tags": [
                     "auth"
@@ -890,7 +890,7 @@
                 }
             }
         },
-        "/comments": {
+        "/api/v1/comments": {
             "post": {
                 "tags": [
                     "comment"
@@ -969,7 +969,7 @@
                 }
             }
         },
-        "/add_comment": {
+        "/api/v1/add_comment": {
             "post": {
                 "tags": [
                     "comment"
@@ -1095,7 +1095,7 @@
                 }
             }
         },
-        "/update_comment": {
+        "/api/v1/update_comment": {
             "post": {
                 "tags": [
                     "comment"
@@ -1199,7 +1199,7 @@
                 }
             }
         },
-        "/delete_comment": {
+        "/api/v1/delete_comment": {
             "post": {
                 "tags": [
                     "comment"
@@ -1271,7 +1271,7 @@
                 }
             }
         },
-        "/subeldwry/{link}/fixtures": {
+        "/api/v1/subeldwry/{link}/fixtures": {
             "get": {
                 "tags": [
                     "subeldwry_fixtures"
@@ -1327,7 +1327,7 @@
                 }
             }
         },
-        "/fixtures": {
+        "/api/v1/fixtures": {
             "get": {
                 "tags": [
                     "subeldwry_fixtures"
@@ -1390,7 +1390,7 @@
                 }
             }
         },
-        "/fixtures/{link}": {
+        "/api/v1/fixtures/{link}": {
             "get": {
                 "tags": [
                     "subeldwry_fixtures"
@@ -1446,7 +1446,7 @@
                 }
             }
         },
-        "/eldwry_locations": {
+        "/api/v1/eldwry_locations": {
             "post": {
                 "tags": [
                     "game"
@@ -1501,7 +1501,7 @@
                 }
             }
         },
-        "/players_by_type": {
+        "/api/v1/players_by_type": {
             "post": {
                 "tags": [
                     "game"
@@ -1566,7 +1566,7 @@
                 }
             }
         },
-        "/filterPlayer": {
+        "/api/v1/filterPlayer": {
             "post": {
                 "tags": [
                     "game"
@@ -1677,7 +1677,7 @@
                 }
             }
         },
-        "/player_master": {
+        "/api/v1/player_master": {
             "post": {
                 "tags": [
                     "game"
@@ -1732,7 +1732,7 @@
                 }
             }
         },
-        "/auto_selection_player": {
+        "/api/v1/auto_selection_player": {
             "post": {
                 "tags": [
                     "game"
@@ -1787,7 +1787,7 @@
                 }
             }
         },
-        "/reset_all_player": {
+        "/api/v1/reset_all_player": {
             "post": {
                 "tags": [
                     "game"
@@ -1842,7 +1842,7 @@
                 }
             }
         },
-        "/group_eldwry/setting_admin/{type_group}/{link_group}": {
+        "/api/v1/group_eldwry/setting_admin/{type_group}/{link_group}": {
             "get": {
                 "tags": [
                     "group_eldwry"
@@ -1915,7 +1915,7 @@
                 }
             }
         },
-        "/group_eldwry/add_admin/{type_group}/{link_group}": {
+        "/api/v1/group_eldwry/add_admin/{type_group}/{link_group}": {
             "post": {
                 "tags": [
                     "group_eldwry"
@@ -1997,7 +1997,7 @@
                 }
             }
         },
-        "/group_eldwry/delete_player/{type_group}/{link_group}": {
+        "/api/v1/group_eldwry/delete_player/{type_group}/{link_group}": {
             "delete": {
                 "tags": [
                     "group_eldwry"
@@ -2079,7 +2079,7 @@
                 }
             }
         },
-        "/group_eldwry/setting_invite/{type_group}/{link_group}": {
+        "/api/v1/group_eldwry/setting_invite/{type_group}/{link_group}": {
             "get": {
                 "tags": [
                     "group_eldwry"
@@ -2152,7 +2152,7 @@
                 }
             }
         },
-        "/group_eldwry/join/{type_group}": {
+        "/api/v1/group_eldwry/join/{type_group}": {
             "post": {
                 "tags": [
                     "group_eldwry"
@@ -2232,7 +2232,7 @@
                 }
             }
         },
-        "/group_eldwry/{type_group}": {
+        "/api/v1/group_eldwry/{type_group}": {
             "get": {
                 "tags": [
                     "group_eldwry"
@@ -2296,7 +2296,7 @@
                 }
             }
         },
-        "/group_eldwry/subeldwrys/{type_group}/{link_group}": {
+        "/api/v1/group_eldwry/subeldwrys/{type_group}/{link_group}": {
             "get": {
                 "tags": [
                     "group_eldwry"
@@ -2369,7 +2369,7 @@
                 }
             }
         },
-        "/group_eldwry/standings/{type_group}/{link_group}": {
+        "/api/v1/group_eldwry/standings/{type_group}/{link_group}": {
             "post": {
                 "tags": [
                     "group_eldwry"
@@ -2450,7 +2450,7 @@
                 }
             }
         },
-        "/group_eldwry/leave/{type_group}/{link_group}": {
+        "/api/v1/group_eldwry/leave/{type_group}/{link_group}": {
             "put": {
                 "tags": [
                     "group_eldwry"
@@ -2523,7 +2523,7 @@
                 }
             }
         },
-        "/group_eldwry/create/{type_group}": {
+        "/api/v1/group_eldwry/create/{type_group}": {
             "post": {
                 "tags": [
                     "group_eldwry"
@@ -2605,7 +2605,7 @@
                 }
             }
         },
-        "/group_eldwry/update/{type_group}/{link_group}": {
+        "/api/v1/group_eldwry/update/{type_group}/{link_group}": {
             "put": {
                 "tags": [
                     "group_eldwry"
@@ -2696,7 +2696,7 @@
                 }
             }
         },
-        "/group_eldwry/stop/{type_group}/{link_group}": {
+        "/api/v1/group_eldwry/stop/{type_group}/{link_group}": {
             "put": {
                 "tags": [
                     "group_eldwry"
@@ -2769,7 +2769,7 @@
                 }
             }
         },
-        "/player_myteam": {
+        "/api/v1/player_myteam": {
             "post": {
                 "tags": [
                     "myteam"
@@ -2824,7 +2824,7 @@
                 }
             }
         },
-        "/add_captain_assist": {
+        "/api/v1/add_captain_assist": {
             "post": {
                 "tags": [
                     "myteam"
@@ -2899,7 +2899,7 @@
                 }
             }
         },
-        "/get_lineup": {
+        "/api/v1/get_lineup": {
             "post": {
                 "tags": [
                     "myteam"
@@ -2954,7 +2954,7 @@
                 }
             }
         },
-        "/add_lineup": {
+        "/api/v1/add_lineup": {
             "post": {
                 "tags": [
                     "myteam"
@@ -3019,7 +3019,7 @@
                 }
             }
         },
-        "/check_insideChange": {
+        "/api/v1/check_insideChange": {
             "post": {
                 "tags": [
                     "myteam"
@@ -3120,7 +3120,7 @@
                 }
             }
         },
-        "/add_insideChange": {
+        "/api/v1/add_insideChange": {
             "post": {
                 "tags": [
                     "myteam"
@@ -3215,7 +3215,7 @@
                 }
             }
         },
-        "/add_direct_insideChange": {
+        "/api/v1/add_direct_insideChange": {
             "post": {
                 "tags": [
                     "myteam"
@@ -3290,7 +3290,7 @@
                 }
             }
         },
-        "/news": {
+        "/api/v1/news": {
             "post": {
                 "tags": [
                     "news"
@@ -3354,7 +3354,7 @@
                 }
             }
         },
-        "/news/followingNews": {
+        "/api/v1/news/followingNews": {
             "post": {
                 "tags": [
                     "news"
@@ -3425,7 +3425,7 @@
                 }
             }
         },
-        "/news/single": {
+        "/api/v1/news/single": {
             "post": {
                 "tags": [
                     "news"
@@ -3481,7 +3481,7 @@
                 }
             }
         },
-        "/search": {
+        "/api/v1/search": {
             "post": {
                 "tags": [
                     "search"
@@ -3543,7 +3543,7 @@
                 }
             }
         },
-        "/notifications": {
+        "/api/v1/notifications": {
             "get": {
                 "tags": [
                     "notifications"
@@ -3601,7 +3601,7 @@
                 }
             }
         },
-        "/update_notif": {
+        "/api/v1/update_notif": {
             "post": {
                 "tags": [
                     "notifications"
@@ -3665,7 +3665,7 @@
                 }
             }
         },
-        "/version": {
+        "/api/v1/version": {
             "post": {
                 "tags": [
                     "page"
@@ -3712,7 +3712,7 @@
                 }
             }
         },
-        "/home": {
+        "/api/v1/home": {
             "post": {
                 "tags": [
                     "page"
@@ -3782,7 +3782,7 @@
                 }
             }
         },
-        "/instraction": {
+        "/api/v1/instraction": {
             "post": {
                 "tags": [
                     "page"
@@ -3829,7 +3829,7 @@
                 }
             }
         },
-        "/award": {
+        "/api/v1/award": {
             "post": {
                 "tags": [
                     "page"
@@ -3876,7 +3876,7 @@
                 }
             }
         },
-        "/about": {
+        "/api/v1/about": {
             "post": {
                 "tags": [
                     "page"
@@ -3923,7 +3923,7 @@
                 }
             }
         },
-        "/terms": {
+        "/api/v1/terms": {
             "post": {
                 "tags": [
                     "page"
@@ -3970,7 +3970,7 @@
                 }
             }
         },
-        "/contact_us": {
+        "/api/v1/contact_us": {
             "post": {
                 "tags": [
                     "page"
@@ -4017,7 +4017,7 @@
                 }
             }
         },
-        "/add_contact_us": {
+        "/api/v1/add_contact_us": {
             "post": {
                 "tags": [
                     "page"
@@ -4111,7 +4111,7 @@
                 }
             }
         },
-        "/forgetpassword": {
+        "/api/v1/forgetpassword": {
             "post": {
                 "tags": [
                     "auth"
@@ -4166,7 +4166,7 @@
                 }
             }
         },
-        "/password/confirm_reset": {
+        "/api/v1/password/confirm_reset": {
             "post": {
                 "tags": [
                     "auth"
@@ -4229,7 +4229,7 @@
                 }
             }
         },
-        "/restpassword": {
+        "/api/v1/restpassword": {
             "post": {
                 "tags": [
                     "auth"
@@ -4292,7 +4292,7 @@
                 }
             }
         },
-        "/payment/card": {
+        "/api/v1/payment/card": {
             "post": {
                 "tags": [
                     "substitute"
@@ -4365,7 +4365,7 @@
                 }
             }
         },
-        "/confirmPayment/card": {
+        "/api/v1/confirmPayment/card": {
             "post": {
                 "tags": [
                     "substitute"
@@ -4438,7 +4438,7 @@
                 }
             }
         },
-        "/player": {
+        "/api/v1/player": {
             "post": {
                 "tags": [
                     "game"
@@ -4503,7 +4503,7 @@
                 }
             }
         },
-        "/add_player": {
+        "/api/v1/add_player": {
             "post": {
                 "tags": [
                     "game"
@@ -4568,7 +4568,7 @@
                 }
             }
         },
-        "/delete_player": {
+        "/api/v1/delete_player": {
             "post": {
                 "tags": [
                     "game"
@@ -4643,7 +4643,7 @@
                 }
             }
         },
-        "/change_player": {
+        "/api/v1/change_player": {
             "post": {
                 "tags": [
                     "game"
@@ -4728,7 +4728,7 @@
                 }
             }
         },
-        "/checknum_myteam": {
+        "/api/v1/checknum_myteam": {
             "post": {
                 "tags": [
                     "game"
@@ -4783,7 +4783,7 @@
                 }
             }
         },
-        "/add_myteam": {
+        "/api/v1/add_myteam": {
             "post": {
                 "tags": [
                     "game"
@@ -4848,7 +4848,7 @@
                 }
             }
         },
-        "/home_points_eldwry": {
+        "/api/v1/home_points_eldwry": {
             "get": {
                 "tags": [
                     "points"
@@ -4903,7 +4903,7 @@
                 }
             }
         },
-        "/public_points_eldwry": {
+        "/api/v1/public_points_eldwry": {
             "get": {
                 "tags": [
                     "points"
@@ -4958,7 +4958,7 @@
                 }
             }
         },
-        "/points_eldwry": {
+        "/api/v1/points_eldwry": {
             "get": {
                 "tags": [
                     "points"
@@ -5013,7 +5013,7 @@
                 }
             }
         },
-        "/points_subeldwry": {
+        "/api/v1/points_subeldwry": {
             "post": {
                 "tags": [
                     "points"
@@ -5078,7 +5078,7 @@
                 }
             }
         },
-        "/pointplayersubeldwry": {
+        "/api/v1/pointplayersubeldwry": {
             "post": {
                 "tags": [
                     "points"
@@ -5153,7 +5153,126 @@
                 }
             }
         },
-        "/social/login": {
+        "/api/v1/ranking_eldwry": {
+            "get": {
+                "tags": [
+                    "ranking_eldwry"
+                ],
+                "summary": "get ranking_eldwry",
+                "description": "",
+                "operationId": "ranking_eldwry",
+                "parameters": [
+                    {
+                        "name": "type-dev",
+                        "in": "header",
+                        "description": "ios or android",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "ios"
+                        }
+                    },
+                    {
+                        "name": "val-dev",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "sakb"
+                        }
+                    },
+                    {
+                        "name": "lang",
+                        "in": "header",
+                        "description": "default lang is ar ( ar , en)",
+                        "schema": {
+                            "type": "string",
+                            "default": "ar"
+                        }
+                    },
+                    {
+                        "name": "subeldwry_link",
+                        "in": "path",
+                        "description": "link of subeldwry if it is empty will return current ",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "num_page",
+                        "in": "query",
+                        "description": " number of page start from zero ( 0 )",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": " limit is number ranking_eldwry will send in each time default ( 18 )",
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/v1/ranking_eldwry/subeldwry": {
+            "get": {
+                "tags": [
+                    "ranking_eldwry"
+                ],
+                "summary": "get all subeldwry of ranking_eldwry",
+                "operationId": "subeldwry_ranking_eldwry",
+                "parameters": [
+                    {
+                        "name": "type-dev",
+                        "in": "header",
+                        "description": "ios or android",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "ios"
+                        }
+                    },
+                    {
+                        "name": "val-dev",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "default": "sakb"
+                        }
+                    },
+                    {
+                        "name": "lang",
+                        "in": "header",
+                        "description": "default lang is ar ( ar , en)",
+                        "schema": {
+                            "type": "string",
+                            "default": "ar"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    },
+                    "400": {
+                        "description": "error"
+                    }
+                }
+            }
+        },
+        "/api/v1/social/login": {
             "post": {
                 "tags": [
                     "auth"
@@ -5254,7 +5373,7 @@
                 }
             }
         },
-        "/statistics": {
+        "/api/v1/statistics": {
             "post": {
                 "tags": [
                     "statistics"
@@ -5348,7 +5467,7 @@
                 }
             }
         },
-        "/subeldwry": {
+        "/api/v1/subeldwry": {
             "get": {
                 "tags": [
                     "subeldwry_fixtures"
@@ -5395,7 +5514,7 @@
                 }
             }
         },
-        "/active_subeldwry": {
+        "/api/v1/active_subeldwry": {
             "get": {
                 "tags": [
                     "subeldwry_fixtures"
@@ -5442,7 +5561,7 @@
                 }
             }
         },
-        "/addFollowingTeam": {
+        "/api/v1/addFollowingTeam": {
             "post": {
                 "tags": [
                     "followingTeams"
@@ -5507,7 +5626,7 @@
                 }
             }
         },
-        "/followingMatches": {
+        "/api/v1/followingMatches": {
             "post": {
                 "tags": [
                     "followingTeams"
@@ -5578,7 +5697,7 @@
                 }
             }
         },
-        "/count_team_players": {
+        "/api/v1/count_team_players": {
             "get": {
                 "tags": [
                     "substitute"
@@ -5635,7 +5754,7 @@
                 }
             }
         },
-        "/status_card/{type}": {
+        "/api/v1/status_card/{type}": {
             "get": {
                 "tags": [
                     "substitute"
@@ -5702,7 +5821,7 @@
                 }
             }
         },
-        "/confirm_substitutePlayer": {
+        "/api/v1/confirm_substitutePlayer": {
             "post": {
                 "tags": [
                     "substitute"
@@ -5775,7 +5894,7 @@
                 }
             }
         },
-        "/check_btns_status": {
+        "/api/v1/check_btns_status": {
             "get": {
                 "tags": [
                     "myteam"
@@ -5830,7 +5949,7 @@
                 }
             }
         },
-        "/triple_captain_card": {
+        "/api/v1/triple_captain_card": {
             "get": {
                 "tags": [
                     "myteam"
@@ -5885,7 +6004,7 @@
                 }
             }
         },
-        "/bench_players_card": {
+        "/api/v1/bench_players_card": {
             "get": {
                 "tags": [
                     "myteam"
@@ -5940,7 +6059,7 @@
                 }
             }
         },
-        "/cancel_players_card": {
+        "/api/v1/cancel_players_card": {
             "post": {
                 "tags": [
                     "myteam"
@@ -6005,7 +6124,7 @@
                 }
             }
         },
-        "/profile": {
+        "/api/v1/profile": {
             "get": {
                 "tags": [
                     "profile"
@@ -6063,7 +6182,7 @@
                 }
             }
         },
-        "/update_profile": {
+        "/api/v1/update_profile": {
             "post": {
                 "tags": [
                     "profile"
@@ -6191,7 +6310,7 @@
                 }
             }
         },
-        "/mypoint": {
+        "/api/v1/mypoint": {
             "post": {
                 "tags": [
                     "profile"
@@ -6246,7 +6365,7 @@
                 }
             }
         },
-        "/update_fcmtoken": {
+        "/api/v1/update_fcmtoken": {
             "post": {
                 "tags": [
                     "profile"
@@ -6309,7 +6428,7 @@
                 }
             }
         },
-        "/change_password": {
+        "/api/v1/change_password": {
             "post": {
                 "tags": [
                     "profile"
@@ -6380,7 +6499,7 @@
                 }
             }
         },
-        "/videos": {
+        "/api/v1/videos": {
             "post": {
                 "tags": [
                     "video"
@@ -6443,7 +6562,7 @@
                 }
             }
         },
-        "/videos/single": {
+        "/api/v1/videos/single": {
             "post": {
                 "tags": [
                     "video"

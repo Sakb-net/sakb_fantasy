@@ -24,7 +24,7 @@ class AuthController extends API_Controller {
 
  /**
      * @OA\Get(
-     *   path="/get_country",
+     *   path="/api/v1/get_country",
      *   tags={"auth"},
      *   summary="get country",
      *   operationId="get_country",
@@ -102,7 +102,7 @@ class AuthController extends API_Controller {
 
     /**
      * @OA\Get(
-     *   path="/get_city",
+     *   path="/api/v1/get_city",
      *   tags={"auth"},
      *   summary="get city",
      *   operationId="get_city",
@@ -158,7 +158,7 @@ class AuthController extends API_Controller {
     }
     /**
      * @OA\Get(
-     *   path="/get_teams",
+     *   path="/api/v1/get_teams",
      *   tags={"auth"},
      *   summary="get Teams",
      *   operationId="get_teams",
@@ -223,7 +223,7 @@ class AuthController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/register",
+     *   path="/api/v1/register",
      *   tags={"auth"},
      *   operationId="register",
      *   summary="creat new account",
@@ -466,7 +466,7 @@ class AuthController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/login/email",
+     *   path="/api/v1/login/email",
      *   tags={"auth"},
      *   operationId="loginEmail",
      *   summary="login by email",
@@ -631,7 +631,7 @@ class AuthController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/logout",
+     *   path="/api/v1/logout",
      *   tags={"auth"},
      *   operationId="logout",
      *   summary="logout",

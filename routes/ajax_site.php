@@ -69,12 +69,13 @@ Route::group([
     Route::post('get_pointsplayer_foruser', ['as' => 'get_pointsplayer_foruser', 'uses' => 'AjaxPointController@get_pointsplayer_foruser']);
 //league/ranking
     Route::post('get_ranking_eldwry', ['as' => 'get_ranking_eldwry', 'uses' => 'AjaxRankingEldwryController@get_ranking_eldwry']);
+    Route::post('get_subeldwry_ranking_eldwry', ['as' => 'get_subeldwry_ranking_eldwry', 'uses' => 'AjaxRankingEldwryController@get_subeldwry_ranking_eldwry']);
 
     //groupEldwry
     Route::post('get_normal_eldwry', ['as' => 'get_normal_eldwry', 'uses' => 'AjaxGroupEldwryController@get_normal_eldwry']);
     Route::post('get_head_eldwry', ['as' => 'get_head_eldwry', 'uses' => 'AjaxGroupEldwryController@get_head_eldwry']);
     Route::post('tab_menu_groupEldwry', ['as' => 'tab_menu_groupEldwry', 'uses' => 'AjaxGroupEldwryController@tab_menu_groupEldwry']);
-    Route::post('get_current_sub_eldwry', ['as' => 'get_current_sub_eldwry', 'uses' => 'AjaxGroupEldwryController@get_current_sub_eldwry']);
+    Route::post('get_current_subeldwry_group', ['as' => 'get_current_subeldwry_group', 'uses' => 'AjaxGroupEldwryController@get_current_subeldwry_group']);
     Route::post('store_groupEldwry', ['as' => 'store_groupEldwry', 'uses' => 'AjaxGroupEldwryController@store_groupEldwry']);
     Route::post('store_head_groupEldwry', ['as' => 'store_head_groupEldwry', 'uses' => 'AjaxGroupEldwryController@store_head_groupEldwry']);
     Route::post('send_invite_emailphone', ['as' => 'send_invite_emailphone', 'uses' => 'AjaxGroupEldwryController@send_invite_emailphone']);

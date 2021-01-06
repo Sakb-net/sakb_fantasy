@@ -53,7 +53,7 @@ class HomeController extends SiteController {
                     $value->date = date("d/m/Y",$time);
                 }
 
-                $followTeams = TeamUser :: select('team_id')->where('user_id',Auth::user()->id)->pluck('team_id')->toArray();
+                $followTeams = TeamUser::select('team_id')->where('user_id',Auth::user()->id)->pluck('team_id')->toArray();
             
                 if(count($followTeams) > 0){
                     $followTeamMatches = Match::whereIn('first_team_id',$followTeams)->orWhereIn('second_team_id',$followTeams)->limit(10)->orderBy('id','desc')->get();

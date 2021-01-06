@@ -20,7 +20,7 @@ class Notif_SearchController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/search",
+     *   path="/api/v1/search",
      *   tags={"search"},
      *   operationId="search",
      *   summary="search",
@@ -126,7 +126,7 @@ class Notif_SearchController extends API_Controller {
 
     /**
      * @OA\Get(
-     *   path="/notifications",
+     *   path="/api/v1/notifications",
      *   tags={"notifications"},
      *   summary="notifications",
      *   operationId="notifications",
@@ -228,7 +228,7 @@ class Notif_SearchController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/update_notif",
+     *   path="/api/v1/update_notif",
      *   tags={"notifications"},
      *   operationId="update_notif",
      *   summary="update notifications",

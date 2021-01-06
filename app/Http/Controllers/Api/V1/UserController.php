@@ -22,7 +22,7 @@ class UserController extends API_Controller {
 
     /**
      * @OA\Get(
-     *   path="/profile",
+     *   path="/api/v1/profile",
      *   tags={"profile"},
      *   summary="get profile of current user",
      *   operationId="profile",
@@ -115,7 +115,7 @@ class UserController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/update_profile",
+     *   path="/api/v1/update_profile",
      *   tags={"profile"},
      *   operationId="update profile current user",
      *   summary="v1/update_profile",
@@ -388,7 +388,7 @@ class UserController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/mypoint",
+     *   path="/api/v1/mypoint",
      *   tags={"profile"},
      *   operationId="mypoint",
      *   summary="get point of current user",
@@ -486,7 +486,7 @@ class UserController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/update_fcmtoken",
+     *   path="/api/v1/update_fcmtoken",
      *   tags={"profile"},
      *   operationId="update_fcmtoken",
      *   summary=" update fcmtoken for firebase",
@@ -601,7 +601,7 @@ class UserController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/change_password",
+     *   path="/api/v1/change_password",
      *   tags={"profile"},
      *   operationId="change_password",
      *   summary="change password",

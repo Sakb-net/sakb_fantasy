@@ -67,14 +67,14 @@ class AjaxGroupEldwryController extends SiteController {
         }
     }
 
-    public function get_current_sub_eldwry(Request $request) {
+    public function get_current_subeldwry_group(Request $request) {
         if ($request->ajax()) {
             $response = $link_group = $type_group ='' ;
             $input = $request->all();
             foreach ($input as $key => $value) {
                 $$key= stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
             }
-            $page_data= $this->Class_GroupEldwry->get_current_sub_eldwry(Auth::user(),$link_group,$type_group);
+            $page_data= $this->Class_GroupEldwry->get_current_subeldwry_group(Auth::user(),$link_group,$type_group);
             return response()->json(['status' =>1, 'response' => $response,'data'=>$page_data]);
         }
     }

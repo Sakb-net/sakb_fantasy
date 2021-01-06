@@ -20,7 +20,7 @@ class GroupEldwryAdminController extends API_Controller {
 
     /**
      * @OA\Get(
-     *  path="/group_eldwry/setting_admin/{type_group}/{link_group}",
+     *  path="/api/v1/group_eldwry/setting_admin/{type_group}/{link_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/setting_admin",
      *   summary="setting_admin for group eldwry ",
@@ -138,7 +138,7 @@ class GroupEldwryAdminController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/group_eldwry/add_admin/{type_group}/{link_group}",
+     *  path="/api/v1/group_eldwry/add_admin/{type_group}/{link_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/add_admin",
      *   summary="add_admin from group eldwry of user",
@@ -269,7 +269,7 @@ class GroupEldwryAdminController extends API_Controller {
 
     /**
      * @OA\Delete(
-     *  path="/group_eldwry/delete_player/{type_group}/{link_group}",
+     *  path="/api/v1/group_eldwry/delete_player/{type_group}/{link_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/delete_player",
      *   summary="delete_player from group eldwry of user",
@@ -400,7 +400,7 @@ class GroupEldwryAdminController extends API_Controller {
 
     /**
      * @OA\Get(
-     *  path="/group_eldwry/setting_invite/{type_group}/{link_group}",
+     *  path="/api/v1/group_eldwry/setting_invite/{type_group}/{link_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/setting_invite",
      *   summary="setting_invite for group eldwry of user",
@@ -519,7 +519,7 @@ class GroupEldwryAdminController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/group_eldwry/join/{type_group}",
+     *  path="/api/v1/group_eldwry/join/{type_group}",
      *   tags={"group_eldwry"},
      *   operationId="group_eldwry/join",
      *   summary="join in group eldwry of user",

@@ -22,7 +22,7 @@ class CommentController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/comments",
+     *   path="/api/v1/comments",
      *   tags={"comment"},
      *   operationId="comments",
      *   summary="get all comments",
@@ -160,7 +160,7 @@ class CommentController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/add_comment",
+     *   path="/api/v1/add_comment",
      *   tags={"comment"},
      *   operationId="add_comment",
      *   summary="add comment",
@@ -398,7 +398,7 @@ class CommentController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/update_comment",
+     *   path="/api/v1/update_comment",
      *   tags={"comment"},
      *   operationId="update_comment",
      *   summary="update comment",
@@ -595,7 +595,7 @@ class CommentController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/delete_comment",
+     *   path="/api/v1/delete_comment",
      *   tags={"comment"},
      *   operationId="delete_comment",
      *   summary="delete comment",

@@ -24,7 +24,7 @@ class PointsController extends API_Controller {
 
     /**
      * @OA\Get(
-     *  path="/home_points_eldwry",
+     *  path="/api/v1/home_points_eldwry",
      *   tags={"points"},
      *   operationId="home_points_eldwry",
      *   summary="get all points of user in current subeldwry",
@@ -124,7 +124,7 @@ class PointsController extends API_Controller {
 
     /**
      * @OA\Get(
-     *  path="/public_points_eldwry",
+     *  path="/api/v1/public_points_eldwry",
      *   tags={"points"},
      *   operationId="public_points_eldwry",
      *   summary="get all points of user in eldwry",
@@ -226,7 +226,7 @@ class PointsController extends API_Controller {
 
     /**
      * @OA\Get(
-     *  path="/points_eldwry",
+     *  path="/api/v1/points_eldwry",
      *   tags={"points"},
      *   operationId="points_eldwry",
      *   summary="get all points of user in eldwry",
@@ -324,7 +324,7 @@ class PointsController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/points_subeldwry",
+     *  path="/api/v1/points_subeldwry",
      *   tags={"points"},
      *   operationId="points_subeldwry",
      *   summary="get all points of user in subeldwry",
@@ -435,7 +435,7 @@ class PointsController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/pointplayersubeldwry",
+     *  path="/api/v1/pointplayersubeldwry",
      *   tags={"points"},
      *   operationId="pointplayersubeldwry",
      *   summary="get details all points of user in sub eldwry",

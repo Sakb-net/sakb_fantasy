@@ -21,7 +21,7 @@ class PaymentCardController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/payment/card",
+     *   path="/api/v1/payment/card",
      *   tags={"substitute"},
      *   operationId="payment_card",
      *   summary="payment for card",
@@ -167,7 +167,7 @@ class PaymentCardController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/confirmPayment/card",
+     *   path="/api/v1/confirmPayment/card",
      *   tags={"substitute"},
      *   operationId="confirmPayment_card",
      *   summary="confirm Payment of card for substitute",

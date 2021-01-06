@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller as BaseController;
 use App\Models\Options;
 //use App\Models\Language;
 use Auth;
 
-class SiteController extends Controller {
+class SiteController extends BaseController {
     /**
      * Create a new controller instance.
      *

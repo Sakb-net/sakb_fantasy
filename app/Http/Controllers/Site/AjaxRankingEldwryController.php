@@ -23,10 +23,20 @@ class AjaxRankingEldwryController extends SiteController {
     public function get_ranking_eldwry(Request $request) {
         if ($request->ajax()) {
             $response =1;
+            $subeldwry_link='';
             $input = $request->all();
-            // $type_page = stripslashes(trim(filter_var($input['type_page'], FILTER_SANITIZE_STRING)));
-            $data=$this->RankingEldwryRepository->get_RankingEldwry(); //0,$limit,$offset
-                // print_r($data);die;
+            foreach ($input as $key => $value) {
+                $$key = stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
+            }
+            $data=$this->RankingEldwryRepository->get_RankingEldwry('link',$subeldwry_link); //$limit,$offset
+            return response()->json(['status' =>1, 'response' => $response,'data'=>$data]);
+        }
+    }
+
+    public function get_subeldwry_ranking_eldwry(Request $request) {
+        if ($request->ajax()) {
+            $response =1;
+            $data=$this->RankingEldwryRepository->get_subeldwry_ranking_eldwry();
             return response()->json(['status' =>1, 'response' => $response,'data'=>$data]);
         }
     }

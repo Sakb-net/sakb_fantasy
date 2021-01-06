@@ -20,7 +20,7 @@ class NewsController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/news",
+     *  path="/api/v1/news",
      *   tags={"news"},
      *   operationId="v1_news",
      *   summary="get news",
@@ -114,7 +114,7 @@ class NewsController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/news/followingNews",
+     *  path="/api/v1/news/followingNews",
      *   tags={"news"},
      *   operationId="followingNews",
      *   summary="get following news",
@@ -226,7 +226,7 @@ class NewsController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/news/single",
+     *  path="/api/v1/news/single",
      *   tags={"news"},
      *   operationId="newsSingle",
      *   summary="get single news by link",

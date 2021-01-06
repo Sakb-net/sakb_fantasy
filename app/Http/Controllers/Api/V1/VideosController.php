@@ -19,7 +19,7 @@ class VideosController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/videos",
+     *  path="/api/v1/videos",
      *   tags={"video"},
      *   operationId="videos",
      *   summary="get all videos",
@@ -109,7 +109,7 @@ class VideosController extends API_Controller {
 
     /**
      * @OA\Post(
-     *  path="/videos/single",
+     *  path="/api/v1/videos/single",
      *   tags={"video"},
      *   operationId="videosSingle",
      *   summary=" get single video by link",

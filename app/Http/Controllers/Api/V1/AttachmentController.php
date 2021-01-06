@@ -18,7 +18,7 @@ class AttachmentController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/uploadImage",
+     *   path="/api/v1/uploadImage",
      *   tags={"upload"},
      *   operationId="uploadImage",
      *   summary="upload image by using String Based46 ",
@@ -134,7 +134,7 @@ class AttachmentController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/uploadImageFile",
+     *   path="/api/v1/uploadImageFile",
      *   tags={"upload"},
      *   operationId="uploadImageFile",
      *   summary="upload image by uploading image from your computer ",
@@ -273,7 +273,7 @@ class AttachmentController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/uploadVideo",
+     *   path="/api/v1/uploadVideo",
      *   tags={"upload"},
      *   operationId="uploadVideo",
      *   summary="upload video by using String Based46 ",
@@ -388,7 +388,7 @@ class AttachmentController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/uploadAudio",
+     *   path="/api/v1/uploadAudio",
      *   tags={"upload"},
      *   operationId="uploadAudio",
      *   summary="upload audio by using String Based46 ",
@@ -503,7 +503,7 @@ class AttachmentController extends API_Controller {
 
     /**
      * @OA\Post(
-     *   path="/uploadAudioFile",
+     *   path="/api/v1/uploadAudioFile",
      *   tags={"upload"},
      *   operationId="uploadAudioFile",
      *   summary="upload audio by uploading audio from your computer",

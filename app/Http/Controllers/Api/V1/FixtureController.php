@@ -23,7 +23,7 @@ class FixtureController extends API_Controller {
 
     /**
      * @OA\get(
-     *  path="/subeldwry/{link}/fixtures",
+     *  path="/api/v1/subeldwry/{link}/fixtures",
      *   tags={"subeldwry_fixtures"},
      *   operationId="/{link}/fixtures",
      *   summary="get fixtures by link subeldwry",
@@ -106,7 +106,7 @@ class FixtureController extends API_Controller {
 
     /**
      * @OA\get(
-     *  path="/fixtures",
+     *  path="/api/v1/fixtures",
      *   tags={"subeldwry_fixtures"},
      *   operationId="fixtures",
      *   summary="get all fixtures",
@@ -194,7 +194,7 @@ class FixtureController extends API_Controller {
 
     /**
      * @OA\get(
-     *  path="/fixtures/{link}",
+     *  path="/api/v1/fixtures/{link}",
      *   tags={"subeldwry_fixtures"},
      *   operationId="/fixtures/{link}",
      *   summary="get details match/fixture by link fixture",

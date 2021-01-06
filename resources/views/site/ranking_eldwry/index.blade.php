@@ -9,24 +9,24 @@
                     <div class="all-fix">
                         <div class="col-md-4 col-sm-6">
                             <label class="control-label">عرض حسب الجولة:</label>
-                            <select class="form-control ">
-                                <option>الجولة 1</option>
-                                <option>الجولة 2</option>
-                                <option>الجولة 3</option>
+                            <select class="form-control filter_subeldwry_ranking">
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <label class="control-label">عرض حسب علي أرضه أو لا:</label>
-                            <select class="form-control ">
-                                <option>علي أرضه</option>
-                                <option>علي أرض الخصم</option>
+                            <select class="form-control filter_location_match_ranking">
+                                <option value="">عرض حسب</option>
+                                <option value="home">علي أرضه</option>
+                                <option value="away">علي أرض الخصم</option>
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6">
                             <label class="control-label">عرض حسب الفوز أو الخسارة:</label>
-                            <select class="form-control ">
-                                <option>الفوز</option>
-                                <option>الخسارة</option>
+                            <select class="form-control filter_result_match_ranking">
+                                <option value="">عرض حسب</option>
+                                <option value="won">الفوز</option>
+                                <option value="draw">تعادل</option>
+                                <option value="loss">الخسارة</option>
                             </select>
                         </div>
                     </div>

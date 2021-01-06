@@ -25,24 +25,33 @@ class RankingEldwryResource extends JsonResource
         $all_sum_data=RankingEldwry::sum_all_before_and_SubldwryTeam($this->eldwry_id,$this->sub_eldwry_id,$this->team_id);
 
         $all_form_data=RankingEldwry::get_Last_RankingEldwry($this->eldwry_id,$this->team_id,$this->sub_eldwr_id,5,1,'DESC');
-        
-        // $array_form_match=json_decode($all_form_data[0]->form, true);
+        $team=$this->team;
         $array_form=[];
+        $class_state='';
         foreach ($all_form_data as $key => $val) {
             $val_match=$val->match;
-            if($key==0){
+            if($key==0 && !empty($val->next_match_id)){
                 $next_match=$val->next_match;
             }
             if($val->won > 0){
                 $form_status='w';
+                $class_state .= ' win';
             }elseif ($val->draw > 0) {
                 $form_status='d';
+                $class_state .= ' drawn';
             }else{
                 $form_status='l';
+                $class_state .= ' lose';
             }
             $team_first=$val_match->teams_first;
             $team_second=$val_match->teams_second;
+            $location_type='first_type';
+            if($val_match->second_team_id == $team->id){
+                $location_type='second_type';
+            }
+            $class_state .= ' '.$val_match->$location_type;
             $val_form=[
+                'location_type'=>$val_match->$location_type,
                 'state'=>$form_status,
                 'state_lang'=>trans('app.form_'.$form_status),
                 'match_link' => (string) $val_match->link,
@@ -53,16 +62,25 @@ class RankingEldwryResource extends JsonResource
                 'second_team_image'=>(string)finalValueByLang($team_second->image,'',$lang),
                 'second_team_goon'=>(string) $val_match->second_goon,
                 'date_day'=> day_lang_game($val_match->date, $lang).' '.date("d-m-Y", strtotime($val_match->date)),
-                // 'time'=> (string) ConvertUTC_ToDateCurrentUser12_hour($val_match->date.' '.$val_match->time),
             ];
             $array_form[]=$val_form;
         }
-        $team=$this->team;
-        $flag_next_match_team='teams_first';
-        if($next_match->second_team_id != $team->id){
-            $flag_next_match_team='teams_second';
+        $next_match_array="";
+        if(isset($next_match->id)){    
+            $flag_next_match_team='teams_first';
+            if($next_match->second_team_id != $team->id){
+                $flag_next_match_team='teams_second';
+            }
+            $next_match_team=$next_match->$flag_next_match_team; 
+            $next_match_array=[
+                'match_link' => (string) $next_match->link,
+                'second_team_link' => (string) $next_match_team->link,
+                'second_team_name' => (string) finalValueByLang($next_match_team->lang_name,$next_match_team->name,$lang),
+                'second_team_image' => (string) finalValueByLang($next_match_team->image,'',$lang),
+                'date_day'=> day_lang_game($next_match->date, $lang).' '.date("d-m-Y", strtotime($next_match->date)),
+                'time' =>time_in_12_hour_format($next_match->time),
+            ]; 
         }
-        $next_match_team=$next_match->$flag_next_match_team;    
         return [
             'team_link' =>(string) $team->link,
             'team_name' =>(string) finalValueByLang($team->lang_name,$team->name,$lang),
@@ -78,14 +96,8 @@ class RankingEldwryResource extends JsonResource
             'points' => (string) $all_sum_data[0]->sum_points,
             'form' =>$array_form,
             'current_match' => $array_form[0],
-            'next_match' =>[
-                    'match_link' => (string) $next_match->link,
-                    'second_team_link' => (string) $next_match_team->link,
-                    'second_team_name' => (string) finalValueByLang($next_match_team->lang_name,$next_match_team->name,$lang),
-                    'second_team_image' => (string) finalValueByLang($next_match_team->image,'',$lang),
-                    'date_day'=> day_lang_game($next_match->date, $lang).' '.date("d-m-Y", strtotime($next_match->date)),
-                    'time'=> (string) ConvertUTC_ToDateCurrentUser12_hour($next_match->date.' '.$next_match->time),
-                ],
+            'next_match' =>$next_match_array,
+            'class_state'=>$class_state,
         ];
     }
 }

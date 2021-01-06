@@ -21,7 +21,7 @@ class SubeldwryController extends API_Controller {
 
     /**
      * @OA\get(
-     *  path="/subeldwry",
+     *  path="/api/v1/subeldwry",
      *   tags={"subeldwry_fixtures"},
      *   operationId="subeldwry",
      *   summary="get all subeldwry",
@@ -101,7 +101,7 @@ class SubeldwryController extends API_Controller {
 
     /**
      * @OA\get(
-     *  path="/active_subeldwry",
+     *  path="/api/v1/active_subeldwry",
      *   tags={"subeldwry_fixtures"},
      *   operationId="active_subeldwry",
      *   summary="get current active subeldwry",
