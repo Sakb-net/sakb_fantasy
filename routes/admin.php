@@ -70,7 +70,6 @@ Route::group([
     Route::post('sendmessage', ['as' => 'sendmessage.store', 'uses' => 'OptionController@sendMessageStore']);
 
     //User
-
     Route::get('users/list', ['as' => 'users.list', 'uses' => 'UserController@usersList']);
 
     Route::get('users/{id}/type/{name}', ['as' => 'users.posttype', 'uses' => 'UserController@postType']);

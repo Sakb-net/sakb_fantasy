@@ -13,7 +13,7 @@ use App\Models\Contact;
 use Carbon\Carbon;
 use DB;
 
-class optionController extends AdminController {
+class OptionController extends AdminController {
 
 //******************settings of site*************************
     public function options() {
