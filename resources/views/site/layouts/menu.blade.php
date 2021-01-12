@@ -12,9 +12,6 @@
 <li @if(isset($activ_menu)&&$activ_menu==5) class="active" @endif><a href="{{ route('awards.index') }}">{{trans('app.awards')}}</a></li>
 <li @if(isset($activ_menu)&&$activ_menu==6) class="active" @endif><a href="{{ route('instractions.index') }}">{{trans('app.instractions')}}</a></li>
 <li @if(isset($activ_menu)&&$activ_menu==12) class="active" @endif><a href="{{ route('contact') }}">{{trans('app.contact_us')}}</a></li>
-
-<li @if(isset($activ_menu)&&$activ_menu==13) class="active" @endif><a href="{{ route('league.index') }}">{{trans('app.ranking_eldwry')}}</a></li>
-
 @guest
     <li class="join-us">
     <a href="{{ url('login') }}">{{trans('app.Login')}}</a>

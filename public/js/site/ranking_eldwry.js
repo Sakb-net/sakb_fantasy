@@ -59,9 +59,15 @@ function filter_result_location_match(){
  
     return false;
 }
-function Load_ranking_eldwry(){
+
+function Load_home_ranking_eldwry(){
+    get_home_ranking_eldwry();
+    return false;
+}
+
+function Load_page_ranking_eldwry(){
     get_subeldwry_ranking_eldwry('filter_subeldwry_ranking');
-    get_ranking_eldwry();
+    get_all_ranking_eldwry();
     return false;
 }
 
@@ -93,10 +99,30 @@ function get_subeldwry_ranking_eldwry(class_content){
     return false;
 }
 
-function get_ranking_eldwry(subeldwry_link=''){
+function get_home_ranking_eldwry(subeldwry_link=''){
     $.ajax({
         type: "post",
-        url: url + '/get_ranking_eldwry',
+        url: url + '/get_home_ranking_eldwry',
+        data: {
+            _token: $('meta[name="_token"]').attr('content'),
+            subeldwry_link: subeldwry_link,
+        },
+        cache: false,
+        dataType: 'json',
+        success: function (data) {
+            if (data != "") {
+               draw_home_ranking_eldwry(data.data.ranking_eldwry);
+            }
+        },
+        complete: function (data) {
+            return false;
+        }});
+    return false;
+}
+function get_all_ranking_eldwry(subeldwry_link=''){
+    $.ajax({
+        type: "post",
+        url: url + '/get_all_ranking_eldwry',
         data: {
             _token: $('meta[name="_token"]').attr('content'),
             subeldwry_link: subeldwry_link,
@@ -121,6 +147,37 @@ function afterdraw_ranking_eldwry(active_subeldwry){
     filter_result_location_match();
     return false;
 }
+function draw_home_ranking_eldwry(all_data){
+    var div_section = '';
+    if (all_data != '') {
+        $.each(all_data, function (index, value) {
+            index_num = Number(index) + Number(1);
+            div_section +='<tr>';
+                div_section +='<th>';
+                    div_section +='<div class="order">'+index_num+'</div>';
+                div_section +='</th>';
+                div_section +='<td>';
+                    div_section +='<div class="club-image">';
+                        div_section +='<img src="'+value.team_image+'" alt="club-logo">';
+                    div_section +='</div>';
+                div_section +='</td>';
+                div_section +='<td>';
+                    div_section +='<div class="club-name">'+value.team_name+'</div>';
+                div_section +='</td>';
+                div_section +='<td>'+value.count_played+'</td>';
+                div_section +='<td>'+value.goals_diff+'</td>';
+                div_section +='<td>'+value.points+'</td>';
+            div_section +='</tr>';
+        });
+    } else {
+        div_section +='<tr><td colspan="6">';
+            div_section += info_dataDiv(not_found);
+        div_section +='</td></tr>';
+    }
+    $(".draw_home_ranking_eldwry").text('');
+    $('.draw_home_ranking_eldwry').html(div_section);
+}
+
 
 function draw_ranking_eldwry(all_data){
     var div_section = '';
@@ -272,9 +329,6 @@ function draw_expandableTeam(site_team,current_match,next_match,first_team_link,
                 div_section += '<div class="col-md-4">';
                     div_section += '<a href="'+site_team+'" class="butn float-left">الذهاب لموقع النادي</a>';
                 div_section += '</div>';
-            div_section += '</div>';
-            div_section += '<div class="col-md-12">';
-                div_section += '<hr><h3>مخطط الأداء:</h3>';
             div_section += '</div>';
         div_section += '</div>';
     div_section += '</td>';

@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Http\Resources\RankingEldwryResource;
+use App\Http\Resources\RankingEldwryHomeResource;
 use App\Http\Resources\SubeldwryResource;
 use App\Models\RankingEldwry;
 use App\Models\Eldwry;
@@ -81,10 +82,26 @@ class RankingEldwryRepository
                 $subeldwry=Subeldwry::get_SubeldwryRow($val_subeldwry, $colum_subeldwry);
             }
             if(isset($subeldwry->id)){
-                Session::put('subeldwry_anking',$subeldwry->id);
-                Session::put('eldwry_anking',$eldwry->id);
-                $data=RankingEldwry::sum_all_before_and_SubldwryTeam($eldwry->id,$subeldwry->id,-1,$limit,$offset);
+                Session::put('subeldwry_ranking',$subeldwry->id);
+                Session::put('eldwry_ranking',$eldwry->id);
+                $data=RankingEldwry::all_statistic_all_before_of_subldwry_team($eldwry->id,$subeldwry->id,-1,$limit,$offset);
                 $ranking_eldwry= RankingEldwryResource::collection($data);
+            }
+        }
+        return array('ranking_eldwry'=>$ranking_eldwry,'active_subeldwry'=>$subeldwry);
+    } 
+
+    public function get_home_RankingEldwry(){ //get current Subeldwry
+        $eldwry=Eldwry::get_currentDwry();
+        $ranking_eldwry=[];
+        $subeldwry='';
+        if(isset($eldwry->id)){
+            $subeldwry=Subeldwry::get_BeforCurrentSubDwry();
+            if(isset($subeldwry->id)){
+                Session::put('subeldwry_ranking',$subeldwry->id);
+                Session::put('eldwry_ranking',$eldwry->id);
+                $data=RankingEldwry::statistic_all_before_of_subldwry_team($eldwry->id,$subeldwry->id);
+                $ranking_eldwry= RankingEldwryHomeResource::collection($data);
             }
         }
         return array('ranking_eldwry'=>$ranking_eldwry,'active_subeldwry'=>$subeldwry);

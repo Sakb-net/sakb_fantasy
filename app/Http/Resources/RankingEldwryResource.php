@@ -22,8 +22,8 @@ class RankingEldwryResource extends JsonResource
             setlocale(LC_ALL, 'ar_KW.utf8');
             Carbon::setLocale( \App::getLocale());
         }
-        $subeldwry_id=Session::get('subeldwry_anking');
-        $eldwry_id=Session::get('eldwry_anking');
+        $subeldwry_id=Session::get('subeldwry_ranking');
+        $eldwry_id=Session::get('eldwry_ranking');
         $all_form_data=RankingEldwry::get_Last_RankingEldwry($eldwry_id,$this->team_id,$subeldwry_id,5,1,'DESC');
         $team=$this->team;
         $array_form=[];
