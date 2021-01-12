@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Contact;
+use App\Models\GameHistory;
 use Carbon\Carbon;
 use DB;
 
@@ -114,6 +115,7 @@ class optionController extends AdminController {
         $this->validate($request, [
             // 'site_title' => 'required',
         ]);
+        $data_stop_subeldwry=GameHistory::CheckTime_StopSubeldwry();
 
         $input = $request->all();
         foreach ($input as $key => $value) {

@@ -269,9 +269,16 @@ class Subeldwry extends Model {
     
     public static function getSubeldwry_ByDate($val_date='', $is_active = 1,$order='ASC') {
         $data = static::where('start_date', 'like', '%' . $val_date . '%')->where('is_active', $is_active)->orderBy('id', $order)->first();
-
         return $data;
     }
+
+
+    // public static function getSubeldwry_ByDate($val_date='', $is_active = 1,$order='ASC') {
+    //     $data = static::where('is_active', $is_active)->whereBetween('date', [$startDate, $endDate])->first();
+    //     return $data;
+    // }
+
+
     public static function get_DataSubeldwry_Current($colum = 'id', $val = '', $is_active = 1,$order='DESC',$limit = 0,$offset=-1,$one_row=0) {
         //$current_date = date('Y-m-d H:i:s');
         $start_end_date=CurrentWeek();

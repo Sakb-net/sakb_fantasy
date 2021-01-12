@@ -943,3 +943,29 @@ function get_beforTime_date($val_sec = 0) {
     $cur_date = date("Y-m-d H:i:s", $time); //$cur_date = date("Y-m-d h:i:s a", strtotime("-360 seconds"));
     return $cur_date;
 }
+
+
+function getChekTime($current_date,$time_stop_subeldwry) {
+    $date1 = strtotime($current_date);
+    $date2 = strtotime($time_stop_subeldwry);
+    $diff = abs($date2 - $date1);
+
+    $years = floor($diff / (365*60*60*24));
+    $months = floor(($diff - $years * 365*60*60*24)/ (30*60*60*24)); 
+
+
+    $differneceDate['days'] = floor(($diff - $years * 365*60*60*24 -  $months*30*60*60*24)/ (60*60*24));
+
+    $differneceDate['hours'] = floor(($diff - $years * 365*60*60*24  
+   - $months*30*60*60*24 - $differneceDate['days']*60*60*24) / (60*60));
+
+    $differneceDate['minutes'] = floor(($diff - $years * 365*60*60*24  
+     - $months*30*60*60*24 - $differneceDate['days']*60*60*24 - $differneceDate['hours']*60*60)/ 60);
+
+    $differneceDate['seconds'] = floor(($diff - $years * 365*60*60*24  
+     - $months*30*60*60*24 - $differneceDate['days']*60*60*24 - $differneceDate['hours']*60*60 - $differneceDate['minutes']*60));
+
+    return $differneceDate;
+}
+
+
