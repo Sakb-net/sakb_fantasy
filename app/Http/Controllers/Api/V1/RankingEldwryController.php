@@ -59,7 +59,7 @@ class RankingEldwryController extends API_Controller {
      *   ),
      *  @OA\Parameter(
      *    name="subeldwry_link",
-     *    in= "path",
+     *    in= "query",
      *      @OA\Schema(
      *           type="string",
      *      ),
@@ -91,7 +91,7 @@ class RankingEldwryController extends API_Controller {
      *  )
      * )
      */
-    public function ranking_eldwry(Request $request,$subeldwry_link='') {
+    public function ranking_eldwry(Request $request) {
 
         $data_header = API_Controller::get_DataHeader(getallheaders());
         $access_token = $data_header['access_token'];
@@ -103,6 +103,7 @@ class RankingEldwryController extends API_Controller {
             $response = API_Controller::MessageData('AUTH_NOTALLOW', $lang, 49);
             return response()->json($response, 400);
         }
+        $subeldwry_link = isset($request->subeldwry_link) ? $request->subeldwry_link : '';
         $num_page = isset($request->num_page) ? $request->num_page : 0;
         $limit = isset($request->limit) ? $request->limit : 18;
         $offset = $num_page * $limit;

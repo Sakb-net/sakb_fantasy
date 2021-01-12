@@ -132,7 +132,7 @@ $(document).ready(function () {
         var type_group = obj.attr('data-type');
         var type_page ='group';   
         tab_menu_groupEldwry(type_page,'show_group_groupeldwry',link_group,type_group);
-        get_current_sub_eldwry('subeldwry_groupEldwry',type_group,link_group,'<option value="">'+'overAll'+'</option>');
+        get_current_sub_eldwry('subeldwry_groupEldwry',type_group,link_group,'<option value="">'+overAll+'</option>');
         get_data_group_eldwry(link_group,'',type_group);
     });
 

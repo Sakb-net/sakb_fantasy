@@ -20,7 +20,15 @@ class AjaxRankingEldwryController extends SiteController {
         }
     }
 
-    public function get_ranking_eldwry(Request $request) {
+    public function get_subeldwry_ranking_eldwry(Request $request) {
+        if ($request->ajax()) {
+            $response =1;
+            $data=$this->RankingEldwryRepository->get_subeldwry_ranking_eldwry();
+            return response()->json(['status' =>1, 'response' => $response,'data'=>$data]);
+        }
+    }
+
+    public function get_all_ranking_eldwry(Request $request) {
         if ($request->ajax()) {
             $response =1;
             $subeldwry_link='';
@@ -33,10 +41,11 @@ class AjaxRankingEldwryController extends SiteController {
         }
     }
 
-    public function get_subeldwry_ranking_eldwry(Request $request) {
+    public function get_home_ranking_eldwry(Request $request) {
         if ($request->ajax()) {
             $response =1;
-            $data=$this->RankingEldwryRepository->get_subeldwry_ranking_eldwry();
+            $subeldwry_link='';
+            $data=$this->RankingEldwryRepository->get_home_RankingEldwry(); //$limit,$offset
             return response()->json(['status' =>1, 'response' => $response,'data'=>$data]);
         }
     }

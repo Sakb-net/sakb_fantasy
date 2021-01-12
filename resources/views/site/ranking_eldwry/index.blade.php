@@ -69,7 +69,7 @@
 <script type="text/javascript" src="{{ asset('js/site/ranking_eldwry.js?v='.config('version.version_script')) }}"></script>
 <script>
 $(document).ready(function () {    
-    Load_ranking_eldwry();
+    Load_page_ranking_eldwry();
 });
 </script>
 @stop  

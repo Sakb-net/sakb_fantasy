@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller as BaseController;
 use App\Models\Options;
 
-
-class AdminController extends Controller
+class AdminController extends BaseController
 {
     protected $user;
     protected $limit;

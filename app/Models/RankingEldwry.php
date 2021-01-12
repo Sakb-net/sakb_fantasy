@@ -74,10 +74,10 @@ class RankingEldwry extends Model {
         return $result;
     }
 
-    public static function get_Last_RankingEldwry($eldwry_id,$team_id,$sub_eldwr_id=-1, $limit = 0,$is_active =1,$order='ASC') {
+    public static function get_Last_RankingEldwry($eldwry_id,$team_id,$sub_eldwry_id=-1, $limit = 0,$is_active =1,$order='ASC') {
         $data = static::Where('eldwry_id',$eldwry_id)->Where('team_id',$team_id)->Where('is_active',$is_active);
-        if($sub_eldwr_id > 0){
-            $result=$data->where('sub_eldwr_id','<=',$sub_eldwr_id);
+        if($sub_eldwry_id > 0){
+            $result=$data->where('sub_eldwry_id','<=',$sub_eldwry_id);
         }
         if($limit>0){
             $result=$data->limit($limit);
@@ -86,17 +86,26 @@ class RankingEldwry extends Model {
         return $result;
     }
 
-    public static function sum_SubldwryID($eldwry_id='',$sub_eldwry_id='',$limit=12,$offset=0,$val_order='DESC') {
+    public static function sum_SubldwryID($eldwry_id='',$sub_eldwry_id='',$limit=18,$offset=0,$val_order='DESC') {
         return static::select(DB::raw('eldwry_id,sub_eldwry_id,team_id,sum(won) as sum_won,sum(draw) as sum_draw,sum(loss) as sum_loss,sum(goals_diff) as sum_goals_diff,sum(points) as sum_points'))->where('eldwry_id',$eldwry_id)->where('sub_eldwry_id',$sub_eldwry_id)->groupBy('team_id','eldwry_id','sub_eldwry_id')->limit($limit)->offset($offset)->orderBy('sum_points',$val_order)->get();
         //->orderBy('sum_goals_diff',$val_order)
     }
 
-    public static function sum_all_before_and_SubldwryTeam($eldwry_id='',$sub_eldwry_id='',$team_id=-1,$val_order='DESC') {
-        $data= static::select(DB::raw('team_id,sum(goals_own) as sum_goals_own,sum(goals_aganist) as sum_goals_aganist,sum(goals_diff) as sum_goals_diff,sum(points) as sum_points'))->where('eldwry_id',$eldwry_id)->where('sub_eldwry_id','<=',$sub_eldwry_id);
+    public static function all_statistic_all_before_of_subldwry_team($eldwry_id='',$sub_eldwry_id='',$team_id=-1,$limit=18,$offset=0,$val_order='DESC') {
+        $data= static::select(DB::raw('team_id,count(match_id) as count_played,sum(won) as sum_won,sum(draw) as sum_draw,sum(loss) as sum_loss,sum(goals_own) as sum_goals_own,sum(goals_aganist) as sum_goals_aganist,sum(goals_diff) as sum_goals_diff,sum(points) as sum_points'))->where('eldwry_id',$eldwry_id)->where('sub_eldwry_id','<=',$sub_eldwry_id);
         if($team_id > 0){
             $result=$data->where('team_id',$team_id);
         }
-        $result=$data->groupBy('team_id')->orderBy('sum_points',$val_order)->orderBy('sum_goals_diff',$val_order)->get();
+        $result=$data->groupBy('team_id')->orderBy('sum_points',$val_order)->orderBy('sum_goals_diff',$val_order)->limit($limit)->offset($offset)->get();
+        return $result;
+    }
+
+    public static function statistic_all_before_of_subldwry_team($eldwry_id='',$sub_eldwry_id='',$team_id=-1,$limit=18,$offset=0,$val_order='DESC') {
+        $data= static::select(DB::raw('team_id,count(match_id) as count_played,sum(goals_diff) as sum_goals_diff,sum(points) as sum_points'))->where('eldwry_id',$eldwry_id)->where('sub_eldwry_id','<=',$sub_eldwry_id);
+        if($team_id > 0){
+            $result=$data->where('team_id',$team_id);
+        }
+        $result=$data->groupBy('team_id')->orderBy('sum_points',$val_order)->orderBy('sum_goals_diff',$val_order)->limit($limit)->offset($offset)->get();
         return $result;
     }
 }

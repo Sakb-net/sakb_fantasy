@@ -68,9 +68,10 @@ Route::group([
     Route::post('get_points_subeldwry', ['as' => 'get_points_subeldwry', 'uses' => 'AjaxPointController@get_points_subeldwry']);
     Route::post('get_pointsplayer_foruser', ['as' => 'get_pointsplayer_foruser', 'uses' => 'AjaxPointController@get_pointsplayer_foruser']);
 //league/ranking
-    Route::post('get_ranking_eldwry', ['as' => 'get_ranking_eldwry', 'uses' => 'AjaxRankingEldwryController@get_ranking_eldwry']);
     Route::post('get_subeldwry_ranking_eldwry', ['as' => 'get_subeldwry_ranking_eldwry', 'uses' => 'AjaxRankingEldwryController@get_subeldwry_ranking_eldwry']);
-
+    Route::post('get_all_ranking_eldwry', ['as' => 'get_all_ranking_eldwry', 'uses' => 'AjaxRankingEldwryController@get_all_ranking_eldwry']);
+    Route::post('get_home_ranking_eldwry', ['as' => 'get_home_ranking_eldwry', 'uses' => 'AjaxRankingEldwryController@get_home_ranking_eldwry']);
+    
     //groupEldwry
     Route::post('get_normal_eldwry', ['as' => 'get_normal_eldwry', 'uses' => 'AjaxGroupEldwryController@get_normal_eldwry']);
     Route::post('get_head_eldwry', ['as' => 'get_head_eldwry', 'uses' => 'AjaxGroupEldwryController@get_head_eldwry']);
