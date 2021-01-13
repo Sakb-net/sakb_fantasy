@@ -1,5 +1,5 @@
 <?php
 
 return [
-	'version_script'=>83
+	'version_script'=>84
 ];

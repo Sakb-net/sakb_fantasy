@@ -6,7 +6,7 @@ $(document).ready(function () {
         if (typeof subeldwry_link == 'undefined' || subeldwry_link == '' || subeldwry_link == "") {
             return false;
         }
-        get_ranking_eldwry(subeldwry_link);
+        get_all_ranking_eldwry(subeldwry_link);
         return false;
     });
 
@@ -178,7 +178,6 @@ function draw_home_ranking_eldwry(all_data){
     $('.draw_home_ranking_eldwry').html(div_section);
 }
 
-
 function draw_ranking_eldwry(all_data){
     var div_section = '';
     if (all_data != '') {
@@ -215,7 +214,7 @@ function draw_ranking_eldwry(all_data){
                                 div_section +='<span class="tooltip-content">';
                                     div_section +='<div class="matchAbridged">';
                                         div_section +='<span class="matchInfo">'+value.next_match.date_day+' </span>';
-                                        div_section +='<span class="teamName">'+value.team_name+'</span>';
+                                        div_section +='<span class="teamName">'+value.team_code+'</span>';
                                         div_section +='<span class="badge badge-image-container" data-widget="club-badge-image" data-size="20">';
                                         div_section +='<img class="badge-image" src="'+value.team_image+'" alt="club-logo">';
                                         div_section +='</span>';
@@ -239,7 +238,7 @@ function draw_ranking_eldwry(all_data){
                 div_section +='</td>';
             div_section +='</tr>';
             div_section +='<tr id="Q'+index+'" class="expandable panel-collapse collapse">';
-               div_section += draw_expandableTeam(value.site_team,value.current_match,value.next_match,value.team_link,value.team_name,value.team_image);
+               div_section += draw_expandableTeam(value.site_team,value.current_match,value.next_match,value.team_link,value.team_code,value.team_image);
             div_section +='</tr>';
         });
     } else {

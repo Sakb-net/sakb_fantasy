@@ -81,18 +81,20 @@ class RankingEldwryResource extends JsonResource
                 'time' =>time_in_12_hour_format($next_match->time),
             ]; 
         }
+        $count_won=$this->count_played-($this->sum_draw+$this->sum_loss);
         return [
             'team_link' =>(string) $team->link,
-            'team_name' =>(string) $team->code,
+            'team_name' =>(string) finalValueByLang($team->lang_name,$team->name,$lang),
+            'team_code' =>(string) $team->code,
             'team_image' => (string) finalValueByLang($team->image,'',$lang),
             'site_team'=> (string) $team->site_team,
             'count_played' => (string) $this->count_played,
-            'won' =>(string)$this->sum_won,
-            'draw' => $this->sum_draw,
+            'won' =>(string) $count_won, //$this->sum_won
+            'draw' =>(string) $this->sum_draw,
             'loss' =>(string) $this->sum_loss,
             'goals_own' => (string) $this->sum_goals_own,
             'goals_aganist' => (string) $this->sum_goals_aganist,
-            'goals_diff' => (string) $this->sum_goals_diff,
+            'goals_diff' => (string) abs($this->sum_goals_diff),
             'points' => (string) $this->sum_points,
             'form' =>$array_form,
             'current_match' => $array_form[0],

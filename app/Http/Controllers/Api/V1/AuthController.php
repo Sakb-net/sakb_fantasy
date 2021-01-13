@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\API_Controller;
-use App\Models\User;
-use App\Models\Role;
-use App\Models\Team;
-use App\Models\Game;
+use App\User;
+use App\Model\Role;
+use App\Model\Team;
+use App\Model\Game;
+use App\Model\GameHistory;
 use Hash;
 
 //use Mail;
@@ -23,42 +24,36 @@ class AuthController extends API_Controller {
      */
 
  /**
-     * @OA\Get(
-     *   path="/api/v1/get_country",
+     * @SWG\Get(
+     *   path="/get_country",
      *   tags={"auth"},
      *   summary="get country",
      *   operationId="get_country",
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *     name="type-dev",
      *     in="header",
      *     required=true,
      *     description="ios or android",
-    *      @OA\Schema(
-     *           type="string",
-     *          default="ios" 
-     *      ) 
+     *     type="string",
+     *     default="ios" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *     name="val-dev",
      *     in="header",
      *     required=true,
-     *      @OA\Schema(
-     *           type="string",
-     *           default="sakb" 
-     *      ) 
+     *     type="string",
+     *     default="sakb" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *    name="lang",
      *    in="header",
      *    description= "default lang is ar ( ar , en)",
-     *      @OA\Schema(
-     *           type="string",
-     *           default="ar"
-     *      )
+     *    type="string",
+     *    default="ar"
      *   ),
-     *   @OA\Response(response=200, description="successful operation"),
-     *   @OA\Response(response=400, description="not acceptable"),
-     *   @OA\Response(response=500, description="internal server error")
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=400, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error")
      * )
      *
      */
@@ -101,42 +96,36 @@ class AuthController extends API_Controller {
      */
 
     /**
-     * @OA\Get(
-     *   path="/api/v1/get_city",
+     * @SWG\Get(
+     *   path="/get_city",
      *   tags={"auth"},
      *   summary="get city",
      *   operationId="get_city",
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *     name="type-dev",
      *     in="header",
      *     required=true,
      *     description="ios or android",
-    *      @OA\Schema(
-     *           type="string",
-     *          default="ios" 
-     *      ) 
+     *     type="string",
+     *     default="ios" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *     name="val-dev",
      *     in="header",
      *     required=true,
-     *      @OA\Schema(
-     *           type="string",
-     *           default="sakb" 
-     *      ) 
+     *     type="string",
+     *     default="sakb" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *    name="lang",
      *    in="header",
      *    description= "default lang is ar ( ar , en)",
-     *      @OA\Schema(
-     *           type="string",
-     *           default="ar"
-     *      )
+     *    type="string",
+     *    default="ar"
      *   ),
-     *   @OA\Response(response=200, description="successful operation"),
-     *   @OA\Response(response=400, description="not acceptable"),
-     *   @OA\Response(response=500, description="internal server error")
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=400, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error")
      * )
      *
      */
@@ -157,42 +146,36 @@ class AuthController extends API_Controller {
         return response()->json($response, 200);
     }
     /**
-     * @OA\Get(
-     *   path="/api/v1/get_teams",
+     * @SWG\Get(
+     *   path="/get_teams",
      *   tags={"auth"},
      *   summary="get Teams",
      *   operationId="get_teams",
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *     name="type-dev",
      *     in="header",
      *     required=true,
      *     description="ios or android",
-    *      @OA\Schema(
-     *           type="string",
-     *          default="ios" 
-     *      ) 
+     *     type="string",
+     *     default="ios" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *     name="val-dev",
      *     in="header",
      *     required=true,
-     *      @OA\Schema(
-     *           type="string",
-     *           default="sakb" 
-     *      ) 
+     *     type="string",
+     *     default="sakb" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *    name="lang",
      *    in="header",
      *    description= "default lang is ar ( ar , en)",
-     *      @OA\Schema(
-     *           type="string",
-     *           default="ar"
-     *      )
+     *    type="string",
+     *    default="ar"
      *   ),
-     *   @OA\Response(response=200, description="successful operation"),
-     *   @OA\Response(response=400, description="not acceptable"),
-     *   @OA\Response(response=500, description="internal server error")
+     *   @SWG\Response(response=200, description="successful operation"),
+     *   @SWG\Response(response=400, description="not acceptable"),
+     *   @SWG\Response(response=500, description="internal server error")
      * )
      *
      */
@@ -222,133 +205,105 @@ class AuthController extends API_Controller {
      */
 
     /**
-     * @OA\Post(
-     *   path="/api/v1/register",
+     * @SWG\Post(
+     *   path="/register",
      *   tags={"auth"},
      *   operationId="register",
      *   summary="creat new account",
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *     name="type-dev",
      *     in="header",
      *     required=true,
      *     description="ios or android",
-    *      @OA\Schema(
-     *           type="string",
-     *          default="ios" 
-     *      ) 
+     *     type="string",
+     *     default="ios" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *     name="val-dev",
      *     in="header",
      *     required=true,
-     *      @OA\Schema(
-     *           type="string",
-     *           default="sakb" 
-     *      ) 
+     *     type="string",
+     *     default="sakb" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *    name="lang",
      *    in="header",
      *    description= "default lang is ar ( ar , en)",
-     *      @OA\Schema(
-     *           type="string",
-     *           default="ar"
-     *      )
+     *    type="string",
+     *    default="ar"
      *   ),
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="email",
-     *    in= "query",
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    in= "formData",
+     *    type="string",
      *  ),
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="password",
-     *    in= "query",
+     *    in= "formData",
      *    required=true,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="display_name",
-     *    in= "query",
+     *    in= "formData",
      *    required=true,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="phone",
-     *    in= "query",
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    in= "formData",
+     *    type="string",
      *  ),
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *    name="best_team",
-     *    in= "query",
-     *      @OA\Schema(
-     *           type="string",
-     *           default="1424e73e6d6f0269c9b6a28b2ae0974779" 
-     *      ),
+     *    in= "formData",
+     *    type="string",
      *    required=false,
      *    description="link of team ",
+     *    default="1424e73e6d6f0269c9b6a28b2ae0974779" 
      *  ),
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *    name="country",
-     *    in= "query",
+     *    in= "formData",
      *    required=false,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),   
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="city",
-     *    in= "query",
+     *    in= "formData",
      *    required=false,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),   
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="state",
-     *    in= "query",
+     *    in= "formData",
      *    required=false,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),  
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *    name="reg_site",
-     *    in= "query",
+     *    in= "formData",
      *    required=true,
-    *      @OA\Schema(
-     *           type="string",
-     *          default="ios" 
-     *      ) 
+     *    type="string",
+     *     default="ios" 
      *  ),   
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *    name="device_id",
-     *    in= "query",
+     *    in= "formData",
      *    required=false,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *    name="fcm_token",
-     *    in= "query",
+     *    in= "formData",
      *    required=false,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *    response=200,
      *    description="success",
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *    response=400,
      *    description="error",
      *  )
@@ -465,77 +420,63 @@ class AuthController extends API_Controller {
      */
 
     /**
-     * @OA\Post(
-     *   path="/api/v1/login/email",
+     * @SWG\Post(
+     *   path="/login/email",
      *   tags={"auth"},
      *   operationId="loginEmail",
      *   summary="login by email",
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *     name="type-dev",
      *     in="header",
      *     required=true,
      *     description="ios or android",
-    *      @OA\Schema(
-     *           type="string",
-     *          default="ios" 
-     *      ) 
+     *     type="string",
+     *     default="ios" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *     name="val-dev",
      *     in="header",
      *     required=true,
-     *      @OA\Schema(
-     *           type="string",
-     *           default="sakb" 
-     *      ) 
+     *     type="string",
+     *     default="sakb" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *    name="lang",
      *    in="header",
      *    description= "default lang is ar ( ar , en)",
-     *      @OA\Schema(
-     *           type="string",
-     *           default="ar"
-     *      )
+     *    type="string",
+     *    default="ar"
      *   ),
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="email_user_name",
-     *    in= "query",
+     *    in= "formData",
      *    required=true,
      *    description= "enter phone or email",
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="password",
-     *    in= "query",
+     *    in= "formData",
      *    required=true,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="device_id",
-     *    in= "query",
+     *    in= "formData",
      *    required=false,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="fcm_token",
-     *    in= "query",
+     *    in= "formData",
      *    required=false,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *    response=200,
      *    description="success",
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *    response=400,
      *    description="error",
      *  )
@@ -596,11 +537,12 @@ class AuthController extends API_Controller {
                         $user['access_token'] = $access_token;
                         $user['new_fcm_token'] = $fcm_token;
                         $user['old_fcm_token'] = $old_fcm_token;
-                        $user['choose_team']=0;
+                        $user['choose_team']=$user['found_point']=0;
                         // $user['user_total_mypoint']=0;
                         $game=Game::get_GameCloum('user_id',$data->id);
                         if(isset($game->team_name) && !empty($game->team_name)){
                             $user['choose_team']=1;
+                            $user['found_point']=GameHistory::check_foundData('user_id',$data->id);
                             // $user['user_total_mypoint']=static::sum_Finaltotal($data->id,'sub_eldwry_id',$start_dwry->id,1);
                         }
 
@@ -630,52 +572,44 @@ class AuthController extends API_Controller {
      */
 
     /**
-     * @OA\Post(
-     *   path="/api/v1/logout",
+     * @SWG\Post(
+     *   path="/logout",
      *   tags={"auth"},
      *   operationId="logout",
      *   summary="logout",
-     *   @OA\Parameter(
+     *   @SWG\Parameter(
      *    name="access-token",
      *    in= "header",
      *    required=true,
-     *      @OA\Schema(
-     *           type="string"
-     *      ),
+     *    type="string",
      *  ),
-     *  @OA\Parameter(
+     *  @SWG\Parameter(
      *     name="type-dev",
      *     in="header",
      *     required=true,
      *     description="ios or android",
-    *      @OA\Schema(
-     *           type="string",
-     *          default="ios" 
-     *      ) 
+     *     type="string",
+     *     default="ios" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *     name="val-dev",
      *     in="header",
      *     required=true,
-     *      @OA\Schema(
-     *           type="string",
-     *           default="sakb" 
-     *      ) 
+     *     type="string",
+     *     default="sakb" 
      *   ),
-     * @OA\Parameter(
+     * @SWG\Parameter(
      *    name="lang",
      *    in="header",
      *    description= "default lang is ar ( ar , en)",
-     *      @OA\Schema(
-     *           type="string",
-     *           default="ar"
-     *      )
+     *    type="string",
+     *    default="ar"
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *    response=200,
      *    description="success",
      *   ),
-     *   @OA\Response(
+     *   @SWG\Response(
      *    response=400,
      *    description="error",
      *  )

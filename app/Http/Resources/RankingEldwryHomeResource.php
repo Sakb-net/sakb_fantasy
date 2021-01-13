@@ -28,7 +28,7 @@ class RankingEldwryHomeResource extends JsonResource
             'team_name' =>(string) finalValueByLang($team->lang_name,$team->name,$lang),
             'team_image' => (string) finalValueByLang($team->image,'',$lang),
             'count_played' => (string) $this->count_played,
-            'goals_diff' => (string) $this->sum_goals_diff,
+            'goals_diff' => (string) abs($this->sum_goals_diff),
             'points' => (string) $this->sum_points,
         ];
     }

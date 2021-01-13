@@ -63,10 +63,10 @@ class RankingEldwryRepository
             'won'=>$won,
             'draw'=>$draw,
             'loss'=>$loss,
-            'goals_own'=>$value->$col_goals_own,
-            'goals_aganist'=>$value->$col_goals_aganist,
-            'goals_diff'=>abs($value->$col_goals_own - $value->$col_goals_aganist),
-            'points'=>$won+$draw,
+            'goals_own'=> $value->$col_goals_own,
+            'goals_aganist'=> $value->$col_goals_aganist,
+            'goals_diff'=> $value->$col_goals_own - $value->$col_goals_aganist,
+            'points'=> $won+$draw,
             'is_active'=>1,
         ];
     }
