@@ -71,29 +71,49 @@ class GameHistory extends Model {
         return $data;
     }
 
+    // public static function CheckTime_StopSubeldwry(){
+    //     $check_stop_subeldwry=0;
+    //     $time_stop_subeldwry=Options::get_RowOption('time_stop_subeldwry','option_value',0);
+    //     //check current date with current subeldwry
+    //     $current_date=date("Y-m-d");
+    //     $current_date_time=date("Y-m-d H:i:s");
+    //     $start_date_subeldwry=null;
+    //     $current_date_subeldwry=subTimeOnDate($current_date_time,$time_stop_subeldwry,'minutes');
+        
+    //     $sub_eldwry=Subeldwry::getSubeldwry_ByDate($current_date);
+
+    //     if(isset($sub_eldwry->id)){
+    //        $start_date_subeldwry= $sub_eldwry->start_date;
+    //         $sub_timeStop_from_timeStart=subTimeOnDate($start_date_subeldwry,$time_stop_subeldwry,'minutes');
+    //         if($start_date_subeldwry > $current_date_subeldwry && $current_date_subeldwry >= $sub_timeStop_from_timeStart){
+    //             //stop all work in game
+    //             $check_stop_subeldwry=1;
+    //             //take copy and move data to history table
+    //             static::Copy_Game_GameHistory($sub_eldwry->id);
+    //         }
+    //     }
+    //     return array('check_stop_subeldwry'=>$check_stop_subeldwry,'start_date_subeldwry'=>$start_date_subeldwry,'time_stop_subeldwry'=>$time_stop_subeldwry);
+    // }
+
+
+
+
     public static function CheckTime_StopSubeldwry(){
         $check_stop_subeldwry=0;
+        $subEldwry = Subeldwry::get_CurrentSubDwry();
+        $currentWeek = $subEldwry->num_week +1;
         $time_stop_subeldwry=Options::get_RowOption('time_stop_subeldwry','option_value',0);
-        //check current date with current subeldwry
-        $current_date=date("Y-m-d");
-        $current_date_time=date("Y-m-d H:i:s");
-        $start_date_subeldwry=null;
-        $current_date_subeldwry=subTimeOnDate($current_date_time,$time_stop_subeldwry,'minutes');
-        
-        $sub_eldwry=Subeldwry::getSubeldwry_ByDate($current_date);
 
-        if(isset($sub_eldwry->id)){
-           $start_date_subeldwry= $sub_eldwry->start_date;
-            $sub_timeStop_from_timeStart=subTimeOnDate($start_date_subeldwry,$time_stop_subeldwry,'minutes');
-            if($start_date_subeldwry > $current_date_subeldwry && $current_date_subeldwry >= $sub_timeStop_from_timeStart){
-                //stop all work in game
-                $check_stop_subeldwry=1;
-                //take copy and move data to history table
-                static::Copy_Game_GameHistory($sub_eldwry->id);
-            }
+        $current_date_time=date("Y-m-d H:i:s");
+        $sub_eldwry = Subeldwry::where('start_date','>',$current_date_time)->where('num_week',$currentWeek)->first();
+        if($sub_eldwry){
+            $differneceDate = getChekTime($current_date,$time_stop_subeldwry);
+            return $differneceDate;
+        }else{
+            return'sub eldwry not found';
         }
-        return array('check_stop_subeldwry'=>$check_stop_subeldwry,'start_date_subeldwry'=>$start_date_subeldwry,'time_stop_subeldwry'=>$time_stop_subeldwry);
     }
+    
 
     public static function Copy_Game_GameHistory($sub_eldwry_id){
         // $chec_add=static::foundData('sub_eldwry_id', $sub_eldwry_id);

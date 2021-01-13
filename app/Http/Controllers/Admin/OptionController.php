@@ -111,9 +111,9 @@ class OptionController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        // $this->validate($request, [
             // 'site_title' => 'required',
-        ]);
+        // ]);
 
         $input = $request->all();
         foreach ($input as $key => $value) {
