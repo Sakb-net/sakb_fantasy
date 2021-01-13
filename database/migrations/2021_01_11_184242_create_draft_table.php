@@ -17,9 +17,9 @@ class CreateDraftTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('link');
-            $table->unsignedInteger('eldwry_id');
-            $table->unsignedInteger('sub_eldwry_id');
-            $table->unsignedInteger('fav_team');
+            $table->unsignedInteger('eldwry_id')->nullable();
+            $table->unsignedInteger('sub_eldwry_id')->nullable();
+            $table->unsignedInteger('fav_team')->nullable();
             $table->tinyInteger('type')->comment('1 = Classic , 2 = Head to head');
             $table->tinyInteger('max');
             $table->tinyInteger('min');
@@ -27,7 +27,7 @@ class CreateDraftTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->string('code');
-            $table->string('admin_id')->nullable();
+            $table->unsignedInteger('admin_id')->nullable();
             $table->foreign('eldwry_id')->references('id')->on('eldwry')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('fav_team')->references('id')->on('teams')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('sub_eldwry_id')->references('id')->on('sub_eldwry')->onUpdate('cascade')->onDelete('cascade');
