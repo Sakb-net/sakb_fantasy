@@ -20,7 +20,7 @@ class HeadGroupEldwryStatic extends Model {
         return $this->belongsTo(\App\Models\Subeldwry::class,'sub_eldwry_id');
     }
 
-    public static function InsertGroupStatic($head_group_eldwry_id,$sub_eldwry_id,$points,$sort=1,$admin=0){
+    public static function InsertGroupStatic($head_group_eldwry_id,$sub_eldwry_id,$points=0,$sort=1,$admin=0){
         $data=static::foundDataTwoCondition('head_group_eldwry_id', $head_group_eldwry_id,'sub_eldwry_id', $sub_eldwry_id);
         $input=[
             'head_group_eldwry_id'=>$head_group_eldwry_id,
