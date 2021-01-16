@@ -197,7 +197,7 @@ class TeamController extends AdminController {
             }
         }
 
-        $this->validate($request, [
+        $request->validate([
             'lang_name' => 'required|max:255',
 //            'link' => "max:255|uniqueteamLinkType:{$request->type}",
         ]);
@@ -350,7 +350,7 @@ class TeamController extends AdminController {
                 }
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'lang_name' => 'required|max:255',
 //            'link' => "required|max:255|uniqueteamUpdateLinkType:$request->type,$id",
             ]);

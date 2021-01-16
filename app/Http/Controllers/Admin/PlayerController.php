@@ -208,7 +208,7 @@ class PlayerController extends AdminController {
                 return $this->pageUnauthorized();
             }
         }
-        $this->validate($request, [
+        $request->validate([
             'lang_name' => 'required|max:255',
 //            'link' => "max:255|uniqueplayerLinkType:{$request->type}",
         ]);
@@ -349,7 +349,7 @@ class PlayerController extends AdminController {
                     return $player->pageUnauthorized();
                 }
             }
-            $this->validate($request, [
+            $request->validate([
                 'lang_name' => 'required|max:255',
 //                'link' => "max:255|uniquePostUpdateLinkType:$request->type,$id",
             ]);
@@ -544,7 +544,7 @@ class PlayerController extends AdminController {
                     return $player->pageUnauthorized();
                 }
             }
-            $this->validate($request, [
+            $request->validate([
                 'content' => 'required',
             ]);
 

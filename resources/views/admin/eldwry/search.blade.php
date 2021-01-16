@@ -21,15 +21,9 @@
     <div class="col-sm-12">
         <div class="box">
             <div class="box-body">	
-
-
                 <table  id="datatable_search" data-page-length='50' class='table table-bordered table-striped'>
-
                  @include('admin.eldwry.table')   
-
                 </table>
-
-               
             </div>
         </div>
     </div>

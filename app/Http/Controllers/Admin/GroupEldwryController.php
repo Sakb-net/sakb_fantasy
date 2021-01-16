@@ -292,7 +292,7 @@ public function groupEldwryStanding($id){
             }
         }
 
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required|max:30',
         ]);
         $input_data = [];
@@ -391,7 +391,7 @@ public function groupEldwryStanding($id){
             }
 
 
-            $this->validate($request, [
+            $request->validate([
                 'name' => 'required|max:30|min:2',
                 'code' => 'required|max:30|min:5|unique:group_eldwrys,code,'.$id,
                 'link' => 'required|max:90|min:5|unique:group_eldwrys,link,'.$id,

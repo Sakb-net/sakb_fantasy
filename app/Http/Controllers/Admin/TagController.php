@@ -73,7 +73,7 @@ class TagController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required|max:255|unique:tags,name',
         ]);
 
@@ -184,7 +184,7 @@ class TagController extends AdminController {
                 return redirect()->route('admin.tags.index')->with('error', 'Have No Access');
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'name' => 'required|max:255|unique:tags,name,' . $id,
             ]);
             $input = $request->all();

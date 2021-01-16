@@ -177,10 +177,9 @@ class SubeldwryController extends AdminController {
             }
         }
 
-        $this->validate($request, [
+        $request->validate([
             'lang_name' => 'required|max:255',
         ]);
-
         $input = $request->all();
         $input=finalDataInputAdmin($input);
             foreach ($input as $key => $value) {
@@ -322,7 +321,7 @@ class SubeldwryController extends AdminController {
                 }
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'lang_name' => 'required|max:255',
                 'link' => "required|max:255",
             ]);

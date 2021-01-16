@@ -312,7 +312,7 @@ class CommentBlogController extends AdminController {
                 }
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'content' => 'required',
             ]);
 
@@ -469,7 +469,7 @@ class CommentBlogController extends AdminController {
                     return $this->pageUnauthorized();
                 }
             }
-            $this->validate($request, [
+            $request->validate([
                 'content' => 'required',
             ]);
             $commentable_type = $comment->type;

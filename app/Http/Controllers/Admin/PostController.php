@@ -282,7 +282,7 @@ class PostController extends AdminController {
                 return $this->pageUnauthorized();
             }
         }
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required|max:255',
             'link' => "max:255|uniquePostLinkType:{$request->type}",
             'row' => 'required',
@@ -497,13 +497,13 @@ class PostController extends AdminController {
                 }
             }
             if ($request->type == 'banner') {
-                $this->validate($request, [
+                $request->validate([
                     'link' => "max:255|uniquePostUpdateLinkType:$request->type,$id",
                     'category_id' => 'required',
 //            'categories' => 'required',
                 ]);
             } else {
-                $this->validate($request, [
+                $request->validate([
                     'name' => 'required|max:255',
                     'link' => "max:255|uniquePostUpdateLinkType:$request->type,$id",
                     'category_id' => 'required',

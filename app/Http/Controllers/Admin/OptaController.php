@@ -159,7 +159,7 @@ class OptaController extends AdminController {
                 return $this->pageUnauthorized();
             }
         }
-        // $this->validate($request, [
+        // $request->validate([
         //     'subeldwry_id' => 'required',
         // ]);
         // $subeldwry_id>0
@@ -183,7 +183,7 @@ class OptaController extends AdminController {
                 return $this->pageUnauthorized();
             }
         }
-        // $this->validate($request, [
+        // $request->validate([
         //     'matche_id' => 'required',
         // ]);
         // $matche_id>0
@@ -206,7 +206,7 @@ class OptaController extends AdminController {
                 return $this->pageUnauthorized();
             }
         }
-        // $this->validate($request, [
+        // $request->validate([
         //     'subeldwry_id' => 'required',
         // ]);
         // $subeldwry_id>0

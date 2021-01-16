@@ -182,7 +182,7 @@ class UserController extends AdminController {
             }
         }
 
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required|max:255|unique:users,name',
             'email' => 'required|max:255|email|unique:users,email',
             'phone' => 'max:50',
@@ -331,7 +331,7 @@ class UserController extends AdminController {
                 }
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'name' => 'required|max:255|unique:users,name,' . $id,
                 'email' => 'required|max:255|email|unique:users,email,' . $id,
                 'phone' => 'max:50',
@@ -339,7 +339,7 @@ class UserController extends AdminController {
             ]);
 
             if ($user->id == Auth::user()->id && !empty($input['confirm-password'])) {
-                $this->validate($request, [
+                $request->validate([
                     'password' => 'same:confirm-password',
                 ]);
             }

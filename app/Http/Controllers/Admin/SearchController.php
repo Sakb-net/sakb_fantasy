@@ -73,7 +73,7 @@ class SearchController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required|max:255|unique:searches,name',
         ]);
 
@@ -195,7 +195,7 @@ class SearchController extends AdminController {
                 return redirect()->route('admin.searches.index')->with('error', 'Have No Access');
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'name' => 'required|max:255|unique:searches,name,' . $id,
             ]);
             $input = $request->all();

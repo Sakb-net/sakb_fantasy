@@ -36,7 +36,7 @@ class OptionController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
             'site_title' => 'required',
             'site_url' => 'required',
             'admin_url' => 'required|alpha_dash',
@@ -111,7 +111,7 @@ class OptionController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        // $this->validate($request, [
+        // $request->validate([
             // 'site_title' => 'required',
         // ]);
 
@@ -148,7 +148,7 @@ class OptionController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
 //            'contact_page' => 'required',
 //            'contact_title' => 'required',
 //            'contact_content' => 'required',

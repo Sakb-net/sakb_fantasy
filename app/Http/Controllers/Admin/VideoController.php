@@ -179,7 +179,7 @@ class VideoController extends AdminController {
             }
         }
 
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required|max:255',
         ]);
 
@@ -300,7 +300,7 @@ class VideoController extends AdminController {
                 }
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'name' => 'required|max:255',
             ]);
 
@@ -524,7 +524,7 @@ class VideoController extends AdminController {
                     return $video->pageUnauthorized();
                 }
             }
-            $this->validate($request, [
+            $request->validate([
                 'content' => 'required',
             ]);
 

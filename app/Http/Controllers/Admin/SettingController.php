@@ -160,7 +160,7 @@ class SettingController extends AdminController {
             }
         }
 
-        $this->validate($request, [
+        $request->validate([
             'name_one' => 'required|max:255',
             'name_second' => 'required|max:255',
             'name_one' => 'required|max:255',
@@ -289,7 +289,7 @@ class SettingController extends AdminController {
                     return $this->pageUnauthorized();
                 }
             }
-        $this->validate($request, [
+        $request->validate([
             'name_one' => 'required|max:255',
             'name_second' => 'required|max:255',
             'name_one' => 'required|max:255',

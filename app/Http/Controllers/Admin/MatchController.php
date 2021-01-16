@@ -230,7 +230,7 @@ class MatchController extends AdminController {
                 return $this->pageUnauthorized();
             }
         }
-        $this->validate($request, [
+        $request->validate([
 //            'link' => "max:255|uniquePostLinkType:{$request->type}",
             'first_team_id' => 'required',
             'second_team_id' => 'required',
@@ -428,7 +428,7 @@ class MatchController extends AdminController {
                     }
                 }
             }
-            $this->validate($request, [
+            $request->validate([
 //                    'link' => "max:255|uniquePostUpdateLinkType:$request->type,$id",
                 'first_team_id' => 'required',
                 'second_team_id' => 'required',

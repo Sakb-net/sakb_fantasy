@@ -75,7 +75,7 @@ class PermissionController extends AdminController {
             ];
             $admin_access = Permission::create($access_input);
         }
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required',
             'display_name' => 'required',
         ]);
@@ -167,7 +167,7 @@ class PermissionController extends AdminController {
         }
         $permission = Permission::find($id);
         if (!empty($permission)) {
-            $this->validate($request, [
+            $request->validate([
                 'name' => 'required',
                 'display_name' => 'required',
 //                'permission' => 'required',

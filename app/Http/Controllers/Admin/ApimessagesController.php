@@ -98,7 +98,7 @@ class ApimessagesController extends AdminController {
             }
         }
 
-        $this->validate($request, [
+        $request->validate([
             'type' => 'required|max:255',
             'ar_message' => 'required|max:255',
             'en_message' => 'required|max:255',
@@ -184,7 +184,7 @@ class ApimessagesController extends AdminController {
                 }
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'type' => 'required|max:255',
                 'ar_message' => 'required|max:255',
                 'en_message' => 'required|max:255',

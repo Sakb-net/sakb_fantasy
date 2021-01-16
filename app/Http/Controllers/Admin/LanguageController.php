@@ -164,7 +164,7 @@ class LanguageController extends AdminController {
             }
         }
 
-        $this->validate($request, [
+        $request->validate([
             'lang' => 'required',
             'name' => 'required',
         ]);
@@ -270,7 +270,7 @@ class LanguageController extends AdminController {
                     return $this->pageUnauthorized();
                 }
             }
-            $this->validate($request, [
+            $request->validate([
 //                'lang' => 'required',
                 'name' => 'required',
             ]);

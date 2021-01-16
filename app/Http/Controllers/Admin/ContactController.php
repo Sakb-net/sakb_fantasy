@@ -117,7 +117,7 @@ class ContactController extends AdminController {
             if (!$this->user->can(['access-all', 'post-type-all', 'post-all'])) {
                 return $this->pageUnauthorized();
             }
-            $this->validate($request, [
+            $request->validate([
                 'title' => 'required',
                 'content' => 'required',
             ]);

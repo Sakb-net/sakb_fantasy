@@ -134,7 +134,7 @@ class pageController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
 //            'contact_page' => 'required',
 //            'contact_title' => 'required',
 //            'contact_content' => 'required',
@@ -204,7 +204,7 @@ class pageController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
             'about_page' => 'required',
             'about_title' => 'required',
             'about_content' => 'required',
@@ -302,7 +302,7 @@ class pageController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
             'instraction_page' => 'required',
             'instraction_title' => 'required',
             // 'instraction_content' => 'required',
@@ -412,7 +412,7 @@ class pageController extends AdminController {
                 return $this->pageUnauthorized();
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'award_page' => 'required',
                 'award_title' => 'required',
                 // 'instraction_content' => 'required',
@@ -510,7 +510,7 @@ class pageController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
             'goal_page' => 'required',
             'goal_title' => 'required',
             'goal_content' => 'required',
@@ -560,7 +560,7 @@ class pageController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
             'message_page' => 'required',
             'message_title' => 'required',
             'message_content' => 'required',
@@ -611,7 +611,7 @@ class pageController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
             'terms_page' => 'required',
             'terms_title' => 'required',
             'terms_content' => 'required',

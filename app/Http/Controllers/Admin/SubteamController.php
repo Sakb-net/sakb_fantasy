@@ -108,7 +108,7 @@ class SubteamController extends AdminController {
             }
         }
 
-        $this->validate($request, [
+        $request->validate([
             'lang_name' => 'required|max:255',
         ]);
 
@@ -273,7 +273,7 @@ class SubteamController extends AdminController {
                 }
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'lang_name' => 'required|max:255',
             ]);
             $input = $request->all();

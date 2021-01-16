@@ -134,7 +134,7 @@ class CategoryController extends AdminController {
             }
         }
 
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required|max:255',
             'link' => "max:255|uniqueCategoryLinkType:{$request->type}",
         ]);
@@ -286,7 +286,7 @@ class CategoryController extends AdminController {
                 }
             }
 
-            $this->validate($request, [
+            $request->validate([
                 'name' => 'required|max:255',
                 'link' => "required|max:255|uniqueCategoryUpdateLinkType:$request->type,$id",
             ]);

@@ -271,7 +271,7 @@ class BlogController extends AdminController {
                 return $this->pageUnauthorized();
             }
         }
-        $this->validate($request, [
+        $request->validate([
             'lang_name' => 'required|max:255',
         ]);
         if($request->team_id == 0){
@@ -425,7 +425,7 @@ class BlogController extends AdminController {
                     return $blog->pageUnauthorized();
                 }
             }
-            $this->validate($request, [
+            $request->validate([
                 'lang_name' => 'required|max:255',
             ]);
             if($request->team_id == 0){
@@ -618,7 +618,7 @@ class BlogController extends AdminController {
                     return $blog->pageUnauthorized();
                 }
             }
-            $this->validate($request, [
+            $request->validate([
                 'content' => 'required',
             ]);
 

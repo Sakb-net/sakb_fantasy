@@ -76,7 +76,7 @@ class RoleController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        $this->validate($request, [
+        $request->validate([
             'name' => 'required|unique:roles,name',
             'display_name' => 'required',
 //            'permission' => 'required',
@@ -185,7 +185,7 @@ class RoleController extends AdminController {
         $role = Role::find($id);
 
         if (!empty($role)) {
-            $this->validate($request, [
+            $request->validate([
                 'name' => 'required|unique:roles,name,' . $id,
                 'display_name' => 'required',
 //                'permission' => 'required',
