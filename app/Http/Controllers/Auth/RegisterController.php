@@ -232,10 +232,14 @@ class RegisterController extends SiteController {
      */
     public function handleProviderCallback($provider) {
         $wrong_form = $correct_form = null;
-        try {
-            $socialuser = Socialite::driver($provider)->user();
-        } catch (Exception $e) {
+        if (isset($_REQUEST['error'])&& !empty($_REQUEST['error'])) {
             return redirect('/');
+        }else{
+            try {
+                $socialuser = Socialite::driver($provider)->user();
+            } catch (Exception $e) {
+                return redirect('/');
+            }
         }
         $user_id = 0;
         //check we have logged provider
