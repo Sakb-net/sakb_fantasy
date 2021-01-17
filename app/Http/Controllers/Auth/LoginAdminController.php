@@ -12,8 +12,6 @@ use Illuminate\Http\Request;
 use App\Models\Options;
 use Redirect;
 
-
-
 class LoginAdminController extends BaseController {
 
     /**
