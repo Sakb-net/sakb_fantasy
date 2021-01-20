@@ -1,7 +1,7 @@
 @extends('site.layouts.app')
 @section('content')
    @include('site.home.silder')
-   @include('site.home.fixtures')
+   <!-- here include ('site.home.fixtures') -->
    <section class="section-padding wow fadeInUp home-matches">
 	    <div class="container">
 	        <div class="row">

@@ -140,6 +140,15 @@
               }
           });
 
+          //draft 3-1-2021
+          ///////////////////
+          $('#timepicker1').timepicker();
+          $('.date-picker').datepicker({
+              orientation: "top auto",
+              autoclose: true
+          });
+          ///////////////////////
+
           $(".empty").click(function(){
             $('#filter').removeClass('transform');
            // $("#stretch").toggleClass("col-md-9");

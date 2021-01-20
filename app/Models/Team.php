@@ -131,6 +131,21 @@ class Team extends Model {
         $data[]=$val_data;
         return $data;
     }
+
+
+    public static function getTeamId($is_active = 1,$lang='ar',$api=0,$order='DESC') {
+        $Teams = static::getAll_Teamdata($is_active,$order);
+        $data=[];
+        foreach ($Teams as $key => $value) {
+            $val_data['name']=$value->name;
+            $val_data['id']=$value->id;
+            $data[]=$val_data;
+        }
+        $val_data['name']=trans('app.general_fan');
+        $val_data['id']='general_fan';
+        $data[]=$val_data;
+        return $data;
+    }
     
     public static function get_DataTeamUser($data, $api = 0) {
         $all_data = [];

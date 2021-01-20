@@ -30,6 +30,17 @@ class AllType extends Model {
         return $link_found;
     }
 
+    public static function foundAllKeyType($colum, $val,$lang='ar') {
+        if($lang ='ar'){
+            $value = 'value_ar as value';
+        }
+        else{
+            $value = 'value_en as value';
+        }
+        $dataReturn = static::where($colum, $val)->where('is_active',1)->select('id',$value)->get();
+        return $dataReturn;
+    }
+
     public static function All_foundData($colum, $val) {
         $link_found = static::where($colum, $val)->get();
         return $link_found;

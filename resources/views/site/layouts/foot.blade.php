@@ -7,3 +7,7 @@
 @endif
 <script type="text/javascript" src="{{ asset('js/site/public.js?v='.config('version.version_script')) }}"></script>
 <script type="text/javascript" src="{{ asset('js/site/ajax.js?v='.config('version.version_script')) }}"></script>
+<!-- bootstrap datepicker -->
+<script src="{{ asset('js/site/js/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+<script src="{{ asset('js/site/js/bootstrap-timepicker/js/bootstrap-timepicker.min.js') }}"></script>
+<!--  datatable -->

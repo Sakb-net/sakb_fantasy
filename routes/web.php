@@ -204,5 +204,26 @@ Route::namespace('App\Http\Controllers\Auth')->group(function () {
 
 });
 
+//draft
+Route::group([
+    'prefix' => 'draft',
+    'namespace' => $namespace,
+    'as' => 'draft.',
+        ], function () {
+    Route::get('home', ['as' => 'home', 'uses' => 'DraftController@index']);
+
+    Route::post('saveLeauge', ['as' => 'saveLeauge', 'uses' => 'DraftController@saveLeauge']);
+
+    Route::get('joinLeaugeDraft', ['as' => 'joinLeaugeDraft', 'uses' => 'DraftController@joinLeaugeDraft']);
+    Route::get('createLeaugeDraft', ['as' => 'createLeaugeDraft', 'uses' => 'DraftController@createLeaugeDraft']);
+    Route::get('createDraft', ['as' => 'createDraft', 'uses' => 'DraftController@createDraft']);
+
+    Route::get('draftRoom', ['as' => 'draftRoom', 'uses' => 'DraftController@draftRoom']);
+    
+    
+
+
+    });
+
 //Admin
 require __DIR__ . '/admin.php';

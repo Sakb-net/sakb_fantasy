@@ -9,6 +9,7 @@
             <a class="butn tab_menu_game tab_game_my_team @if($type_page=='my_team') active @endif">{{trans('app.my_team')}}</a>
             <a class="butn tab_menu_game tab_game_game_transfer @if($type_page=='game_transfer') active @endif" >{{trans('app.make_transfers')}}</a>
             <a class="butn tab_menu_game tab_game_group_eldwry @if($type_page=='group_eldwry') active @endif" >{{trans('app.leagues')}}</a>
+            <a class="butn" href="{{route('draft.home')}}">{{trans('app.draft')}}</a>
         </div>
     </div>
 </div>

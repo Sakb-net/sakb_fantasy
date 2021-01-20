@@ -923,5 +923,7 @@ return array (
   'form_d'=>'D',
   'form_l'=>'L',
   'site_team'=>'Team site link',
+  'draft'=>'Draft',
+
 );
 
