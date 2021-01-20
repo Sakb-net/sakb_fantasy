@@ -55,7 +55,7 @@ class GroupEldwryStatic extends Model {
        return static::
        leftJoin('group_eldwrys', 'group_eldwrys.id', '=', 'group_eldwry_statics.group_eldwry_id')
        ->leftJoin('group_eldwry_users', 'group_eldwrys.id', '=', 'group_eldwry_users.group_eldwry_id')
-        ->whereIn('group_eldwry_statics.sub_eldwry_id',$sub_eldwry_id)
+        ->where('group_eldwry_statics.sub_eldwry_id','>',$sub_eldwry_id)
         ->where(function ($query) use($user_id,$is_active,$is_block){
                 $query->where([['group_eldwrys.user_id',$user_id],['group_eldwrys.is_active',$is_active]])
                 ->orwhere([['group_eldwry_users.add_user_id',$user_id],['group_eldwry_users.is_active', $is_active],['group_eldwry_users.is_block', $is_block],['group_eldwrys.is_active',$is_active]]);

@@ -48,7 +48,7 @@ class Class_GroupEldwryController extends SiteController {
                 $all_group_eldwry=HeadGroupEldwryStatic::Joingroup_Currenteldwry($user_data->id,[$subeldwry->id],1);
                 $group_eldwry_static=HeadGroupEldwryStaticResource::collection($all_group_eldwry);
             }else{
-                $all_group_eldwry=GroupEldwryStatic::Joingroup_Currenteldwry($user_data->id,[$subeldwry->id],1);
+                $all_group_eldwry=GroupEldwryStatic::Joingroup_Currenteldwry($user_data->id,$subeldwry->id,1);
                 $group_eldwry_static=GroupEldwryStaticResource::collection($all_group_eldwry);
             }
         }

@@ -81,20 +81,6 @@ class API_Controller extends BaseController {
         return $response;
     }
 
-    public static function MessageData_old($type, $lang = 'ar') {
-        $message = Apimessage::get_messageData($type, 'type');
-        $col_name = $lang . '_message';
-        if (isset($message->$col_name)) {
-            $response['StatusCode'] = $message->id;
-            $response['Message'] = $message->$col_name;
-        } else {
-            $response['StatusCode'] = 0;
-            $response['Message'] = null;
-        }
-        $response['data'] = null;
-        return $response;
-    }
-
     private $_status_codes = [
         0 => "Success",
         1 => "Error",
