@@ -26,4 +26,9 @@ class Draft extends Model
         return $this->belongsTo(\App\Models\AllType::class, 'type_id', 'id');
     }
 
+    static function checkLeagueCode($code){
+        $data = static::where('code',$code)->where('is_active',1)->first();
+        return $data;
+    }
+
 }

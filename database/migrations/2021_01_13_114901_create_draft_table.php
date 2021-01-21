@@ -15,7 +15,7 @@ class CreateDraftTable extends Migration
     {
         Schema::create('draft', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('link');
             $table->unsignedInteger('eldwry_id')->nullable();
             $table->unsignedInteger('sub_eldwry_id')->nullable();
@@ -23,11 +23,11 @@ class CreateDraftTable extends Migration
             $table->unsignedInteger('type_id')->nullable();
             $table->tinyInteger('max');
             $table->tinyInteger('min');
-            $table->tinyInteger('player_trade')->comment('0 = none , 2 = all , 3 = administrator, 4 = manager');
+            $table->tinyInteger('player_trade')->nullable()->comment('0 = none , 2 = all , 3 = administrator, 4 = manager');
             $table->date('date');
             $table->time('time');
             $table->time('time_choose');
-            $table->string('code');
+            $table->string('code')->nullable();
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('admin_id')->nullable();
             $table->tinyInteger('is_active')->default(1);

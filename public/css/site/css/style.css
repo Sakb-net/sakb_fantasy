@@ -769,6 +769,11 @@ body .vegas-container {
     box-shadow: 0px 1px 11px #a9a9a9;
 }
 
+.errorBorder
+{
+ border:1px solid red;
+}
+
 .clients img {
     max-width: 100%;
     transition: 0.3s;

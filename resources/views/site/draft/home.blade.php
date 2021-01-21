@@ -87,37 +87,6 @@
 
 @section('after_foot')
 
-<!-- <script src="{{ asset('js/site/draftHome.js') }}"></script> -->
+<script src="{{ asset('js/site/draft/home.js') }}"></script>
 
-
-
-<script>
-$(document).ready(function () {
-console.log('home');
-$(".startSection").hide();
-
-$("#startPage").click(function () {
-    $(".mainSection").hide();
-    $(".startSection").show();
-    $("#startPage").addClass("active");
-    $("#mainPage").removeClass("active");
-});
-
-$("#showStartPage,#showStartPage1,#showStartPage2").click(function(){
-    $(".mainSection").hide();
-    $(".startSection").show();
-    $("#startPage").addClass("active");
-    $("#mainPage").removeClass("active");
-    });
-
-$("#mainPage").click(function () {
-    $(".startSection").hide();
-    $(".mainSection").show();
-    $("#mainPage").addClass("active");
-    $("#startPage").removeClass("active");
-});
-
-});
-
-</script>
 @stop

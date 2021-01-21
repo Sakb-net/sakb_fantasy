@@ -85,6 +85,11 @@
                                 <div class="panel-heading">
                                     <h3>إنشاء دوري خاص</h3>
                                 </div>
+
+                                <div id='formErorr' class='alert alert-danger text-center mb-10' style="display:none;">
+                                <p id="errorText"></p>
+                                </div>
+
                                 <div class="panel-body">
                                     <form id="createLeauge" method="post">
                                         <div class="col-md-12">
@@ -159,8 +164,8 @@
                                                 <label>إشعارات اللعبة:</label>
                                                 <p class="font-normal"> تلقي رسائل بريد إلكتروني حول المسودة والدوري والصفقات. يمكنك إلغاء الاشتراك في أي وقت.</p>
                                                 <div class="team-checkbox">
-                                                    <input type="checkbox" name="followed" id="followed2">
-                                                    <label for="followed2" class="checkbox-text">نعم ، أرغب في تلقي إشعارات اللعبة عبر البريد الإلكتروني</label>
+                                                    <input type="checkbox" name="followed" id="followed">
+                                                    <label for="followed" class="checkbox-text">نعم ، أرغب في تلقي إشعارات اللعبة عبر البريد الإلكتروني</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,8 +173,8 @@
                                             <div class="form-group">
                                                 <label>الشروط والأحكام:</label>
                                                 <div class="team-checkbox">
-                                                    <input type="checkbox" name="condition" id="condition2">
-                                                    <label for="condition2" class="checkbox-text">قرأت <a href="">الشروط و الأحكام</a></label>
+                                                    <input type="checkbox" name="condition" id="condition">
+                                                    <label for="condition" class="checkbox-text">قرأت <a href="">الشروط و الأحكام</a></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -195,97 +200,6 @@
 
 @section('after_foot')
 
-<!-- <script src="{{ asset('js/site/draftHome.js') }}"></script> -->
-
-
-<script>
-$(document).ready(function () {
-
-    $('#timepicker1').timepicker();
-        $('.date-picker').datepicker({
-            orientation: "top auto",
-            autoclose: true
-        });
-
-$(document).keypress(
-    function (event) {
-        if (event.which == '13') {
-            event.preventDefault();
-        }
-    });
-
-$(".startSection").hide();
-$(".mainSection").hide();
-$(".createLeauge").show();
-
-
-
-$("#startPage").click(function () {
-    $(".mainSection").hide();
-    $(".createLeauge").hide();
-    $(".startSection").show();
-    $("#startPage").addClass("active");
-    $("#mainPage").removeClass("active");
-});
-
-$("#showStartPage,#showStartPage1,#showStartPage2").click(function(){
-    $(".mainSection").hide();
-    $(".createLeauge").hide();
-    $(".startSection").show();
-    $("#startPage").addClass("active");
-    $("#mainPage").removeClass("active");
-    });
-
-    $("#mainPage").click(function () {
-        $(".createLeauge").hide();
-        $(".mainSection").show();
-        $("#mainPage").addClass("active");
-        $("#startPage").removeClass("active");
-    });
-
-
-
-$("#createLeaugeButton").click(function () {
-    $(".joinDraftSection").hide();
-    $(".startSection").hide();
-    $(".createLeauge").show();
-    $('html, body').animate({
-        scrollTop: $(".game-menu").offset().top
-    }, 0);
-});
-
-
-
-
-
-$('#createLeauge').submit(function(e){
-   e.preventDefault();
-
-    var form = $('#createLeauge')[0];
-    var data = new FormData(form);
-
-    $.ajaxSetup({
-    headers: {
-    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
-   $.ajax({
-            url: "saveLeauge",
-            type: "POST",
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-      success: function(response)               
-       {
-        window.location = response.url;
-        },error: function (data) {
-
-        }
-      });
-   });
-});
-
-</script>
+<script src="{{ asset('js/site/draft/createLeaugeDraft.js') }}"></script>
 
 @stop

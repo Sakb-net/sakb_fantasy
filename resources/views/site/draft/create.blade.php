@@ -87,6 +87,11 @@
                                 <div class="panel-heading">
                                     <h3>التحق ب الدرافت</h3>
                                 </div>
+
+                                <div id='formErorr' class='alert alert-danger text-center mb-10' style="display:none;">
+                                <p id="errorText"></p>
+                                </div>
+
                                 <div class="panel-body">
                                     <form id="joinDraft" method="post">
                                         <div class="col-md-12">
@@ -100,8 +105,8 @@
                                                 <label>إشعارات اللعبة:</label>
                                                 <p class="font-normal"> تلقي رسائل بريد إلكتروني حول المسودة والدوري والصفقات. يمكنك إلغاء الاشتراك في أي وقت.</p>
                                                 <div class="team-checkbox">
-                                                    <input type="checkbox" name="followed" id="followed1">
-                                                    <label for="followed1" class="checkbox-text">نعم ، أرغب في تلقي إشعارات اللعبة عبر البريد الإلكتروني</label>
+                                                    <input type="checkbox" name="followed" id="followed">
+                                                    <label for="followed" class="checkbox-text">نعم ، أرغب في تلقي إشعارات اللعبة عبر البريد الإلكتروني</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,8 +123,8 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="team-checkbox">
-                                                    <input type="checkbox" name="condition" id="condition1">
-                                                    <label for="condition1" class="checkbox-text">قرأت <a href="">الشروط و الأحكام</a></label>
+                                                    <input type="checkbox" name="condition" id="condition">
+                                                    <label for="condition" class="checkbox-text">قرأت <a href="">الشروط و الأحكام</a></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,92 +151,6 @@
 
 @section('after_foot')
 
-<!-- <script src="{{ asset('js/site/draftHome.js') }}"></script> -->
-
-
-<script>
-$(document).ready(function () {
-
-$(document).keypress(
-    function (event) {
-        if (event.which == '13') {
-            event.preventDefault();
-        }
-    });
-
-$(".startSection").hide();
-$(".mainSection").hide();
-$(".joinDraftSection").show();
-
-
-$("#startPage").click(function () {
-    $(".mainSection").hide();
-    $(".joinDraftSection").hide();
-    $(".startSection").show();
-    $("#startPage").addClass("active");
-    $("#mainPage").removeClass("active");
-});
-
-$("#showStartPage,#showStartPage1,#showStartPage2").click(function(){
-    $(".mainSection").hide();
-    $(".joinDraftSection").hide();
-    $(".startSection").show();
-    $("#startPage").addClass("active");
-    $("#mainPage").removeClass("active");
-    });
-
-$("#mainPage").click(function () {
-    $(".startSection").hide();
-    $(".joinDraftSection").hide();
-    $(".mainSection").show();
-    $("#mainPage").addClass("active");
-    $("#startPage").removeClass("active");
-});
-
-
-$("#joinDraftButton").click(function () {
-    $(".startSection").hide();
-    $(".joinDraftSection").show();
-    $('html, body').animate({
-        scrollTop: $(".game-menu").offset().top
-    }, 0);
-});
-
-
-
-
-
-
-$('#joinDraft').submit(function(e){
-   e.preventDefault();
-
-    var form = $('#joinDraft')[0];
-    var data = new FormData(form);
-
-    $.ajaxSetup({
-    headers: {
-    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
-   $.ajax({
-            url: "createLeauge",
-            type: "POST",
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-      success: function(response)               
-       {
-
-        },error: function (data) {
-
-        }
-      });
-   });
-
-
-});
-
-</script>
+<script src="{{ asset('js/site/draft/createDraft.js') }}"></script>
 
 @stop

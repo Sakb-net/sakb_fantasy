@@ -26,14 +26,14 @@ class DraftController extends SiteController {
                     $lang = 'en';
                 }
                 $eldwry  = Eldwry::get_currentDwry();
-                $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
-                if($checkDraft){
-                    return redirect()->route('draft.draftRoom');
-                }else{
+                // $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
+                // if($checkDraft){
+                    // return redirect()->route('draft.draftRoom');
+                // }else{
                     $team = Team::getTeamId(1,$lang);
                     $title = 'create draft';
                      return view('site.draft.home',compact('title','team'));
-                }
+                // }
             } else {
                 return redirect()->route('login');
             }
@@ -55,14 +55,14 @@ class DraftController extends SiteController {
                 }else{
                     $lang = 'en';
                 }
-                $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
-                if($checkDraft){
-                    return redirect()->route('draft.draftRoom');
-                }else{
+                // $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
+                // if($checkDraft){
+                //     return redirect()->route('draft.draftRoom');
+                // }else{
                     $team = Team::getTeamId(1,$lang);
                     $title = 'join leauge draft';
                      return view('site.draft.joinLeauge',compact('title','team'));
-                }
+                // }
             } else {
                 return redirect()->route('login');
             }
@@ -83,15 +83,15 @@ class DraftController extends SiteController {
                         $lang = 'en';
                     }
                     $eldwry  = Eldwry::get_currentDwry();
-                    $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
-                    if($checkDraft){
-                        return redirect()->route('draft.draftRoom');
-                    }else{
+                    // $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
+                    // if($checkDraft){
+                    //     return redirect()->route('draft.draftRoom');
+                    // }else{
                         $type = AllType::foundAllKeyType('type_key','eldwry_type',$lang);
                         $team = Team::getTeamId(1,$lang);
                         $title = 'create Leauge draft';
                         return view('site.draft.createLeague',compact('title','team','type'));
-                    }
+                    // }
                 } else {
                     return redirect()->route('login');
                 }
@@ -111,14 +111,14 @@ class DraftController extends SiteController {
                         $lang='';
                     }
                     $eldwry  = Eldwry::get_currentDwry();
-                    $checkDraft = DraftUsers::where('user_id',Auth::user()->id)->first();
-                    if($checkDraft){
-                        dd('already joined');
-                    }else{
+                    // $checkDraft = DraftUsers::where('user_id',Auth::user()->id)->first();
+                    // if($checkDraft){
+                    //     dd('already joined');
+                    // }else{
                         $team = Team::getTeamId(1,$lang);
                         $title = 'create draft';
                         return view('site.draft.create',compact('title','team'));
-                    }
+                    // }
                 } else {
                     return redirect()->route('login');
                 }
@@ -131,7 +131,7 @@ class DraftController extends SiteController {
 
         $notifi = 0;
         $link = get_RandLink();
-        $code = generateRandomValue();
+        $code = generateRandomCode(7);
 
         $input = $request->all();
         foreach ($input as $key => $value) {
@@ -156,7 +156,7 @@ class DraftController extends SiteController {
         $draft->min = $input['minTeam'];
         $draft->date = date("Y-m-d", strtotime($input['draftDate']));
         $draft->time = date("h:s:i");
-        $draft->time_choose = date("h:s:i", strtotime($input['drafTime']));
+        $draft->time_choose = date("Y-m-d h:s:i", strtotime($input['drafTime']));
         $draft->player_trade = '1';  //??
         $draft->code = $code;
         $draft->user_id = Auth::user()->id;
@@ -169,6 +169,7 @@ class DraftController extends SiteController {
         $draftUser->draft_id = $draftId;
         $draftUser->user_id = Auth::user()->id;
         $draftUser->team_name = $input['teamName'];
+        $draftUser->fav_team = $input['fav_team'];
         $draftUser->notifi = $notifi;
         $draftUser->user_count = 1;
         $draftUser->save();
@@ -176,12 +177,82 @@ class DraftController extends SiteController {
 
     }
     public function saveDraft(Request $request){
-        dd($request->all());
+
+        $notifi = 0;
+        $link = get_RandLink();
+        $code = generateRandomCode(7);
+
+        $input = $request->all();
+        foreach ($input as $key => $value) {
+                 $input[$key] = stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
+         }
+
+         if (array_key_exists("followed",$input))
+            {
+                $notifi = 1;
+            }
+
+            $eldwry  = Eldwry::get_currentDwry();
+            $subEldwry = Subeldwry::get_CurrentSubDwry();
+            $draft = new Draft;
+            $draft->link = $link;
+            $draft->eldwry_id = $eldwry->id;
+            $draft->sub_eldwry_id = $subEldwry->id;
+            $draft->type_id = 15;
+            $draft->max = $input['dawrySize'];
+            $draft->min = 2;
+            $draft->date = date("Y-m-d");
+            $draft->time = date("h:s:i");
+            $draft->time_choose = date('h:i:s', strtotime('+1 hour'));
+            $draft->user_id = Auth::user()->id;
+            $draft->save();
+    
+            $draftId = $draft->id;
+            $draftUser = new DraftUsers;
+    
+            $draftUser->draft_id = $draftId;
+            $draftUser->user_id = Auth::user()->id;
+            $draftUser->team_name = $input['teamName'];
+            $draftUser->notifi = $notifi;
+            $draftUser->user_count = 1;
+            $draftUser->save();
+            return response()->json(['url'=>url('draft/draftRoom')]);
+    }
+
+    public function joinLeauge(Request $request){
+
+
+        $checkCode = Draft::checkLeagueCode($request->dawryCode);
+        if($checkCode){
+
+            $input = $request->all();
+            foreach ($input as $key => $value) {
+                     $input[$key] = stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
+             }
+
+             $notifi = 0;
+             if (array_key_exists("followed",$input))
+                {
+                    $notifi = 1;
+                }
+
+            $draftUser = new DraftUsers;
+            $draftUser->draft_id = $checkCode->id;
+            $draftUser->user_id = Auth::user()->id;
+            $draftUser->fav_team = $input['fav_team'];
+            $draftUser->team_name = $input['teamName'];
+            $draftUser->notifi = $notifi;
+            $draftUser->user_count = 1;
+            $draftUser->save();
+            return response()->json(['url'=>url('draft/draftRoom'),'status' => true]);
+        }else{
+            $arr = array('msg' =>__('text.addFailed'), 'status' => true);
+            return response()->json(array('msg' =>__('text.wrongCode'), 'status' => false));
+        }
     }
 
     public function draftRoom(){
         if ($this->site_open == 1 || $this->site_open == "1") {
-            emptySessionDeletPlayer();
             $register_dwry = 1;
             $msg_finish_dwry = '';
             if (isset(Auth::user()->id)) {

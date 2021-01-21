@@ -219,9 +219,10 @@ Route::group([
     Route::get('createDraft', ['as' => 'createDraft', 'uses' => 'DraftController@createDraft']);
 
     Route::get('draftRoom', ['as' => 'draftRoom', 'uses' => 'DraftController@draftRoom']);
-    
-    
 
+    Route::post('saveDraft', ['as' => 'saveDraft', 'uses' => 'DraftController@saveDraft']);
+    Route::post('joinLeauge', ['as' => 'joinLeauge', 'uses' => 'DraftController@joinLeauge']);   
+    
 
     });
 

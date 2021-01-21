@@ -423,6 +423,17 @@ function get_RandLink($link = '', $new = 0) {
     }
     return $link;
 }
+
+ function generateRandomCode($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
 function remove_emoji($text)
 {
     return preg_replace('/[^\w\s]+/u','' ,$text);
@@ -495,6 +506,16 @@ function ConvertUTC_ToDateCurrentUser12_hour($data_server)
     $array_date=explode(' ', $date_value);
     return $array_date[0].' '.time_in_12_hour_format($array_date[1]);
 }
+
+// convert current user date to utc 
+function ConvertDateCurrentUserToUtc($data_server, $timezone = 'GMT')
+{
+    $timezone=currentUserCountry();
+    $date = Carbon::createFromFormat('Y-m-d h:i a', $data_server, $timezone);
+    $date->setTimezone('UTC');
+    return $date;
+}
+
 function currentUserCountry($array = 0)
 {
     if (isset($_SERVER["HTTP_CF_IPCOUNTRY"])) {

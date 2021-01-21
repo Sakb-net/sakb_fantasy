@@ -86,12 +86,16 @@
                                 <div class="panel-heading">
                                     <h3>التحق بدوري خاص</h3>
                                 </div>
+                                <div id='formErorr' class='alert alert-danger text-center mb-10' style="display:none;">
+                                <p id="errorText"></p>
+                                </div>
+
                                 <div class="panel-body">
                                     <form id="joinLeauge" method="post">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>كود الدوري</label>
-                                                <input type="text" name="dawryCode" class="form-control" value="" required="" placeholder="">
+                                                <input type="text" id="code" name="dawryCode" class="form-control" value="" required="" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -115,8 +119,8 @@
                                                 <label>إشعارات اللعبة:</label>
                                                 <p class="font-normal"> تلقي رسائل بريد إلكتروني حول المسودة والدوري والصفقات. يمكنك إلغاء الاشتراك في أي وقت.</p>
                                                 <div class="team-checkbox">
-                                                    <input type="checkbox" name="followed" id="followed3">
-                                                    <label for="followed3" class="checkbox-text">نعم ، أرغب في تلقي إشعارات اللعبة عبر البريد الإلكتروني</label>
+                                                    <input type="checkbox" name="followed" id="followed">
+                                                    <label for="followed" class="checkbox-text">نعم ، أرغب في تلقي إشعارات اللعبة عبر البريد الإلكتروني</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,8 +128,8 @@
                                             <div class="form-group">
                                                 <label>الشروط والأحكام:</label>
                                                 <div class="team-checkbox">
-                                                    <input type="checkbox" name="condition" id="condition3">
-                                                    <label for="condition3" class="checkbox-text">قرأت <a href="">الشروط و الأحكام</a></label>
+                                                    <input type="checkbox" name="condition" id="condition">
+                                                    <label for="condition" class="checkbox-text">قرأت <a href="">الشروط و الأحكام</a></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -152,80 +156,7 @@
 
 @section('after_foot')
 
-<!-- <script src="{{ asset('js/site/draftHome.js') }}"></script> -->
+<script src="{{ asset('js/site/draft/joinLeauge.js') }}"></script>
 
-
-<script>
-$(document).ready(function () {
-    
-$(".startSection").hide();
-$(".joinLeauge").show();
-$(".mainSection").hide();
-
-$("#startPage").click(function () {
-    $(".mainSection").hide();
-    $(".joinLeauge").hide();
-    $(".startSection").show();
-    $("#startPage").addClass("active");
-    $("#mainPage").removeClass("active");
-});
-
-$("#showStartPage,#showStartPage1,#showStartPage2").click(function(){
-    $(".mainSection").hide();
-    $(".joinLeauge").hide();
-    $(".startSection").show();
-    $("#startPage").addClass("active");
-    $("#mainPage").removeClass("active");
-    });
-
-$("#mainPage").click(function () {
-    $(".startSection").hide();
-    $(".joinLeauge").hide();
-    $(".mainSection").show();
-    $("#mainPage").addClass("active");
-    $("#startPage").removeClass("active");
-});
-
-
-$("#joinLeagueButton").click(function () {
-    $(".startSection").hide();
-    $(".joinLeauge").show();
-    $('html, body').animate({
-        scrollTop: $(".game-menu").offset().top
-    }, 0);
-});
-
-
-
-$('#joinLeauge').submit(function(e){
-   e.preventDefault();
-
-    var form = $('#joinLeauge')[0];
-    var data = new FormData(form);
-
-    $.ajaxSetup({
-    headers: {
-    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
-   $.ajax({
-            url: "createLeauge",
-            type: "POST",
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-      success: function(response)               
-       {
-        },error: function (data) {
-
-        }
-      });
-   });
-
-
-});
-
-</script>
 
 @stop
