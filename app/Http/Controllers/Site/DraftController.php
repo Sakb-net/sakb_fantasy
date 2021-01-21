@@ -26,14 +26,14 @@ class DraftController extends SiteController {
                     $lang = 'en';
                 }
                 $eldwry  = Eldwry::get_currentDwry();
-                // $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
-                // if($checkDraft){
-                    // return redirect()->route('draft.draftRoom');
-                // }else{
+                $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
+                if($checkDraft){
+                    return redirect()->route('draft.draftRoom');
+                }else{
                     $team = Team::getTeamId(1,$lang);
                     $title = 'create draft';
                      return view('site.draft.home',compact('title','team'));
-                // }
+                }
             } else {
                 return redirect()->route('login');
             }
@@ -55,14 +55,14 @@ class DraftController extends SiteController {
                 }else{
                     $lang = 'en';
                 }
-                // $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
-                // if($checkDraft){
-                //     return redirect()->route('draft.draftRoom');
-                // }else{
+                $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
+                if($checkDraft){
+                    return redirect()->route('draft.draftRoom');
+                }else{
                     $team = Team::getTeamId(1,$lang);
                     $title = 'join leauge draft';
                      return view('site.draft.joinLeauge',compact('title','team'));
-                // }
+                }
             } else {
                 return redirect()->route('login');
             }
@@ -83,15 +83,15 @@ class DraftController extends SiteController {
                         $lang = 'en';
                     }
                     $eldwry  = Eldwry::get_currentDwry();
-                    // $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
-                    // if($checkDraft){
-                    //     return redirect()->route('draft.draftRoom');
-                    // }else{
+                    $checkDraft = DraftUsers::checkUserDraft(Auth::user()->id);
+                    if($checkDraft){
+                        return redirect()->route('draft.draftRoom');
+                    }else{
                         $type = AllType::foundAllKeyType('type_key','eldwry_type',$lang);
                         $team = Team::getTeamId(1,$lang);
                         $title = 'create Leauge draft';
                         return view('site.draft.createLeague',compact('title','team','type'));
-                    // }
+                    }
                 } else {
                     return redirect()->route('login');
                 }
@@ -111,14 +111,14 @@ class DraftController extends SiteController {
                         $lang='';
                     }
                     $eldwry  = Eldwry::get_currentDwry();
-                    // $checkDraft = DraftUsers::where('user_id',Auth::user()->id)->first();
-                    // if($checkDraft){
-                    //     dd('already joined');
-                    // }else{
+                    $checkDraft = DraftUsers::where('user_id',Auth::user()->id)->first();
+                    if($checkDraft){
+                        dd('already joined');
+                    }else{
                         $team = Team::getTeamId(1,$lang);
                         $title = 'create draft';
                         return view('site.draft.create',compact('title','team'));
-                    // }
+                    }
                 } else {
                     return redirect()->route('login');
                 }
