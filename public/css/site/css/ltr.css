@@ -1,0 +1,501 @@
+#loader-wrapper {
+    right: auto;
+    left:0;
+}
+#loader {
+    right: auto;
+    left: 0;
+}
+#shadow {
+    right: 46%;
+    left:auto;
+}
+.border-left {
+    border-right: 2px solid #8c8c8c;
+}
+.border-right {
+    border-left: 2px solid #8c8c8c;
+}
+.scroll-top {
+    right:15px;
+    left: auto;
+}
+.scroll-top:after {
+    left: 5%;
+    right: auto;
+}
+body {
+    text-align: left;
+    direction: ltr;
+}
+.float-right {
+    float: left;
+}
+.float-left {
+    float: right;
+}
+.alert i {
+    margin-right: 5px;
+    margin-left:0;
+}
+.gray-bg .block-title>span {
+    border-right: none;
+    border-left: 5px solid #ffffff;
+}
+.header-wrapper .top-header .left-list ul li i {
+    margin-left: 4px;
+    margin-right:0;
+}
+.header-wrapper .top-header .left-list ul li {
+    margin-right: 4px;
+    margin-left: 0;
+}
+.header-wrapper .top-header .right-list ul li {
+    margin-left: 10px;
+    margin-right:0;
+}
+.header-wrapper .top-header .right-list ul.social-icon li {
+    margin-left: 25px;
+    margin-right:0;
+}
+.header-wrapper .top-header.style-two .left-list ul li:before {
+    left: auto;
+    right: 0;
+}
+header .mymenu-wrapper.transparent-layout {
+    left: 0;
+    right: auto;
+}
+header .mymenu-wrapper .logo {
+    left: 0;
+    right: auto;
+}
+#mega-menu-wrapper .nav li.join-us a {
+    margin-right: 0;
+    margin-left: 10px;
+}
+.mymenu-wrapper.fixed {
+    left: 0;
+    right: auto;
+}
+.head-top-area {
+    left:auto;
+    right: 0;
+}
+.breadcrumb-area::before, .top-area::before {
+    left:auto;
+    right: 0;
+}
+.featured-content ul li:before {
+    left: -35px;
+    right: auto;
+}
+.terms ul li:before {
+    right: auto;
+    left: -35px;
+}
+.myfooter:before {
+    right: auto;
+    left: 0;
+}
+.myfooter .top-footer h6 span {
+    border-left: 5px solid #fff;
+    border-right: none;
+    padding-left: 12px;
+    padding-right: 0;
+}
+.myfooter .top-footer li a:hover {
+    padding-left: 5px;
+    padding-right: 0;
+}
+.myfooter .footer-logo-widget ul {
+    text-align: left;
+    margin-left: 50px;
+    margin-right: 0;
+    padding-left: 15px;
+    padding-right: 0;
+}
+.myfooter .footer-logo-widget ul:before {
+    right:auto;
+    left: 0;
+}
+.myfooter .footer-logo-widget ul li i {
+    right:auto;
+    left: 0;
+}
+.store li a:hover {
+    padding-left: 0 !important;
+}
+.store li:first-child {
+    margin-right: 7px;
+    margin-left: 0;
+}
+.login-well ul {
+    margin: 0 0 25px 25px;
+}
+.login-well ul li {
+    text-align: left;
+}
+.login-well ul li:before {
+    right:auto;
+    left: -20px;
+}
+.button-facebook:before, .button-google:before, .button-twitter:before {
+    padding-right: 1rem;
+    padding-left: 0;
+}
+.post-slide .post-date {
+    left:auto;
+    right: 30px;
+}
+.post-slide .post-title a {
+    border-right: none;
+    border-left: 3px solid #008640;
+    padding-left: 12px;
+    padding-right: 0;
+}
+.block-title>span {
+    border-right: none;
+    border-left: 5px solid #008640;
+    padding-left: 12px;
+    padding-right: 0;
+}
+a.read-more {
+    float: right;
+}
+.video-icon {
+    left: 54%;
+    right:auto;
+    margin-left: -40px;
+    margin-right: 0;
+}
+.video-icon i {
+    margin-right: 5px;
+    margin-left: 0;
+}
+.owl-nav .owl-prev, .owl-nav .owl-next {
+    right: 0;
+    left:auto;
+}
+.owl-nav .owl-next {
+    left: 0;
+    right: auto;
+}
+.game-stage .player .delete {
+    left:auto;
+    right: 0;
+}
+.game-stage .player .info {
+    left: 0;
+    right: auto;
+}
+.game-stage .player .change {
+    left:auto;
+    right: 0;
+}
+.game-stage .player .captain {
+    left:auto;
+    right: 0;
+}
+.list-player .image {
+    margin-right: 10px;
+    margin-left: 0;
+}
+.list-player .body {
+    text-align: left;
+}
+.list-player .body .text span:first-child {
+    margin-right: 3px;
+    margin-left: 0;
+}
+.FixtureScore span:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-left:none;
+}
+.pagination > li:first-child > a, .pagination > li:first-child > span,.pagination > li:last-child > a, .pagination > li:last-child > spans {
+    margin-right: 0;
+}
+.social-links li:last-child {
+    margin-right: 0;
+}
+.comments-list .comment-body {
+    margin-left: 85px;
+     margin-right: 0;
+}
+.comments-list .comment-city {
+     margin-right: 0;
+    margin-left: 5px;
+}
+.widget .widget-title {
+    text-align: left;
+    border-left: 5px solid #fff;
+    border-right: none;
+    padding-left: 12px;
+    padding-right: 0;
+}
+.plan {
+    left:auto;
+    right: 10px;
+    
+}
+.back {
+    text-align: right;
+    float: right;
+    padding-right: 10px;
+    padding-left: 0;
+}
+.points-detailes {
+    padding-right: 0;
+    padding-left: 1rem;
+}
+.dream-btn a {
+    right: 1.5rem;
+    left:auto;
+
+}
+.dream-team-points .final-points {
+    margin-left: 1rem;
+    margin-right: 0;
+}
+.dream-team-points .list-player .image img {
+
+    text-align: left;
+}
+.dream-team-points .list-player .image {
+    margin-right: 18px;
+    margin-left:0;
+}
+.fixtures-detailes .fix-list {
+
+    text-align: left;
+}
+.fixtures-detailes .fix-list:first-child {
+    text-align: right;
+    border-right: 1px dotted black;
+    border-left: none;
+}
+.card h3.title {
+    text-align: left;
+}
+.more {
+    float: right;
+}
+#top-players .owl-nav .owl-next, #top-players .owl-nav .owl-prev {
+    left:auto;
+    right: 0;
+}
+#top-players .owl-nav .owl-next {
+    left: 0;
+    right: auto;
+}
+.fixture-box .sm-img:first-child {
+    float: left;
+}
+.fixture-box .sm-img:last-child {
+    float: right;
+}
+#mega-menu-wrapper .nav a.english {
+    margin-right: 0;
+    margin-left: 10px;  
+}
+.english i {
+    margin-right: 10px;
+    margin-left: 0;
+}
+.draw_AllDataList {
+    text-align: left;
+}
+/*(min-width: 992px) and (max-width: 1199px)*/
+@media (max-width: 991px) {
+    #mega-menu-wrapper {
+        left: 0;
+        right: auto;
+    }
+    #loader {
+        left: -4rem;
+        right: auto;
+    }
+}
+@media only screen and (max-width: 576px) {   
+    .game-stage .player .change {
+        right: 0;
+        left:auto;
+    }
+    .points-detailes {
+        padding-left: 0;
+    }
+}
+#draw_playerList_eldawry {
+    text-align: left;
+}
+.butn i {
+    font-size: 20px;
+    padding-right: 5px;
+    padding-left: 0;
+}
+.league-table > thead > tr > th {
+    text-align: left;
+}
+@media only screen and (max-width: 576px) {
+    .butn i.fa-cog {
+        padding-right: 0;
+    }
+}
+.mytab-content .panel-default > .panel-heading {
+    text-align: left;
+}
+.invitation:before {
+    left: 50%;
+    right: auto;
+    margin-left: -2px;
+    margin-right: 0;
+}
+.or {
+    float: left;
+    left: 50%;
+    margin-left: -20px;
+    right: auto;
+    margin-right: 0;
+}
+.Score span:first-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-left:none;
+}
+.alert img {
+    padding-right: 10px;
+    padding-left: 0;
+}
+.time-countdown .counter-column {
+    float: left;
+}
+.mytimer {
+    text-align: left;
+}
+.next-game {
+    right: 16px;
+    left:auto;
+    text-align: right;
+}
+.prev-game {
+    left: 16px;
+    right: auto;
+}
+.sub_fixture .start_date {
+    float: left;
+}
+.sub_fixture .end_date {
+    float: right;
+}
+.gw-next {
+    text-align: left;
+    left: 0;
+    right: auto;
+}
+.gw-prev {
+    text-align: right;
+    right: 0;
+    left:auto;
+}
+.header-logos ul.logos {
+    float: right;
+}
+.header-logos ul.logos li {
+    margin-left: 10px;
+    margin-right: 0;
+}
+.close_btn {
+    float: right;
+}
+.save-table .table > thead > tr > th {
+    text-align: left;
+}
+.my-summary .bg-img h2{
+    margin-left: 10px;
+    margin-right: 0;
+}
+#progressbar li {
+    float: left;
+}
+#progressbar li:after {
+    right: 0;
+    left:auto;
+}
+.radio-tile-group .input-container .radio-button {
+    left:auto;
+    right: 0;
+}
+.choose-teams{
+    text-align: left;
+}
+.team-checkbox label{
+    padding-left: 45px;
+    padding-right: 0;
+    text-align: left;
+}
+.team-checkbox label:before{
+    float: left;
+    left: 0;
+    right: auto;
+}
+.email-sms .table .team-checkbox label:before{
+    left:50%;
+    right: auto;
+}
+.FixtureScore.live:before {
+    right: 50%;
+    left: auto;
+}
+.matchAbridged .matchInfo {
+    text-align: left;
+}
+.matchAbridged .score span {
+    margin-left: 0;
+}
+.matchAbridged .score span:before {
+    right: 50%;
+    left: auto;
+}
+.tooltipContainer{
+    left: -100px;
+    right: auto;
+}
+.tooltipContainer .tooltip-content:after {
+    right: 50%;
+    left: auto;
+    margin-right: -10px;
+    margin-left: 0;
+}
+.expandable .matchAbridged{
+    margin-left: 10px;
+    margin-right: 0;
+}
+.expandable td{
+    text-align: left;
+}
+.expandable .expandableTeam img{
+    margin-right: 1rem;
+    margin-left: 0;
+}
+.draft-container h3 span{
+    padding-left: 10px;
+    padding-right: 0;
+}
+.draft-countdown .time-countdown .counter-column {
+    float: left;
+}
+.bootstrap-timepicker-widget.dropdown-menu.open{
+    right: auto;
+}
+.expandable .expandableFixtures {
+    float: right;
+}
+.expandable .expandableTeam {
+    float: left;
+}
+.expandable .expandableFixtures .matchAbridged {
+    float: left;
+    margin-right: 20px;
+}
+.expandable .btnContainer{
+   float: right;
+}

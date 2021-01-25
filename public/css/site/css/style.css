@@ -1,7 +1,6 @@
 /**
 * Importing necessary  Styles.
 **/
-@import url('/css/site/css/plugins.css');
 @font-face {
     font-family: "JF Flat Regular";
     src: url('/css/site/fonts/JannaLT-Regular.ttf');
@@ -9,6 +8,7 @@
     font-style: normal;
 }
 /*** 
+
 ====================================================================
   Loading Transition
 ====================================================================
@@ -124,7 +124,7 @@
     outline: none;
 }
 
-/*______________________ Global stlye ___________________*/
+/*-____________________ Global stlye ___________________*/
 @font-face {
     font-family: 'font-awesome';
     src: url('/css/site/fonts/font-awesome/fonts/fontawesome-webfont.ttf');
@@ -140,6 +140,7 @@ body {
     max-width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
+    background: #f7f7f7;
 }
 
 body .main-page-wrapper {
@@ -244,6 +245,7 @@ input,textarea {
 
 .float-left {
     float: left;
+    z-index: 0 !important;
 }
 
 .m-top0 {
@@ -372,7 +374,7 @@ nav > li > a:hover, .nav > li > a:focus {
 }
 
 .text-danger {
-    color: #ed3b39;
+    color: #ed3b39 !important;
 }
 
 .alert i {
@@ -566,7 +568,6 @@ header .mymenu-wrapper .logo {
     width: 200px;
     right: 0;
     text-align: center;
-    background: #fff;
     border-bottom-left-radius: 50%;
     height: 100%;
     min-height: 125px;
@@ -769,11 +770,6 @@ body .vegas-container {
     box-shadow: 0px 1px 11px #a9a9a9;
 }
 
-.errorBorder
-{
- border:1px solid red;
-}
-
 .clients img {
     max-width: 100%;
     transition: 0.3s;
@@ -801,7 +797,7 @@ body .vegas-container {
 .myinner-banner {
     background: url(/images/bg/inner-bg.jpg);
     background-size: cover;
-    height: 264px;
+    /* height: 263px; */
 }
 
 .myinner-banner .opacity {
@@ -1622,8 +1618,8 @@ a.read-more:hover {
 }
 
 thead tr {
-    background: #003365;
-    color: #fff;
+    background: #efefef;
+    color: #003365;
 }
 
 @media (max-width: 768px) {
@@ -1695,6 +1691,7 @@ tr.Forward {
     white-space: nowrap;
     overflow-wrap: normal;
     overflow: hidden;
+    text-transform: capitalize;
 }
 
 .list-player .body .text span:first-child {
@@ -1845,6 +1842,7 @@ tr.Forward {
 .filter label {
     font-weight: bold;
     color: #008640;
+    margin-top: 10px;
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
@@ -2142,7 +2140,7 @@ button.close {
 }
 
 .game-menu a.active {
-    background: #fff !important;
+    background: #f7f7f7 !important;
     color: #104880;
 }
 
@@ -3527,6 +3525,8 @@ input[type="file"]:focus {
 .panel-default > .panel-heading {
     color: #003365;
     text-align: center;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ddd;
 }
 
 .sidebar .panel-default > .panel-heading {
@@ -4158,7 +4158,7 @@ header .mymenu-wrapper .main-content-wrapper {
     }
 
     .myinner-banner{
-        height:150px;
+        /* height:150px; */
     }
 
     .game-menu {
@@ -4618,6 +4618,7 @@ input.butn{
     cursor: pointer;
     font-weight: 400;
     font-weight: bold;
+    margin-right: 5px;
 }
 .form-stauts.win{
     background: #59ab25;
@@ -4636,7 +4637,6 @@ input.butn{
     padding: 0;
 }
 .matchAbridged {
-    padding: .4rem 1rem;
     display: block;
     color: #242424;
     position: relative;
@@ -4646,12 +4646,17 @@ input.butn{
     text-align: center;
 }
 .tooltipContainer .matchAbridged {
-    background-color: transparent;
+    background-color: #fff;
+    padding: 1rem;
 }
 .matchAbridged .matchInfo {
     display: block;
-    color: #76766f;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
+    text-align: right;
+}
+.matchAbridged .result{
+    background-color: #efefef;
+    padding: 1rem;
 }
 .matchAbridged span {
     display: inline-block;
@@ -4718,7 +4723,7 @@ abbr[title] {
 .tooltipContainer{
     position: absolute;
     width: 244px;
-    top: -200%;
+    bottom: 3.3rem;
     right: -100px;
     visibility: hidden;
 }
@@ -4745,11 +4750,12 @@ div.form, .club-image{
 }
 /*--------- tables expanded -----*/
 .expandable {
-    background:#f1f1f1;
+    background: #fff;
 }
 .expandable td{
     text-align: right;
-    padding: 20px !important;
+    padding: 2rem !important;
+    height: auto;
 }
 .expandable .expandableTeam img{
     margin-left: 1rem;
@@ -4763,12 +4769,22 @@ div.form, .club-image{
     display: inline-block;
     vertical-align: middle;
 }
+.expandable .btnContainer{
+   float: left;
+   margin-top: 3.3rem;
+}
+.expandable .btnContainer .butn{
+   line-height: 4.2rem;
+   display: block;
+   padding: 0 20px;
+   border-radius: 0;
+}
 .clubs-order .arrow{
-    background-color: #003365;
+    background-color: #efefef;
     padding: 1rem 1.5rem;
     font-size: 16px;
     text-align: center;
-    color: #fff;
+    color: #003365;
     border-radius: 3px;
 }
 /*------draft------*/
@@ -4878,7 +4894,7 @@ label {
     padding: 0;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
-.draft-start-date{
+.draft-room .draft-start-date{
     padding: .5rem;
     background-color: #008640;
     color: #fff;
@@ -4951,6 +4967,7 @@ label {
     position: relative;
     padding: 25px 0;
     display: block;
+    background: #fff;
 }
 
 .draft-countdown .time-countdown .counter-column {
@@ -4994,43 +5011,51 @@ label {
     border-radius: 5px 5px 0 0;
     margin-top: 0;
 }
-
+/*--------------- draft room ------------------*/
 .draft-room{
     margin-bottom: 2rem;
 }
-
+.draft-room p{
+    text-align: justify;
+}
 .draft-room .draft-ended{
     padding: 2rem 5%;
     color: #fff;
     text-align: center;
-    background: #000;
+    background: #f1f1f1;
+    background-image: linear-gradient(to bottom, #fff 30%, #dadada 100%);
 }
 .draft-ended h3{
     margin: 0 15%;
     padding: .5rem 1rem;
-    background-color: #e90052;
-    color: #fff;
+    color: #003365;
 }
 .draft-ended p{
     margin-bottom: 1rem;
     padding: .5rem 1rem;
-    background-color: #37003c;
-    color: #fff;
+    color: #eb3a39;
     font-size: 2.4rem;
+    font-weight: bold;
+    text-align: center;
 }
 .draft-ended a{
-    font-weight: bold;
+    margin-top: 10px;
 }
 .draft-room p.last-choice{
     text-align: center;
     border: 1px solid #e8e8e8;
+    padding: 5px;
     border-top: 0 solid #e8e8e8;
+    background: #fff;
 }
-.draft-room p.last-choice .badge{
-    font-size: 1.4rem;
+.draft-room .badge, .stage .badge{
+    font-size: 1.2rem;
     padding: .2rem .5rem;
     border-radius: 4px;
     color: #fff;
+    letter-spacing: 1px;
+    line-height: 22px;
+    text-transform: uppercase;
 }
 /*--------------*/
 .draft-sidebar{
@@ -5050,7 +5075,313 @@ label {
 .draft-play .filter label{
     color: #fff;
 }
-.players-num{
+.draft-play .players-num p{
     color: #fff;
     text-align: center;
+}
+.draft-play .players-num p span{
+    color: #85d45a;
+    font-weight: bold;
+}
+.draft-play .tab-content {
+    background: transparent;
+}
+.draft-play .mytab-content{
+    padding: 0 20px;
+}
+.draft-play .stage #table-wrapper{
+    max-height: 682px;
+    overflow-y: auto;
+    min-height: 300px;
+    background: #fff;
+}
+.draft-play .stage .nav-tabs > li > a{
+    font-size: 16px;
+}
+.opacity50{
+    opacity: 0.5;
+}
+.draft-start-date{
+    color: #003365;
+    font-weight: bold;
+}
+.form-width{
+    min-width:260px;
+}
+.datepicker-container {
+    position: relative;
+}
+.datepicker.dropdown-menu{
+    right: auto;
+}
+.td-player-width{
+    min-width:130px;
+}
+.table>tbody>tr>th {
+    min-width: 70px;
+}
+.text-center>th{
+    text-align: center;
+}
+.expandable hr.clearfix{
+    display: none;
+}
+.bootstrap-timepicker-widget.dropdown-menu.open{
+    right: 125px;
+}
+.expandable .expandableFixtures {
+    float: left;
+}
+.expandable .expandableTeam {
+    float: right;
+    padding-top: 2rem;
+}
+.expandable .expandableFixtures .matchAbridged {
+    float: right;
+    margin-bottom: 1rem;
+    margin-left: 20px;
+}
+.hidden-mobile{
+    visibility: visible;
+}
+.visible-mobile{
+    display: none;
+}
+.hidden-ipad{
+    visibility: visible;
+}
+.stage .btn{
+    display: block;
+    border-radius: 1px;
+}
+@media screen and (max-width: 1150px) {
+    .hidden-ipad{
+        display: none;
+    }
+    .expandable .expandableTeam{
+        display: none;
+    }
+    .expandable .expandableFixtures{
+        float: none;
+    }
+}
+@media screen and (max-width: 767px) {
+    .draft-play .stage .nav-tabs > li > a {
+        font-size: 13px;
+        padding: 8px 8px;
+    }
+    .matchAbridged{
+        margin: 10px 0 0;
+    }
+    .expandable .expandableFixtures .matchAbridged,.expandable .expandableFixtures,.expandable .expandableTeam {
+        float: none;
+    }
+    .hidden-mobile{
+        display: none;
+    }
+    .visible-mobile{
+        display: block;
+    }
+    .clubs-order>tbody>tr>td, .clubs-order>tbody>tr>th{
+        padding: 5px;
+    }
+    .table>tbody>tr>th {
+        min-width: 0px;
+    }
+    .clubs-order .order{
+        width: auto;
+        background: transparent;
+    }
+    .clubs-order .arrow{
+        padding: 0.5rem;
+    }
+}
+/*---------- Draft room changes ------------*/
+.sticky-status {
+    margin-bottom: 2rem;
+    background-color: white;
+    z-index: 100;
+    text-align: center;
+}
+.draft-round {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background-color: #003365;
+}
+.draft-round-name {
+    color: #5cb85c;
+}
+.draft-round-text {
+    margin-right: 1rem;
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 0;
+}
+.draft-round-text-round {
+    color: #5cb85c;
+    margin-left: 5px;
+}
+.pick-boxes {
+    display: flex;
+    border-width: 0 1px;
+    border-style: solid;
+    border-color: #e8e8e8;
+}
+.pick-boxes-item {
+    border-left: 1px solid #e8e8e8;
+    display: flex;
+    width: 50%;
+    border-bottom: 1px solid #e8e8e8;
+}
+.pick-boxes-box-secondary {
+    width: 25%;
+    flex: 1 0 auto;
+}
+.pick-box-current {background: #ececec;}
+.pick-box-heading {
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+}
+.pick-box-main {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    color: #008640;
+    font-size: 2rem;
+    line-height: 1;
+}
+.pick-box .next{
+    background: #ed3b39;
+    color: #ffff;
+    font-weight: bold;
+    padding: 10px 0;
+}
+.pick-box-current-aside {
+    color: #61605c;
+}
+.pick-box-aside {
+    color: #76766f;
+    text-align: center !important;
+    font-size: 1.2rem;
+}
+
+.pick-boxes-box-primary{
+    padding:10px;
+    flex: 1 0 auto;
+}
+.draft-countdown-heading {
+    padding-top: 0.7rem;
+    padding-bottom: 1.2rem;
+    font-size: 1.6rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+.draft-countdown-bar {
+    display: flex;
+    background-color: #e8e8e8;
+}
+.draft-countdown-bar {
+    display: flex;
+    background-color: #e8e8e8;
+}
+.draft-countdown-timer {
+    width: 25%;
+    padding: 0.5rem;
+    background-color: #003365;
+    color: white;
+    font-size: 2.6rem;
+    text-align: center;
+}
+.draft-countdown-level-container {
+    display: flex;
+    width: 75%;
+}
+.draft-countdown-level.is-animating {
+    animation-name: countdown;
+    animation-timing-function: linear;
+}
+.draft-countdown-level {
+    background-color: #5cb85c;
+}
+.draft-countdown-level.my-turn {
+    background-color: #ce2b2a;
+}
+.pick-box{
+    padding: 12px;
+}
+@keyframes countdown {
+    100% {
+        width: 0;
+    }
+}
+/*** 
+
+====================================================================
+    draft room changes
+====================================================================
+
+***/
+.draft-countdown-timer.time-counter .title {
+    margin-bottom:5px;
+}
+.draft-countdown-timer.time-counter {
+    padding: 20px 0;
+}
+.draft-countdown-timer .time-countdown .counter-column {margin-bottom: 0;}
+.draft-countdown-timer .time-countdown .counter-column:last-child {display: none;}
+.draft-countdown-timer .time-countdown .counter-column .inner {
+    color: #fff;
+    font-size: 0px;
+    line-height: 0;
+    padding: 0;
+}
+
+.draft-countdown-timer .time-countdown .counter-column .count {
+    position: relative;
+    display: block;
+    font-size: 20px;
+    line-height: 0.5em;
+    padding: 0px 0px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.draft-countdown-timer h3{
+    padding: 0.7rem;
+    background-color: #003365;
+    color: #fff;
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    margin-top: 0;
+}
+/*---------------idle ---------*/
+.idle {
+    padding: 1.5rem 10%;
+    background-color: #eb3a39;
+    text-align: center;
+}
+.idle-heading {
+    margin-bottom: 2rem;
+    color: white;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+.idle button{
+    font-weight: bold;
+    padding: 8px 5rem;
+    line-height: 18px;
+    font-size: 16px;
+}
+.sticky-status.is-stuck {
+    position: fixed;
+    top: 0;
+    box-shadow: 0 8px 8px -6px #94948d;
+    width: 800px;
 }
