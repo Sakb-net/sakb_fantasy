@@ -44,12 +44,13 @@
                                     <th><abbr title="فوز">ف</abbr></th>
                                     <th><abbr title="تعادل">ت</abbr></th>
                                     <th><abbr title="خسارة">خ</abbr></th>
-                                    <th><abbr title="أهداف له">له</abbr></th>
-                                    <th><abbr title="أهداف عليه">عليه</abbr></th>
+                                    <th class="hidden-mobile"><abbr title="أهداف له">له</abbr></th>
+                                    <th class="hidden-mobile"><abbr title="أهداف عليه">عليه</abbr></th>
                                     <th><abbr title="فرق أهداف">فرق</abbr></th>
                                     <th><abbr title="نقاط">نقاط</abbr></th>
-                                    <th>Form</th>
-                                    <th><span>المباراة القادمة</span></th>
+                                    <!-- نتاءج -->
+                                    <th class="hidden-ipad">Form</th>
+                                    <th class="hidden-ipad"><span>المباراة القادمة</span></th>
                                     <th></th>
                                 </tr>
                             </thead>

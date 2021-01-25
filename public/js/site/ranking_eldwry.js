@@ -193,20 +193,21 @@ function draw_ranking_eldwry(all_data){
                     div_section +='</div>';
                 div_section +='</td>';
                 div_section +='<td>';
-                    div_section +='<div class="club-name">'+value.team_name+'</div>';
+                    div_section +='<div class="club-name hidden-mobile">'+value.team_name+'</div>';
+                    div_section +='<div class="club-name visible-mobile">'+value.team_code+'</div>'; 
                 div_section +='</td>';
                 div_section +='<td>'+value.count_played+'</td>';
                 div_section +='<td>'+value.won+'</td>';
                 div_section +='<td>'+value.draw+'</td>';
                 div_section +='<td>'+value.loss+'</td>';
-                div_section +='<td>'+value.goals_own+'</td>';
-                div_section +='<td>'+value.goals_aganist+'</td>';
+                div_section +='<td class="hidden-mobile" >'+value.goals_own+'</td>';
+                div_section +='<td class="hidden-mobile" >'+value.goals_aganist+'</td>';
                 div_section +='<td>'+value.goals_diff+'</td>';
                 div_section +='<td>'+value.points+'</td>';
-                div_section +='<td>';
+                div_section +='<td class="hidden-ipad">';
                    div_section += draw_form_ranking_eldwry(value.form);
                 div_section +='</td>';
-                div_section +='<td class="text-center">';
+                div_section +='<td class="text-center hidden-ipad">';
                     if(value.next_match !="" && value.next_match !=null){
                         div_section +='<div class="club-image">';
                             div_section +='<img src="'+value.next_match.second_team_image+'" alt="club-logo">';
@@ -288,14 +289,14 @@ function draw_form_ranking_eldwry(all_data){
 function draw_expandableTeam(site_team,current_match,next_match,first_team_link,first_team_name,first_team_image){
  var div_section = '<td colspan="14">';
         div_section += '<div class="row">';
-            div_section += '<div class="col-md-3">';
-                div_section += '<a href="#" class="expandableTeam">';
+            div_section += '<div class="expandableTeam">';
+                div_section += '<a href="" class="">';
                     div_section += '<img src="'+first_team_image+'" alt="club-logo">';
                     div_section += '<span class="teamName">'+first_team_name+'</span>';
                 div_section += '</a>';
             div_section += '</div>';
-            div_section += '<div class="col-md-9">';
-                div_section += '<div class="col-md-4">';
+            div_section += '<div class="expandableFixtures">';
+                div_section += '<div class="">';//col-md-4
                     div_section += '<div class="matchAbridged">';
                         div_section += '<span class="matchInfo"><strong>أخر نتيجة </strong>- '+current_match.date_day+'</span>';
                         div_section += '<span class="teamName">'+current_match.first_team_name+'</span>';
@@ -309,7 +310,7 @@ function draw_expandableTeam(site_team,current_match,next_match,first_team_link,
                         div_section += '<span class="teamName">'+current_match.second_team_name+'</span>';
                     div_section += '</div>';
                 div_section += '</div>';
-                div_section += '<div class="col-md-4">';
+                div_section += '<div class="">';//col-md-4
                     if(next_match !="" && next_match !=null){
                        div_section += '<div class="matchAbridged">';
                             div_section += '<span class="matchInfo"><strong>المباراة القادمة </strong>- '+next_match.date_day+' </span>';
@@ -325,7 +326,7 @@ function draw_expandableTeam(site_team,current_match,next_match,first_team_link,
                         div_section += '</div>';
                     }
                 div_section += '</div>';
-                div_section += '<div class="col-md-4">';
+                div_section += '<div class="btnContainer">'; //col-md-4
                     div_section += '<a href="'+site_team+'" class="butn float-left">الذهاب لموقع النادي</a>';
                 div_section += '</div>';
             div_section += '</div>';

@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class DraftChoosePlayer
+class DraftChoosePlayer implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -19,9 +19,10 @@ class DraftChoosePlayer
      *
      * @return void
      */
-    public function __construct()
+    public $message;
+    public function __construct($message='')
     {
-        //
+        $this->message = $message;
     }
 
     /**
@@ -31,8 +32,23 @@ class DraftChoosePlayer
      */
     public function broadcastOn()
     {
-        // return new PrivateChannel('channel-name');
-        return new PrivateChannel('draft-player');
+        return new PrivateChannel('draft-player.123456789'); //channel-name //PresenceChannel
+    }
 
+    /**
+     * The event's broadcast name.
+     *
+     * @return string
+     */
+    public function broadcastAs()
+    {
+        return 'player.choose';
+    }
+
+    public function broadcastWith()
+    {
+        return [
+            'message'=>$this->message,
+        ];
     }
 }
