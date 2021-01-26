@@ -36,7 +36,7 @@ class AjaxRankingEldwryController extends SiteController {
             foreach ($input as $key => $value) {
                 $$key = stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
             }
-            $data=$this->RankingEldwryRepository->get_RankingEldwry('link',$subeldwry_link); //$limit,$offset
+            $data=$this->RankingEldwryRepository->get_RankingEldwry('link',$subeldwry_link,18,0,$request); //$limit,$offset
             return response()->json(['status' =>1, 'response' => $response,'data'=>$data]);
         }
     }

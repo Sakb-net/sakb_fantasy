@@ -92,7 +92,6 @@ class RankingEldwryController extends API_Controller {
      * )
      */
     public function ranking_eldwry(Request $request) {
-
         $data_header = API_Controller::get_DataHeader(getallheaders());
         $access_token = $data_header['access_token'];
         $val_dev = $data_header['val_dev'];
@@ -108,7 +107,7 @@ class RankingEldwryController extends API_Controller {
         $limit = isset($request->limit) ? $request->limit : 18;
         $offset = $num_page * $limit;
         $response = API_Controller::MessageData('SUCCESS_MESSAGE', $lang,0);
-        $response['data']= $this->RankingEldwryRepository->get_RankingEldwry('link',$subeldwry_link,$limit,$offset);
+        $response['data']= $this->RankingEldwryRepository->get_RankingEldwry('link',$subeldwry_link,$limit,$offset,$request);
         return response()->json($response, 200);
     }
 

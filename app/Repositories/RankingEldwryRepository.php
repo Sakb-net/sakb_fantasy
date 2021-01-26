@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories;
 
+use Illuminate\Http\Request;
 use App\Http\Resources\RankingEldwryResource;
 use App\Http\Resources\RankingEldwryHomeResource;
 use App\Http\Resources\SubeldwryResource;
@@ -71,7 +72,7 @@ class RankingEldwryRepository
         ];
     }
 
-    public function get_RankingEldwry($colum_subeldwry='link',$val_subeldwry='',$limit=18,$offset=0){
+    public function get_RankingEldwry($colum_subeldwry='link',$val_subeldwry='',$limit=18,$offset=0,$request=[]){
         $eldwry=Eldwry::get_currentDwry();
         $ranking_eldwry=[];
         $subeldwry='';
@@ -82,8 +83,8 @@ class RankingEldwryRepository
                 $subeldwry=Subeldwry::get_SubeldwryRow($val_subeldwry, $colum_subeldwry);
             }
             if(isset($subeldwry->id)){
-                Session::put('subeldwry_ranking',$subeldwry->id);
-                Session::put('eldwry_ranking',$eldwry->id);
+                $request->headers->set('subeldwry_ranking',$subeldwry->id);
+                $request->headers->set('eldwry_ranking', $eldwry->id);
                 $data=RankingEldwry::all_statistic_all_before_of_subldwry_team($eldwry->id,$subeldwry->id,-1,$limit,$offset);
                 $ranking_eldwry= RankingEldwryResource::collection($data);
             }
