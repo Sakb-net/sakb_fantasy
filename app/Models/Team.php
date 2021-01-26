@@ -126,8 +126,8 @@ class Team extends Model {
             $val_data['link']=$value->link;
             $data[]=$val_data;
         }
-        $val_data['name']=trans('app.general_fan');
-        $val_data['link']='general_fan';
+        // $val_data['name']=trans('app.general_fan');
+        // $val_data['link']='general_fan';
         $data[]=$val_data;
         return $data;
     }
