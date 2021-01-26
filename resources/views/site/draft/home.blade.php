@@ -47,8 +47,8 @@
                 <div class="draft-start">
                     <h2>التحق أو انضم لدوري</h2>
                     <p>أنشئ دوريًا خاصًا جديدًا وادعُ أصدقائك أو انضم إلى آخرين في دوري خاص موجود.</p>
-                    <a href="{{route('draft.joinLeaugeDraft')}}" class="butn butn-bg">انضم إلي دوري </a>
-                    <a href="{{route('draft.createLeaugeDraft')}}" class="butn butn-bg">إنشاء دوري جديد</a>
+                    <a href="{{route('draft.joinLeaugeDraft')}}" class="butn butn-bg">{{trans('app.join_a_league')}}</a>
+                    <a href="{{route('draft.createLeaugeDraft')}}" class="butn butn-bg">{{trans('app.create_a_league')}}</a>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">

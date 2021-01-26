@@ -80,7 +80,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>اسم الفريق <span> (20 حرف علي الأكثر)</span></label>
-                                        <input name="teamName" type="text" maxlength="20" class="form-control" value="" required="" placeholder="">
+                                        <input name="teamName" type="text" maxlength="20" class="form-control" required placeholder="اسم الفريق">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="submit" class="butn butn-bg m0" value="التحق بالدرافت" placeholder="">
+                                        <input type="submit" class="butn butn-bg m0" value="التحق بالدرافت">
                                     </div>
                                 </div>
                             </form>

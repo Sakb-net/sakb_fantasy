@@ -924,7 +924,18 @@ return array (
   'form_l'=>'خ',
   'site_team'=>'رابط موقع الفريق',
   'draft'=>'الدرافت',
-  'checkDraftTime'=>'وقت الدرافت لا يزيد عن يوم'
+  'checkDraftTime'=>'وقت الدرافت لا يزيد عن يوم',
 
-
+  'loginByUserName'=>'لقد قمت بتسجيل الدخول باسم',
+  'createOrJoinLeague'=>'إنشاء أو الالتحاق بالدوري',
+  'competeWithFriendsOrFamily'=>'نافس أصدقائك أو عائلتك عن طريق إنشاء او الانضمام لدوري',
+  'playNow'=>'العب الآن',
+  'makeYourScouts'=>'قم بعمل الكشافة الخاصة بك',
+  'buildWatchListOfPlayes'=>'قم ببناء قائمة مراقبة بأهداف اللاعبين استعدادًا ليوم المسودة.',
+  'joinDraft'=>'انضم للدرافت',
+  'takeYourTurnToChoose'=>'خذ دورك للاختيار من المسبح وقم ببناء فريق من 15 لاعبًا فريدًا لك.',
+  'joinOrCreateLeague'=>'التحق أو انضم لدوري',
+  'createNewPrivateLeagueAndInviteFriends'=>'أنشئ دوريًا خاصًا جديدًا وادعُ أصدقائك أو انضم إلى آخرين في دوري خاص موجود.',
+  'newSALeagueDraft'=>'جديد في درافت الدوري السعودي؟',
+  'whyNotPracticeFakeDraft'=>'لماذا لا تشارك في مسودة وهمية وتتعلم كيف تعمل المسودة؟',
 );

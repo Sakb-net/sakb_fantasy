@@ -102,7 +102,7 @@ public static function CheckTime_StopSubeldwry(){
     //     $currentWeek = $subEldwry->num_week +1;
     //     $time_stop_subeldwry=Options::get_RowOption('time_stop_subeldwry','option_value',0);
 
-    //     $current_date_time=date("Y-m-d H:i:s");
+    //     $current_date_time = date("Y-m-d H:i:s");
     //     $sub_eldwry = Subeldwry::where('start_date','>',$current_date_time)->where('num_week',$currentWeek)->first();
     //     if($sub_eldwry){
     //         $differneceDate = getChekTime($current_date,$time_stop_subeldwry);
