@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
+
+Broadcast::channel('draft-player.{link}', function ($user, $link) {
+    return true;
+});
+
+Broadcast::channel('eman-chat.{link}', function ($user, $link) {
+    return ['id' => $user->id, 'name' => $user->name, 'display_name' => $user->display_name, 'image' => $user->image];
+});

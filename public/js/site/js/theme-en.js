@@ -1,4 +1,3 @@
-
 (function($) {
     "use strict";
     
@@ -80,7 +79,6 @@
 
           // Clients carousel 
           $(".clients-carousel").owlCarousel({
-              rtl: true,
               autoplay: true,
               dots: false,
               loop: true,
@@ -90,35 +88,32 @@
           });
           $("#news-slider").owlCarousel({
               margin:20,
-              rtl: true,
               autoplay: true,
               dots: true,
               loop: false,
               responsive: {
                   0: {items: 1}, 768: {items: 2}, 900: {items: 3}
               }
-          });
+          });
           $("#videos-slider").owlCarousel({
               margin:20,
-              rtl: true,
               autoplay: true,
               dots: true,
               loop: false,
               responsive: {
                   0: {items: 1}, 768: {items: 2}, 900: {items: 3}
               }
-          });
+          });
 
           $('#game-week').owlCarousel({
               margin:20,
-              rtl: true,
               autoplay: false,
               dots: false,
               loop: false,
               navRewind:false,
               nav:false,
               items: 1
-          }); 
+          }); 
           $('.next-game').click(function() {
               $('#game-week').trigger('next.owl.carousel');
           })
@@ -128,7 +123,6 @@
 
           $("#top-players").owlCarousel({
               margin:20,
-              rtl: true,
               autoplay: false,
               dots: false,
               loop: false,
@@ -138,18 +132,15 @@
               responsive: {
                   0: {items: 1}, 768: {items: 3}, 900: {items: 6}
               }
-          });
-
+          });
           //draft 3-1-2021
           ///////////////////
           $('#timepicker1').timepicker();
           $('.date-picker').datepicker({
-              orientation: "top right",
+              orientation: "top left",
               autoclose: true,
-              rtl:true
           });
           ///////////////////////
-
           $(".empty").click(function(){
             $('#filter').removeClass('transform');
            // $("#stretch").toggleClass("col-md-9");
@@ -187,81 +178,6 @@
             });
            });
           }
-          //
-          $('[data-toggle="tooltip"]').tooltip(); 
-          // validation
-        $('.showSecondPage').click(function(){
-              let email = $('#email').val();
-              let phone = $('#phone').val();
-              let name = $('#name').val();
-              let address = $('#country').val();
-              let pass = $('#password').val();
-              let passConfirm = $('#password-confirm').val();
-              let emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-
-              //email Validation
-              if (email == '') {
-                  $('#email').parent().append('<div class="alert alert-danger">من فضلك ادخل البريد الإلكتروني</div>');
-                  setTimeout(function(){
-                      $('.alert').fadeOut(2000).remove();
-                  },2000)
-              }
-              if (email != '' & !emailReg.test(email)) {
-                  $('#email').parent().append('<div class="alert alert-warning">صيغة البريد الإلكتروني غير صحيحة</div>');
-                  setTimeout(function(){
-                      $('.alert').fadeOut(2000).remove();
-                  },2000)
-              }
-              //phone Validation
-              if (phone == '') {
-                  $('#phone').parent().append('<div class="alert alert-danger">من فضلك ادخل رقم الجوال</div>');
-                  setTimeout(function(){
-                      $('.alert').fadeOut(2000).remove();
-                  },2000)
-              }
-              //name Validation
-              if (name == '') {
-                  $('#name').parent().append('<div class="alert alert-danger">من فضلك ادخل الاسم</div>');
-                  setTimeout(function(){
-                      $('.alert').fadeOut(2000).remove();
-                  },2000)
-              }
-              //address Validation
-              if (address == '') {
-                  $('#country').parent().append('<div class="alert alert-danger">من فضلك اختر مدينتك </div>');
-                  setTimeout(function(){
-                      $('.alert').fadeOut(2000).remove();
-                  },2000)
-              }
-              //password Validation
-              if (pass == '') {
-                  $('#password').parent().append('<div class="alert alert-danger">من فضلك ادخل كلمة المرور</div>');
-                  setTimeout(function(){
-                      $('.alert').fadeOut(2000).remove();
-                  },2000)
-              }
-              //password confirm Validation
-              if (passConfirm == '') {
-                  $('#password-confirm').parent().append('<div class="alert alert-danger">من فضلك ادخل تأكيد كلمة المرور</div>');
-                  setTimeout(function(){
-                      $('.alert').fadeOut(2000).remove();
-                  },2000)
-              }
-              if (passConfirm != pass & passConfirm != '') {
-                  $('#password-confirm').parent().append('<div class="alert alert-warning">كلمة المرور غير متطابقة</div>');
-                  setTimeout(function(){
-                      $('.alert').fadeOut(2000).remove();
-                  },2000)
-              } 
-              //checkbox Validation
-              if ($('#approve').prop('checked')==false) {
-                  $('#approve').parent().append('<div class="alert alert-danger">يجب قراءة الشروط والأحكام</div>');
-                  setTimeout(function(){
-                      $('.alert').fadeOut(2000).remove();
-                  },2000)
-              }
-
-         });
 
         });
     
@@ -291,11 +207,12 @@
 })(jQuery)
 
 function copyToClipboard(element) {
+  console.log(element);
   var $temp = $("<input>");
   $("body").append($temp);
   $temp.val($(element).text()).select();
   document.execCommand("copy");
-  $(element).parent().append('<div class="alert text-center"><strong>تم النسخ بنجاح!</strong></div>');
+  $(element).parent().append('<div class="alert text-center"><strong>coppied!</strong></div>');
     setTimeout(function(){
         $('.alert').fadeOut(200).remove();
     },2000)

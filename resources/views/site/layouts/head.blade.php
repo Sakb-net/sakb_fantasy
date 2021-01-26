@@ -43,12 +43,16 @@
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="56x56" href="{{ asset('images/fav-icon/icon.png') }}">
 <!-- Main style sheet -->
-@if($cuRRlocal=='ar')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/style.css?v='.config('version.version_script')) }}">
+
+@if($cuRRlocal == 'ar')
+<link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/plugins.css?v='.config('version.version_script')) }}">
 @else
-<link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/style-en.css?v='.config('version.version_script')) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/ltr.css?v='.config('version.version_script')) }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/plugins-en.css?v='.config('version.version_script')) }}">
 @endif
 <link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/custom.css?v='.config('version.version_script')) }}">
+
 
 <!--[if lt IE 9]>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>

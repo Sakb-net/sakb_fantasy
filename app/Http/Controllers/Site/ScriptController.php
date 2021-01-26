@@ -32,6 +32,7 @@ use Mail;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\ClassSiteApi\Class_PageController;
 use App\Http\Controllers\OptaApi\Class_PointController;
+use App\Events\DraftChoosePlayer;
 
 class ScriptController extends SiteController {
 
@@ -56,6 +57,13 @@ class ScriptController extends SiteController {
      * @return \Illuminate\Http\Response
      */
     public function script() {
+    // /script?email=eman454  
+      $email='';
+      if (isset($_REQUEST['email'])) {
+        $email=$_REQUEST['email'];
+      }
+      event(new DraftChoosePlayer('hello world :'.$email));
+      die;
       PointPlayer::where('detail_playermatches_id',null)->delete();
         $get_point=new Class_PointController();
         $data= Match::where('winner_team_id','<>',null)->get();

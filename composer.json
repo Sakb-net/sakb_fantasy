@@ -27,7 +27,8 @@
         "livewire/livewire": "^2.0",
         "pusher/pusher-php-server": "^4.1",
         "shanmuga/laravel-entrust": "^2.0",
-        "socialiteproviders/apple": "^4.1"
+        "socialiteproviders/apple": "^4.1",
+        "yajra/laravel-datatables-oracle": "^9.15"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
