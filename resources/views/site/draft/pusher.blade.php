@@ -14,10 +14,6 @@
     });
 
     var channel = pusher.subscribe('private-draft-player.123456789');
-    // channel.bind('comment.created', function(data) {
-    //     console.log('stringify data');
-    //     console.log(JSON.stringify(data));
-    // });
     channel.bind('player.choose', function(data) {
         console.log();
         console.log(data);
