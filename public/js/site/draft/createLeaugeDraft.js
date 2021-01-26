@@ -91,7 +91,19 @@ $('#createLeauge').submit(function(e){
             cache: false,
       success: function(response)               
        {
-        window.location = response.url;
+           if(response.status){
+               window.location = response.url;
+           }else{
+            $('html, body').animate({
+                scrollTop: $(".game-menu").offset().top
+            }, 0);
+                $('#errorText').text(response.msg);
+                $('#formErorr').show();
+                setTimeout(function () {
+                    $('#errorText').text('');
+                    $('#formErorr').hide();
+                }, 2000)               
+           }
         },error: function (data) {
 
         }

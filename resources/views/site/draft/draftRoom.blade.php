@@ -33,7 +33,7 @@
                                     <h3>العد التنازلي للدرافت</h3>
                                     <!--Countdown Timer-->
                                     <div class="time-counter">
-                                        <div class="time-countdown clearfix" data-countdown="2021/01/06 22:00:00"></div>
+                                        <div class="time-countdown clearfix" id="countdown" data-countdown="{{$time}}"></div>
                                     </div>
                                     <p class="draft-start-date">تاريخ الدرافت : 20/12/2020 12:30 pm</p>
                                 </div>
@@ -198,4 +198,54 @@
 @endsection
 @section('after_head')
 
+@stop  
+
+
+@section('after_foot')
+<script>
+$(document).ready(function () {
+    var id = '{{$draft->id}}';
+    var callEvent = false; // for finish event
+    $('.time-countdown').on('finish.countdown', function() {
+        console.log('finished')
+        if(callEvent == false){
+            callEvent = true;
+            checkUsers();
+        }
+    });
+    function checkUsers(){
+        var data = {
+            'id':id
+        };
+    $.ajaxSetup({
+    headers: {
+    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+   $.ajax({
+            url: "checkFullDraft",
+            type: "GET",
+            data: {
+            "id":id
+            },
+            contentType: false,
+            cache: false,
+      success: function(response)               
+       {
+        callEvent = false; //stop event
+        if(response.status){
+            // draft is ready to start
+        }else{ // add +1 hour 
+            $(".time-countdown").countdown(response.time);
+        }
+        },error: function (data) {
+        }
+      });
+
+    }
+
+});
+
+
+</script>
 @stop  

@@ -20,8 +20,17 @@ class DraftUsers extends Model
         return $this->belongsTo(\App\Models\draft::class,'draft_id');
     }
     public static function checkUserDraft($userId){
-
         $data = static::where(['user_id'=>$userId,'is_active'=>1])->first();
         return $data;
     }
+    static function selectUserDraft($id){
+        $data = static::where('user_id',$id)->where('is_active',1)->first();
+        return $data;
+    }
+    static function getJoinCount($id){
+        $data = static::where('draft_id',$id)->where('is_active',1)->count();
+        return $data;
+    }
+
+    
 }

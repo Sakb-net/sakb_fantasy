@@ -140,6 +140,7 @@
                                             <div class="form-group">
                                                 <label>النادي المفضل:</label>
                                             <select name="fav_team" class="form-control">
+                                            <option disabled>اختار النادى</option>
                                                 @foreach ($team as $key_team => $team)
                                                     <option value="{!!$team['id']!!}">{!!$team['name']!!}</option>
                                                 @endforeach

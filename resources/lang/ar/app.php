@@ -924,5 +924,7 @@ return array (
   'form_l'=>'خ',
   'site_team'=>'رابط موقع الفريق',
   'draft'=>'الدرافت',
+  'checkDraftTime'=>'وقت الدرافت لا يزيد عن يوم'
+
 
 );

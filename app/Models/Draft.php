@@ -30,5 +30,8 @@ class Draft extends Model
         $data = static::where('code',$code)->where('is_active',1)->first();
         return $data;
     }
-
+    static function selectDraft($id){
+        $data = static::where('id',$id)->where('is_active',1)->first();
+        return $data;
+    }
 }

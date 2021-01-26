@@ -168,7 +168,7 @@
           $(".next_pag_playerList").show();
 
           //Event Countdown Timer
-          if($('.time-countdown').length){  
+          if($('.time-countdown').length){
             $('.time-countdown').each(function() {
             var $this = $(this), finalDate = $(this).data('countdown');
             $this.countdown(finalDate, function(event) {

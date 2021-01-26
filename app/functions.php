@@ -498,7 +498,7 @@ function ConvertUTC_ToDateCurrentUser($data_server, $timezone = 'GMT')
 {
     $timezone=currentUserCountry();
     $data_server = \Carbon::parse($data_server)->tz($timezone);
-    return $data_server;
+    return $data_server->format('Y-m-d h:i a');
 }
 function ConvertUTC_ToDateCurrentUser12_hour($data_server)
 {
@@ -510,10 +510,11 @@ function ConvertUTC_ToDateCurrentUser12_hour($data_server)
 // convert current user date to utc 
 function ConvertDateCurrentUserToUtc($data_server, $timezone = 'GMT')
 {
+    // return $data_server;
     $timezone=currentUserCountry();
     $date = Carbon::createFromFormat('Y-m-d h:i a', $data_server, $timezone);
     $date->setTimezone('UTC');
-    return $date;
+    return $date->format('Y-m-d h:i a');
 }
 
 function currentUserCountry($array = 0)

@@ -135,13 +135,21 @@ class DraftController extends SiteController {
 
         $input = $request->all();
         foreach ($input as $key => $value) {
-                 $input[$key] = stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
+            $input[$key] = stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
          }
 
          if (array_key_exists("followed",$input))
             {
                 $notifi = 1;
             }
+
+        $dataUtc = ConvertDateCurrentUserToUtc(date("Y-m-d h:s a", strtotime($input['draftDate'] .' '.$input['drafTime'])));
+
+        $dateAfterDay = date('Y-m-d h:s a', strtotime("+1 day"));
+        if(strtotime($dateAfterDay) - strtotime($dataUtc) < 0){
+            return response()->json(['msg' =>__('text.checkDraftTime'),'status'=>false]);
+        }
+
 
         $eldwry  = Eldwry::get_currentDwry();
         $subEldwry = Subeldwry::get_CurrentSubDwry();
@@ -154,9 +162,9 @@ class DraftController extends SiteController {
         $draft->type_id = $input['dawryType'];
         $draft->max = $input['maxTeam'];
         $draft->min = $input['minTeam'];
-        $draft->date = date("Y-m-d", strtotime($input['draftDate']));
-        $draft->time = date("h:s:i");
-        $draft->time_choose = date("Y-m-d h:s:i", strtotime($input['drafTime']));
+        $draft->date = date("Y-m-d", strtotime($dataUtc));
+        $draft->time = date("H:i:s");
+        $draft->time_choose = date("Y-m-d H:i:s", strtotime($dataUtc));
         $draft->player_trade = '1';  //??
         $draft->code = $code;
         $draft->user_id = Auth::user()->id;
@@ -173,7 +181,7 @@ class DraftController extends SiteController {
         $draftUser->notifi = $notifi;
         $draftUser->user_count = 1;
         $draftUser->save();
-        return response()->json(['url'=>url('draft/draftRoom')]);
+        return response()->json(['url'=>url('draft/draftRoom'),'status'=>true]);
 
     }
     public function saveDraft(Request $request){
@@ -202,8 +210,8 @@ class DraftController extends SiteController {
             $draft->max = $input['dawrySize'];
             $draft->min = 2;
             $draft->date = date("Y-m-d");
-            $draft->time = date("h:s:i");
-            $draft->time_choose = date('h:i:s', strtotime('+1 hour'));
+            $draft->time = date("H:i:s");
+            $draft->time_choose = date('H:i:s', strtotime('+1 hour'));
             $draft->user_id = Auth::user()->id;
             $draft->save();
     
@@ -256,14 +264,40 @@ class DraftController extends SiteController {
             $register_dwry = 1;
             $msg_finish_dwry = '';
             if (isset(Auth::user()->id)) {
+                $draftUser = DraftUsers::selectUserDraft(Auth::user()->id);
+                $draft = Draft::selectDraft($draftUser->draft_id);
+
+                $convertTime = ConvertUTC_ToDateCurrentUser(($draft->date .' '.$draft->time_choose));
                 $title = 'draft room';
-                return view('site.draft.draftRoom',compact('title'));
+                $time = date("Y-m-d H:i:s", strtotime($convertTime));
+                // $time = "2021-01-26 1:35:00";
+                return view('site.draft.draftRoom',compact('title','draft','time'));
             } else {
                 return redirect()->route('login');
             }
         } else {
             return redirect()->route('close');
         }
+    }
+
+
+    public function checkFullDraft(Request $request){
+        $draftId = $request->id;
+        $draftData = Draft::selectDraft($draftId);
+        $draftJoinCount = DraftUsers::getJoinCount($draftId);
+        if($draftJoinCount >= $draftData->min && $draftJoinCount <= $draftData->max){
+            $arr = array('status' => true);
+        }else{
+            $userTime = ConvertUTC_ToDateCurrentUser(date('Y-m-d H:i:s', strtotime('+1 hour')));
+            $updateDraft = Draft::find($draftId);
+            $updateDraft->time_choose = date('H:i:s', strtotime('+1 hour'));
+            $updateDraft->date = date('Y-m-d', strtotime('+1 hour'));
+
+            $updateDraft->save();
+
+            $arr = array('status' => false,'time'=>$userTime);
+        }
+        return response()->json($arr);
     }
 
 

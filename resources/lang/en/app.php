@@ -924,6 +924,7 @@ return array (
   'form_l'=>'L',
   'site_team'=>'Team site link',
   'draft'=>'Draft',
+  'checkDraftTime'=>'Draft Time Not More Than Aday'
 
 );
 
