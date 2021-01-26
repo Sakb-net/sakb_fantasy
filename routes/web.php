@@ -223,7 +223,7 @@ Route::group([
     Route::post('saveDraft', ['as' => 'saveDraft', 'uses' => 'DraftController@saveDraft']);
     Route::post('joinLeauge', ['as' => 'joinLeauge', 'uses' => 'DraftController@joinLeauge']);
 
-    Route::get('checkFullDraft', ['as' => 'draftRoom', 'uses' => 'DraftController@checkFullDraft']);
+    Route::get('checkFullDraft', ['as' => 'checkFullDraft', 'uses' => 'DraftController@checkFullDraft']);
 
     });
 

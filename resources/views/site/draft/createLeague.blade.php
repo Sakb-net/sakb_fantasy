@@ -80,7 +80,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>اسم الدوري <span> (20 حرف علي الأكثر)</span></label>
-                                                <input type="text" name="dawryName" maxlength="20" class="form-control" value="" required="" placeholder="">
+                                                <input type="text" name="dawryName" maxlength="20" class="form-control" required placeholder="اسم الدوري">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -118,7 +118,7 @@
                                             <hr>
                                             <div class="form-group">
                                                 <label>اسم الفريق <span> (20 حرف علي الأكثر)</span></label>
-                                                <input type="text" name="teamName" maxlength="20" class="form-control" value="" required="" placeholder="">
+                                                <input type="text" name="teamName" maxlength="20" class="form-control" required placeholder="اسم الفريق">
                                             </div>
                                         </div>
                                         <div class="col-md-12">

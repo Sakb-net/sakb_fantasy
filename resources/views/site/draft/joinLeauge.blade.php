@@ -79,30 +79,16 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>كود الدوري</label>
-                                        <input type="text" id="code" name="dawryCode" class="form-control" value="" required="" placeholder="">
+                                        <input type="text" id="code" name="dawryCode" class="form-control" required placeholder="كود الدوري">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>اسم الفريق <span> (20 حرف علي الأكثر)</span></label>
-                                        <input type="text" name="teamName" maxlength="20" class="form-control" value="" required="" placeholder="">
+                                        <input type="text" name="teamName" maxlength="20" class="form-control"  required placeholder="اسم الفريق">
                                     </div>
                                 </div>
 
-                                <div class="panel-body">
-                                    <form id="joinLeauge" method="post">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>كود الدوري</label>
-                                                <input type="text" id="code" name="dawryCode" class="form-control" value="" required="" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>اسم الفريق <span> (20 حرف علي الأكثر)</span></label>
-                                                <input type="text" name="teamName" maxlength="20" class="form-control" value="" required="" placeholder="">
-                                            </div>
-                                        </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>النادي المفضل:</label>
@@ -137,7 +123,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="submit" class="butn butn-bg m0" value="التحق بالدوري" placeholder="">
+                                        <input type="submit" class="butn butn-bg m0" value="التحق بالدوري">
                                     </div>
                                 </div>
                             </form>

@@ -102,8 +102,18 @@ class OptionController extends AdminController {
         foreach ($option as $key => $value) {
             $$key = $value;
         }
+
+        
         $roles = Role::pluck('display_name', 'id');
-        return view('admin.pages.option_time', compact('time_stop_subeldwry'));
+        
+
+        $utcTime = ConvertDateCurrentUserToUtc($time_stop_subeldwry);
+
+        $formatDate = explode(" ", $utcTime);
+
+        $date = $formatDate[0];
+        $time = $formatDate[1].' '.$formatDate[2];
+        return view('admin.pages.option_time', compact('date','time'));
     }
 
     public function option_timeStore(Request $request) {
@@ -111,18 +121,21 @@ class OptionController extends AdminController {
             return $this->pageUnauthorized();
         }
 
-        // $request->validate([
+        // $this->validate($request, [
             // 'site_title' => 'required',
         // ]);
 
         $input = $request->all();
+
+        
         foreach ($input as $key => $value) {
             if ($key != 'time_stop_subeldwry') {
                 $input[$key] = stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
             }
         }
+        $utcTime = ConvertUTC_ToDateCurrentUser12_hour($input['date'].' '.$input['time']);
 
-        Options::updateOption("time_stop_subeldwry", $input['time_stop_subeldwry'], 1, 'time');
+        Options::updateOption("time_stop_subeldwry", $utcTime, 1, 'time');
 
         return redirect('admin/option_time')->with('success', 'Update successfully');
     }
