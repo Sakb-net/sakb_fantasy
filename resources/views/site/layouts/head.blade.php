@@ -46,11 +46,12 @@
 @if($cuRRlocal == 'ar')
 <link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/plugins.css?v='.config('version.version_script')) }}">
 @else
-	<link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/ltr.css?v='.config('version.version_script')) }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/plugins-en.css?v='.config('version.version_script')) }}">
 @endif
 <link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/style.css?v='.config('version.version_script')) }}">
-
+@if($cuRRlocal != 'ar')
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/ltr.css?v='.config('version.version_script')) }}">
+@endif
 <link rel="stylesheet" type="text/css" href="{{ asset('css/site/css/custom.css?v='.config('version.version_script')) }}">
 
 

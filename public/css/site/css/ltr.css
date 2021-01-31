@@ -1,3 +1,4 @@
+@import url('plugins-en.css');
 #loader-wrapper {
     right: auto;
     left:0;
@@ -9,12 +10,6 @@
 #shadow {
     right: 46%;
     left:auto;
-}
-.border-left {
-    border-right: 2px solid #8c8c8c;
-}
-.border-right {
-    border-left: 2px solid #8c8c8c;
 }
 .scroll-top {
     right:15px;
@@ -69,6 +64,8 @@ header .mymenu-wrapper.transparent-layout {
 header .mymenu-wrapper .logo {
     left: 0;
     right: auto;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 50%;
 }
 #mega-menu-wrapper .nav li.join-us a {
     margin-right: 0;
@@ -170,7 +167,7 @@ a.read-more {
     margin-right: 0;
 }
 .video-icon i {
-    margin-right: 5px;
+    margin-right: -5px;
     margin-left: 0;
 }
 .owl-nav .owl-prev, .owl-nav .owl-next {
@@ -471,6 +468,7 @@ a.read-more {
 }
 .expandable td{
     text-align: left;
+    padding-left: 4rem !important;
 }
 .expandable .expandableTeam img{
     margin-right: 1rem;
@@ -498,4 +496,22 @@ a.read-more {
 }
 .expandable .btnContainer{
    float: right;
+}
+.form-inline .form-control {
+    margin-right: 0px;
+    margin-left: 8px;
+}
+.trades-table .Offer .control{
+    float: left;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+.fa-chevron-right , .fa-chevron-left , .fa-angle-double-right , .fa-angle-double-left ,.fa-arrow-left {
+    transform: rotate(180deg) !important;
+}
+.myinner-banner .opacity{
+    background-position: right 2rem bottom;
+}
+.td-width {
+    width: 145px;
 }
