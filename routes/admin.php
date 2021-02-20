@@ -65,6 +65,11 @@ Route::group([
     Route::get('option_time', ['as' => 'option_time', 'uses' => 'OptionController@option_time']);
     Route::post('option_time', ['as' => 'option_time.store', 'uses' => 'OptionController@option_timeStore']);
 
+    Route::get('draft_cooldown',['as' => 'draft_cooldown', 'uses' => 'OptionController@draft_cooldown']);
+
+    Route::post('draft_cooldown', ['as' => 'draft_cooldown.store', 'uses' => 'OptionController@draft_cooldownStore']);
+    
+
     //sendmessage
     Route::get('sendmessage', ['as' => 'sendmessage', 'uses' => 'OptionController@sendMessage']);
     Route::post('sendmessage', ['as' => 'sendmessage.store', 'uses' => 'OptionController@sendMessageStore']);

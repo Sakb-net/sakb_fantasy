@@ -8,6 +8,7 @@ use App\Models\DraftUsers;
 use App\Models\Subeldwry;
 use App\Models\Team;
 use App\Models\Draft;
+use App\Models\Options;
 use App\Models\AllType;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -109,6 +110,8 @@ class DraftController extends SiteController {
                     $locale = App::currentLocale();
                     if ($locale == 'ar') {
                         $lang='';
+                    }else{
+                        $lang='en';
                     }
                     $eldwry  = Eldwry::get_currentDwry();
                     $checkDraft = DraftUsers::where('user_id',Auth::user()->id)->first();
@@ -202,6 +205,7 @@ class DraftController extends SiteController {
 
             $eldwry  = Eldwry::get_currentDwry();
             $subEldwry = Subeldwry::get_CurrentSubDwry();
+
             $draft = new Draft;
             $draft->link = $link;
             $draft->eldwry_id = $eldwry->id;
@@ -224,7 +228,7 @@ class DraftController extends SiteController {
             $draftUser->notifi = $notifi;
             $draftUser->user_count = 1;
             $draftUser->save();
-            return response()->json(['url'=>url('draft/draftRoom')]);
+            return response()->json(['url'=>url('draft/draftRoom'),'status'=>true]);
     }
 
     public function joinLeauge(Request $request){
@@ -270,7 +274,6 @@ class DraftController extends SiteController {
                 $convertTime = ConvertUTC_ToDateCurrentUser(($draft->date .' '.$draft->time_choose));
                 $title = 'draft room';
                 $time = date("Y-m-d H:i:s", strtotime($convertTime));
-                // $time = "2021-01-26 1:35:00";
                 return view('site.draft.draftRoom',compact('title','draft','time'));
             } else {
                 return redirect()->route('login');
@@ -288,10 +291,17 @@ class DraftController extends SiteController {
         if($draftJoinCount >= $draftData->min && $draftJoinCount <= $draftData->max){
             $arr = array('status' => true);
         }else{
-            $userTime = ConvertUTC_ToDateCurrentUser(date('Y-m-d H:i:s', strtotime('+1 hour')));
+            $option = Options::where('option_key', 'draft_cooldown')->first();
+            if($option->option_value == 1){
+                $hours = '+'.$option->option_value .'hour';
+            }else{
+                $hours = '+'.$option->option_value .'hours';
+            }
+
+            $userTime = ConvertUTC_ToDateCurrentUser(date('Y-m-d H:i:s', strtotime($hours)));
             $updateDraft = Draft::find($draftId);
-            $updateDraft->time_choose = date('H:i:s', strtotime('+1 hour'));
-            $updateDraft->date = date('Y-m-d', strtotime('+1 hour'));
+            $updateDraft->time_choose = date('H:i:s', strtotime($hours));
+            $updateDraft->date = date('Y-m-d', strtotime($hours));
 
             $updateDraft->save();
 

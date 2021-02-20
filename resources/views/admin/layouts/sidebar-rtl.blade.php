@@ -287,6 +287,9 @@
                         </a></li>
                     <li><a href="{{ route('admin.option_time') }}">
                             <i class="fa fa-asterisk"></i> <span>{{trans('app.period_time_stop_subeldwry')}}</span> 
+                        </a></li>
+                    <li><a href="{{ route('admin.draft_cooldown') }}">
+                            <i class="fa fa-asterisk"></i> <span>{{trans('app.period_time_draft_cooldown')}}</span> 
                         </a></li>   
                     <li><a href="{{ route('admin.pages.about') }}">
                             <i class="fa fa-support"></i> <span>{{$about_title}}</span> 

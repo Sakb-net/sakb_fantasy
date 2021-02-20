@@ -84,6 +84,7 @@ $(document).ready(function () {
                 cache: false,
           success: function(response)               
            {
+            if(response.status)
             window.location = response.url;
             },error: function (data) {
     

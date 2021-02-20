@@ -186,4 +186,35 @@ class OptionController extends AdminController {
         return redirect()->route('admin.pages.contact')->with('success', 'Update successfully');
     }
 
+    public function draft_cooldown() {
+        if (!$this->user->can('access-all')) {
+            return $this->pageUnauthorized();
+        }
+        $draft_cooldown= '';
+        $option = Options::whereIn('option_group', ['time'])->pluck('option_value', 'option_key')->toArray();
+        foreach ($option as $key => $value) {
+            $$key = $value;
+        }
+
+        $roles = Role::pluck('display_name', 'id');
+        return view('admin.pages.draft_cooldown', compact('draft_cooldown'));
+    }
+
+    public function draft_cooldownStore(Request $request) {
+        if (!$this->user->can('access-all')) {
+            return $this->pageUnauthorized();
+        }
+
+        $input = $request->all();
+        foreach ($input as $key => $value) {
+            if ($key != 'draft_cooldown') {
+                $input[$key] = stripslashes(trim(filter_var($value, FILTER_SANITIZE_STRING)));
+            }
+        }
+
+        Options::updateOption("draft_cooldown", $input['draft_cooldown'], 1, 'time');
+
+        return redirect('admin/draft_cooldown')->with('success', 'Update successfully');
+    }
+
 }

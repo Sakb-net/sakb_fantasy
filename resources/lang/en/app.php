@@ -924,7 +924,41 @@ return array (
   'form_l'=>'L',
   'site_team'=>'Team site link',
   'draft'=>'Draft',
-  'checkDraftTime'=>'Draft Time Not More Than Aday'
+  'checkDraftTime'=>'Draft Time Not More Than Aday',
+  'loginByUserName'=>'You have logged in as',
+  'createOrJoinLeague'=>'Create or join the league',
+  'competeWithFriendsOrFamily'=>'Compete with your friends or family by creating or joining a league',
+  'playNow'=>'Play now',
+  'makeYourScouts'=>'Make your own scouts',
+  'buildWatchListOfPlayes'=>'Build a watchlist of player goals in preparation for Draft Day.',
+  'joinDraft'=>'Join Draft',
+  'takeYourTurnToChoose'=>'Take your turn to choose from the pool and build a team of 15 players unique to you.',
+  'joinOrCreateLeague'=>'Join or create draft',
+  'createNewPrivateLeagueAndInviteFriends'=>'Create a new Private League and invite your friends or join others in an existing Private League.',
+  'newSALeagueDraft'=>'New in the Saudi League Draft?',
+  'whyNotPracticeFakeDraft'=>'Why not participate in a mock draft and learn how to do drafting',
+  'period_time_draft_cooldown'=>'Draft Time Cooldown',
+  'period_time_draft_cooldown_hours'=>'Number of hours to cool down',
+  'joinPrivateLeague'=>'Join Private League',
+  'teamName'=>'Team Name',
+  'gameNotifications'=>'Game Notifications',
+  'leagueSize'=>'League Size',
+  'joinLeague'=>'Join League',
+  'alreadyRead'=>'Already read',
+  'limitAlphabets'=>'20 alphabets at more',
+  'yesRecieveNotificationByEmail'=>'Yes, I would like to receive game notifications via email',
+  'draftRecieveNotification'=>'Receive emails about draft, league and deals. You can unsubscribe at any time.',
+  'favClub'=>'Favourite Club',
+  'selectClub'=>'Select Club',
+  'leagueCode'=>'League Code',
+  'draftDate'=>'Draft Date',
+  'draftTime'=>'Draft Time',
+  'selectType'=>'Select Type',
+  'maxTeamLimit'=>'Maximum Team Limit',
+  'minTeamLimit'=>'Minimum Team Limit'
+
+
+  
 
 );
 

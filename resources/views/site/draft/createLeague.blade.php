@@ -1,66 +1,66 @@
 @extends('site.layouts.app')
 @section('content')
 @include('site.draft.menu')
-    <section class="section-padding mainSection">
-        <div class="container">
-            <p>لقد قمت بتسجيل الدخول باسم {{auth::user()->name}}.</p>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="draft-home">
-                        <div class="draft-step" style="background-image: url ('/images/draft/home-step-1.jpg');"></div>
-                        <div class="draft-step-content">
-                            <h2>إنشاء أو الالتحاق بالدوري</h2>
-                            <p>نافس أصدقائك أو عائلتك عن طريق إنشاء او الانضمام لدوري</p>
-                            <a id="showStartPage">العب الآن</a>
-                        </div>
+<section class="section-padding mainSection">
+    <div class="container">
+        <p>{{trans('app.loginByUserName')}}  {{auth::user()->name}}.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="draft-home">
+                    <div class="draft-step" style="background-image: url ('/images/draft/home-step-1.jpg');"></div>
+                    <div class="draft-step-content">
+                        <h2>{{trans('app.createOrJoinLeague')}}</h2>
+                        <p>{{trans('app.competeWithFriendsOrFamily')}}</p>
+                        <a id="showStartPage">{{trans('app.playNow')}}</a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="draft-home">
-                        <div class="draft-step" style="background-image: url('/images/draft/home-step-2.jpg');"></div>
-                        
-                        <div class="draft-step-content">
-                            <h2>قم بعمل الكشافة الخاصة بك</h2>
-                            <p>قم ببناء قائمة مراقبة بأهداف اللاعبين استعدادًا ليوم المسودة.</p>
-                            <a id="showStartPage1">العب الآن</a>
-                        </div>
+            </div>
+            <div class="col-md-4">
+                <div class="draft-home">
+                    <div class="draft-step" style="background-image: url('/images/draft/home-step-2.jpg');"></div>
+                    
+                    <div class="draft-step-content">
+                        <h2>{{trans('app.makeYourScouts')}}</h2>
+                        <p>{{trans('app.buildWatchListOfPlayes')}}</p>
+                        <a id="showStartPage1">{{trans('app.playNow')}}</a>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="draft-home">
-                        <div class="draft-step" style="background-image: url('/images/draft/home-step-3.jpg');"></div>
-                        <div class="draft-step-content">
-                            <h2>انضم للدرافت</h2>
-                            <p>خذ دورك للاختيار من المسبح وقم ببناء فريق من 15 لاعبًا فريدًا لك.</p>
-                            <a id="showStartPage2">العب الآن</a>
-                        </div>
+            </div>
+            <div class="col-md-4">
+                <div class="draft-home">
+                    <div class="draft-step" style="background-image: url('/images/draft/home-step-3.jpg');"></div>
+                    <div class="draft-step-content">
+                        <h2>{{trans('app.joinDraft')}}</h2>
+                        <p>{{trans('app.takeYourTurnToChoose')}}</p>
+                        <a id="showStartPage2">{{trans('app.playNow')}}</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </section>
 
     <section class="section-padding startSection">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="draft-start">
-                        <h2>التحق أو انضم لدوري</h2>
-                        <p>أنشئ دوريًا خاصًا جديدًا وادعُ أصدقائك أو انضم إلى آخرين في دوري خاص موجود.</p>
-                        <a href="{{route('draft.joinLeaugeDraft')}}"  class="butn butn-bg">انضم إلي دوري </a>
-                        <a id="createLeaugeButton" class="butn butn-bg">إنشاء دوري جديد</a>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="draft-start">
+                    <h2>{{trans('app.joinOrCreateLeague')}}</h2>
+                    <p>{{trans('app.createNewPrivateLeagueAndInviteFriends')}}</p>
+                    <a href="{{route('draft.joinLeaugeDraft')}}" class="butn butn-bg">{{trans('app.join_a_league')}}</a>
+                    <a href="{{route('draft.createLeaugeDraft')}}" class="butn butn-bg">{{trans('app.create_a_league')}}</a>
                 </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="draft-start">
-                        <h2>جديد في درافت الدوري السعودي؟</h2>
-                        <p>لماذا لا تشارك في مسودة وهمية وتتعلم كيف تعمل المسودة؟</p>
-                        <a href="{{route('draft.createDraft')}}" class="butn butn-bg"> انضم للدرافت</a>
-                    </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <div class="draft-start">
+                    <h2>{{trans('app.newSALeagueDraft')}}</h2>
+                    <p>{{trans('app.whyNotPracticeFakeDraft')}}</p>
+                    <a href="{{route('draft.createDraft')}}" class="butn butn-bg">{{trans('app.joinDraft')}}</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    </section>      
 
     <section class="section-padding wow fadeInUp createLeauge">
         <div class="container">
@@ -68,7 +68,7 @@
                 <div class="col-md-10">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3>إنشاء دوري خاص</h3>
+                            <h3>{{trans('app.create_aprivate_league')}}</h3>
                         </div>
 
                         <div id='formErorr' class='alert alert-danger text-center mb-10' style="display:none;">
@@ -79,15 +79,15 @@
                                     <form id="createLeauge" method="post">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>اسم الدوري <span> (20 حرف علي الأكثر)</span></label>
-                                                <input type="text" name="dawryName" maxlength="20" class="form-control" required placeholder="اسم الدوري">
+                                                <label>{{trans('app.league_name')}} <span> ({{trans('app.limitAlphabets')}})</span></label>
+                                                <input type="text" name="dawryName" maxlength="20" class="form-control" required placeholder="{{trans('app.league_name')}}">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>نوع الدوري </label>
+                                                <label>{{trans('app.league_type')}}</label>
                                                 <select class="form-control" name="dawryType">
-                                                <option disabled>اختار النوع</option>
+                                                <option disabled>{{trans('app.selectType')}}</option>
                                                     @foreach($type as $row)
                                                     <option value="{{$row->id}}">{{$row->value}}</option>
                                                     @endforeach
@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>الحد الأدني للفرق:</label>
+                                                <label>{{trans('app.minTeamLimit')}}:</label>
                                                 <select class="form-control minTeam" name="minTeam">
                                                 @for($i=2;$i < 17;$i++)
                                                     <option value="{{$i}}" {{ $i == 2 ? 'selected' : '' }}>{{$i}}</option>
@@ -106,7 +106,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>الحد الأقصي للفرق:</label>
+                                                <label>{{trans('app.maxTeamLimit')}}:</label>
                                                 <select class="form-control maxTeam" name="maxTeam">
                                                 @for($i=2;$i < 17;$i++)
                                                     <option value="{{$i}}" {{ $i == 8 ? 'selected' : '' }}>{{$i}}</option>
@@ -117,15 +117,15 @@
                                         <div class="col-md-12">
                                             <hr>
                                             <div class="form-group">
-                                                <label>اسم الفريق <span> (20 حرف علي الأكثر)</span></label>
-                                                <input type="text" name="teamName" maxlength="20" class="form-control" required placeholder="اسم الفريق">
+                                                <label>{{trans('app.teamName')}} <span> ({{trans('app.limitAlphabets')}})</span></label>
+                                                <input type="text" name="teamName" maxlength="20" class="form-control" required placeholder="{{trans('app.teamName')}}">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>النادي المفضل:</label>
+                                                <label>{{trans('app.favClub')}}:</label>
                                             <select name="fav_team" class="form-control">
-                                            <option disabled>اختار النادى</option>
+                                            <option disabled>{{trans('app.selectClub')}}</option>
                                                 @foreach ($team as $key_team => $team)
                                                     <option value="{!!$team['id']!!}">{!!$team['name']!!}</option>
                                                 @endforeach
@@ -135,32 +135,32 @@
                                         <div class="col-md-12">
                                             <hr>
                                             <div class="form-group">
-                                                <label>تاريخ الدرافت</label>
+                                                <label>{{trans('app.draftDate')}}</label>
                                                 <input type="text" name="draftDate" class="form-control date-picker">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group bootstrap-timepicker">
-                                                <label>وقت الدرافت</label>
+                                                <label>{{trans('app.draftTime')}}</label>
                                                 <input id="timepicker1" name="drafTime" type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>إشعارات اللعبة:</label>
-                                                <p class="font-normal"> تلقي رسائل بريد إلكتروني حول المسودة والدوري والصفقات. يمكنك إلغاء الاشتراك في أي وقت.</p>
+                                                <label>{{trans('app.gameNotifications')}}:</label>
+                                                <p class="font-normal">{{trans('app.draftRecieveNotification')}}</p>
                                                 <div class="team-checkbox">
                                                     <input type="checkbox" name="followed" id="followed">
-                                                    <label for="followed" class="checkbox-text">نعم ، أرغب في تلقي إشعارات اللعبة عبر البريد الإلكتروني</label>
+                                                    <label for="followed" class="checkbox-text">{{trans('app.yesRecieveNotificationByEmail')}}</label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>الشروط والأحكام:</label>
+                                                <label>{{trans('app.terms_condition')}}:</label>
                                                 <div class="team-checkbox">
                                                     <input type="checkbox" name="condition" id="condition">
-                                                    <label for="condition" class="checkbox-text">قرأت <a href="">الشروط و الأحكام</a></label>
+                                                    <label for="condition" class="checkbox-text">{{trans('app.alreadyRead')}} <a href="">{{trans('app.terms_condition')}}</a></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -168,7 +168,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="submit" class="butn butn-bg m0" value="التحق بالدوري" placeholder="">
+                                        <input type="submit" class="butn butn-bg m0" value="{{trans('app.joinLeague')}}">
                                     </div>
                                 </div>
                             </form>
