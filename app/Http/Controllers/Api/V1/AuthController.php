@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\API_Controller;
-use App\User;
-use App\Model\Role;
-use App\Model\Team;
-use App\Model\Game;
-use App\Model\GameHistory;
+use App\Models\User;
+use App\Models\Role;
+use App\Models\Team;
+use App\Models\Game;
+use App\Models\GameHistory;
 use Hash;
 
 //use Mail;

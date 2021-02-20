@@ -127,8 +127,8 @@
 /*-____________________ Global stlye ___________________*/
 @font-face {
     font-family: 'font-awesome';
-    src: url('/css/site/fonts/font-awesome/fonts/fontawesome-webfont.ttf');
-    src: url('/css/site/fonts/font-awesome/fonts/fontawesome-webfont.eot'), /* IE9 Compat Modes */ url('/css/site/fonts/font-awesome/fonts/fontawesome-webfont.woff2') format('woff2'), /* Super Modern Browsers */ url('/css/site/fonts/font-awesome/fonts/fontawesome-webfont.woff') format('woff'), /* Pretty Modern Browsers */ url('/css/site/fonts/font-awesome/fonts/fontawesome-webfont.svg') format('svg');
+    src: url('../fonts/font-awesome/fonts/fontawesome-webfont.ttf');
+    src: url('../fonts/font-awesome/fonts/fontawesome-webfont.eot'), /* IE9 Compat Modes */ url('../fonts/font-awesome/fonts/fontawesome-webfont.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/font-awesome/fonts/fontawesome-webfont.woff') format('woff'), /* Pretty Modern Browsers */ url('../fonts/font-awesome/fonts/fontawesome-webfont.svg') format('svg');
     /* Legacy iOS */
 }
 
@@ -289,7 +289,12 @@ input,textarea {
     width: 95%;
     text-align: center;
 }
-
+.bg-white{
+    background: #fff;
+}
+.errorBorder{
+    border:1px solid red;
+}
 /*--------------------- Transition --------------------*/
 .tran3s,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,body {
     transition: all .3s ease-in-out;
@@ -765,7 +770,7 @@ body .vegas-container {
 .clients {
     padding: 15px 0;
     background: #f7f7f7;
-    background: linear-gradient(0deg, #ffffff 0%, #f1f1f1 74%);
+    background: linear-gradient(0deg, #f1f1f1 0%, #ffffff 74%);
     border-bottom: 5px solid #fff;
     box-shadow: 0px 1px 11px #a9a9a9;
 }
@@ -1632,7 +1637,7 @@ thead tr {
     background-color: rgb(235, 235, 230);
     padding: 0.8rem 0;
     font-size: 18px;
-    width: 42px;
+    width: 38px;
     text-align: center;
 }
 
@@ -1784,6 +1789,7 @@ tr.Forward {
     font-weight: normal;
     border: 2px solid #e8e8e8;
     padding: 10px;
+    background: #fff;
 }
 
 .FixtureScore {
@@ -4568,7 +4574,7 @@ input.butn{
     border: none;
 }
 .best-teamimg{
-    height:162px !important;
+    /*height:162px !important;*/
 }
 .FixtureScore.live{
     background: #ed3b39;
@@ -4830,11 +4836,14 @@ div.form, .club-image{
     border: 0px;
     border-radius: 4px;
     font-size: 1.5rem;
-    background-color: rgb(16 72 128);
+    background-color: #104880;
     color: white;
     text-decoration: none;
     font-weight: bold;
     text-align: center;
+}
+.draft-step-content a:hover{
+    background-color: #07325d;
 }
 .draft-start{
     margin-bottom: 1rem;
@@ -4927,15 +4936,16 @@ label {
     color: #008640;
     padding-right: 10px;
 }
-.draft-l-info{
+.draft-l-info table{
     margin: 1rem 0;
     padding: 0 .5rem;
     font-size: 1.3rem;
     background: #f5f5f5;
     border-radius: 5px;
 }
-.draft-l-info td{
-
+.draft-l-info{
+    height: 335px;
+    overflow-y: scroll;
 }
 .butn-inline{
     padding: 0.5rem 1rem;
@@ -4947,6 +4957,10 @@ label {
     text-decoration: none;
     width: 100%;
     text-align: center;
+}
+.butn-inline:hover{
+    background-color: #00632f;
+    color: #fff; 
 }
 .black{
     color: #3a3a3a;
@@ -5120,7 +5134,7 @@ label {
 .table>tbody>tr>th {
     min-width: 70px;
 }
-.text-center>th{
+.text-center th{
     text-align: center;
 }
 .expandable hr.clearfix{
@@ -5384,4 +5398,70 @@ label {
     top: 0;
     box-shadow: 0 8px 8px -6px #94948d;
     width: 800px;
+}
+/*------------d-league-home-----------*/
+.form-inline .form-control {
+    margin-right: 8px;
+}
+.form-inline .form-group.d-teams{
+    margin-bottom: 3rem;
+}
+.trades-table{
+    background: #fff;
+    text-align: center;
+}
+.trades-table td{
+    border:1px solid #e8e8e8;
+}
+.trades-table>thead>tr>th{
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #ddd;
+}
+.trades-table .width15{
+    width:15%;
+}
+.trades-table .width55{
+    width:55%;
+}
+.trades-table .Offer h3{
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    background-color: #efefef;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 0;
+}
+.trades-table .Offer .control{
+    float: right;
+    border: 0;
+    display: block;
+    padding: 2rem;
+    background-color: #f6f6f5;
+    line-height: 1;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.trades-table .Offer .list-player {
+    margin: 10px;
+}
+.table>tbody>tr>th.info-th{
+    width:50px !important;
+    min-width: auto;
+    padding: 0;
+}
+.dl-order{
+    background: #fff;
+    text-align: center;
+}
+.table tr.highlight td{
+    background-color: #003365;
+    color: #00ff87;
+}
+@media screen and (max-width: 767px) {
+    .trades-table .Offer .control{
+        display: none;
+    }
 }

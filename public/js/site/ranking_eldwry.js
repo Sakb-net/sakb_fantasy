@@ -296,37 +296,37 @@ function draw_expandableTeam(site_team,current_match,next_match,first_team_link,
                 div_section += '</a>';
             div_section += '</div>';
             div_section += '<div class="expandableFixtures">';
-                div_section += '<div class="">';//col-md-4
                     div_section += '<div class="matchAbridged">';
                         div_section += '<span class="matchInfo"><strong>أخر نتيجة </strong>- '+current_match.date_day+'</span>';
-                        div_section += '<span class="teamName">'+current_match.first_team_name+'</span>';
-                        div_section += '<span class="badge badge-image-container" data-widget="club-badge-image" data-size="20">';
-                        div_section += '<img class="badge-image" src="'+current_match.first_team_image+'" alt="club-logo">';
-                        div_section += '</span>';
-                        div_section += '<span class="score">'+current_match.first_team_goon+' <span>-</span> '+current_match.second_team_goon+'</span>';
-                        div_section += '<span class="badge badge-image-container" data-widget="club-badge-image" data-size="20">';
-                        div_section += '<img class="badge-image" src="'+current_match.second_team_image+'" alt="club-logo">';
-                        div_section += '</span>';
-                        div_section += '<span class="teamName">'+current_match.second_team_name+'</span>';
+                        div_section += '<div class="result">';
+                            div_section += '<span class="teamName">'+current_match.first_team_name+'</span>';
+                            div_section += '<span class="badge badge-image-container" data-widget="club-badge-image" data-size="20">';
+                            div_section += '<img class="badge-image" src="'+current_match.first_team_image+'" alt="club-logo">';
+                            div_section += '</span>';
+                            div_section += '<span class="score">'+current_match.first_team_goon+' <span>-</span> '+current_match.second_team_goon+'</span>';
+                            div_section += '<span class="badge badge-image-container" data-widget="club-badge-image" data-size="20">';
+                            div_section += '<img class="badge-image" src="'+current_match.second_team_image+'" alt="club-logo">';
+                            div_section += '</span>';
+                            div_section += '<span class="teamName">'+current_match.second_team_name+'</span>';
+                        div_section += '</div>';
                     div_section += '</div>';
-                div_section += '</div>';
-                div_section += '<div class="">';//col-md-4
                     if(next_match !="" && next_match !=null){
                        div_section += '<div class="matchAbridged">';
                             div_section += '<span class="matchInfo"><strong>المباراة القادمة </strong>- '+next_match.date_day+' </span>';
-                            div_section += '<span class="teamName">'+first_team_name+'</span>';
-                            div_section += '<span class="badge badge-image-container" data-widget="club-badge-image" data-size="20">';
-                            div_section += '<img class="badge-image" src="'+first_team_image+'" alt="club-logo">';
-                            div_section += '</span>';
-                            div_section += '<time> '+next_match.time+' </time>';
-                            div_section += '<span class="badge badge-image-container" data-widget="club-badge-image" data-size="20">';
-                            div_section += '<img class="badge-image" src="'+next_match.second_team_image+'" alt="club-logo">';
-                            div_section += '</span>';
-                            div_section += '<span class="teamName">'+next_match.second_team_name+'</span>';
+                            div_section += '<div class="result">';
+                                div_section += '<span class="teamName">'+first_team_name+'</span>';
+                                div_section += '<span class="badge badge-image-container" data-widget="club-badge-image" data-size="20">';
+                                div_section += '<img class="badge-image" src="'+first_team_image+'" alt="club-logo">';
+                                div_section += '</span>';
+                                div_section += '<time> '+next_match.time+' </time>';
+                                div_section += '<span class="badge badge-image-container" data-widget="club-badge-image" data-size="20">';
+                                div_section += '<img class="badge-image" src="'+next_match.second_team_image+'" alt="club-logo">';
+                                div_section += '</span>';
+                                div_section += '<span class="teamName">'+next_match.second_team_name+'</span>';
+                            div_section += '</div>';
                         div_section += '</div>';
                     }
-                div_section += '</div>';
-                div_section += '<div class="btnContainer">'; //col-md-4
+                div_section += '<div class="btnContainer">';
                     div_section += '<a href="'+site_team+'" class="butn float-left">الذهاب لموقع النادي</a>';
                 div_section += '</div>';
             div_section += '</div>';
